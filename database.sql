@@ -29,7 +29,25 @@ CREATE TABLE IF NOT EXISTS `mydb`.`cars` (
   `price` DECIMAL(10,2) NOT NULL,
   `mileage` INT NOT NULL,
   `bodywork` VARCHAR(45) NOT NULL,
+  `fotoUrl` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(45) NOT NULL,
+  `lastname` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `district` VARCHAR(45) NOT NULL,
+  `street` VARCHAR(45) NOT NULL,
+  `postalcode` INT NOT NULL,
+  `housenumber` SMALLINT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
