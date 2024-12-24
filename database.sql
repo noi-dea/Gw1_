@@ -46,8 +46,31 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users` (
   `street` VARCHAR(45) NOT NULL,
   `postalcode` INT NOT NULL,
   `housenumber` SMALLINT NOT NULL,
+  `isAdmin` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`wishlist`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`wishlist` (
+  `cars_id` INT NOT NULL,
+  `users_id` INT NOT NULL,
+  PRIMARY KEY (`cars_id`, `users_id`),
+  INDEX `fk_cars_has_users_users1_idx` (`users_id` ASC) VISIBLE,
+  INDEX `fk_cars_has_users_cars_idx` (`cars_id` ASC) VISIBLE,
+  CONSTRAINT `fk_cars_has_users_cars`
+    FOREIGN KEY (`cars_id`)
+    REFERENCES `mydb`.`cars` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cars_has_users_users1`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `mydb`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
