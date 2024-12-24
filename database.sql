@@ -15,6 +15,18 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
+-- Table `mydb`.`fotosets`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`fotosets` (
+  `id` INT NOT NULL,
+  `front` VARCHAR(45) NULL,
+  `back` VARCHAR(45) NULL,
+  `inner` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `mydb`.`cars`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`cars` (
@@ -30,7 +42,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`cars` (
   `mileage` INT NOT NULL,
   `bodywork` VARCHAR(45) NOT NULL,
   `fotoUrl` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
+  `fotosets_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `fotosets_id`),
+  INDEX `fk_cars_fotosets1_idx` (`fotosets_id` ASC) VISIBLE,
+  CONSTRAINT `fk_cars_fotosets1`
+    FOREIGN KEY (`fotosets_id`)
+    REFERENCES `mydb`.`fotosets` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
