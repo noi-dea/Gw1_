@@ -1,5 +1,10 @@
 
 <?php
+include('env.inc.php');
+// echo '<pre>';
+// Print_r($_ENV);
+// echo '</pre>';
+// exit;
 error_reporting(E_ALL);
 error_reporting(-1);
 ini_set('error_reporting', E_ALL);
@@ -7,11 +12,11 @@ ini_set('error_reporting', E_ALL);
 function connectToDB()
 {
     // CONNECTIE CREDENTIALS
-    $db_host = '127.0.0.1';
-    $db_user = 'root';
-    $db_password = 'root';
-    $db_db = 'mydb';
-    $db_port = 8889;
+    $db_host = $_ENV['DB_HOST'];
+    $db_user = $_ENV['DB_USER'];
+    $db_password = $_ENV['DB_PASS'];
+    $db_db = $_ENV['DB_DB'];
+    $db_port = $_ENV['DB_PORT'];
 
     try {
         $db = new PDO('mysql:host=' . $db_host . '; port=' . $db_port . '; dbname=' . $db_db, $db_user, $db_password);
