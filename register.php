@@ -21,6 +21,9 @@ if (isset($_POST["button"])) {
         $errors[] = "username is required";
     } else {
         $username = $_POST["inputusername"];
+        if (userExists($email)) {
+            $errors[] = "this user already regeister are you trying to login instead";
+        }
     }
 
     //password
