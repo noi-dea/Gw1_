@@ -1,18 +1,24 @@
 <?php
+
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require("functions.inc.php");
 
 $errors = [];
 $username = "";
 $password1 = "";
-$password2 = "";
+
 $firstname = "";
 $lastname = "";
 $email = "";
 $district = "";
 $street = "";
-$postalcode = "";
+$postal = 0;
 $housenumber = 0;
-$bus = 0;
+$bus = "";
 $isAdmin = 0;
 
 
@@ -21,7 +27,7 @@ if (isset($_POST["button"])) {
         $errors[] = "username is required";
     } else {
         $username = $_POST["inputusername"];
-        if (userExists($email)) {
+        if (userExists($username)) {
             $errors[] = "this user already regeister are you trying to login instead";
         }
     }
@@ -29,20 +35,20 @@ if (isset($_POST["button"])) {
     //password
     if (!isset($_POST["inputpassword1"])) {
         $errors[] = "password1 is required";
-
-        if (!isset($_POST["inputpassword2"])) {
-            $errors[] = "password2 is required";
+    }
+    if (!isset($_POST["inputpassword2"])) {
+        $errors[] = "password2 is required";
+    } else {
+        if ($_POST["inputpassword1"] !== $_POST["inputpassword2"]) {
+            $errors[] = "password dont match";
         } else {
-            if ($_POST["inputpassword1"] !== $_POST["inputpassword2"]) {
-                $errors[] = "password dont match";
-            } else {
-                $password1 = $_POST["inputpassword1"];
-            }
-            if (!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/", $password1)) {
-                $errors[] = "Password needs to contain at least 1 uppercase letter, 1 lowercase, 1 symbol, 1 number and needs to be at least 8 characters long.";
-            }
+            $password1 = $_POST["inputpassword1"];
+        }
+        if (!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/", $password1)) {
+            $errors[] = "Password needs to contain at least 1 uppercase letter, 1 lowercase, 1 symbol, 1 number and needs to be at least 8 characters long.";
         }
     }
+
     //firstname
     // Validatie voor first name
     if (!isset($_POST['inputfirstname'])) {
@@ -104,11 +110,13 @@ if (isset($_POST["button"])) {
     if (!isset($_POST["inputpostal"])) {
         $errors[] = "postal is required";
     } else {
-        $postalcode = $_POST["inputpostal"];
-        if (preg_match("^(1000|[1-9][0-9]{3})$", $postalcode)) {
+        $postal = (int)$_POST["inputpostal"];
+        echo var_dump($postal);
+        if (!preg_match("/^(1000|[1-9][0-9]{3})$/", $postal)) {
             $errors[] = "postalcode must be between 1000 en 9999";
         }
     }
+
     if (!isset($_POST["inputstreet"])) {
         $errors[] = "street required";
     } else {
@@ -117,13 +125,28 @@ if (isset($_POST["button"])) {
     if (!isset($_POST["inputhousenumber"])) {
         $errors[] = "housenumber required";
     } else {
-        $housenumber = $_POST["inputhousenumber"];
-        if (preg_match("^\d+$", $housenumber)) {
+        $housenumber = (int)$_POST["inputhousenumber"];
+        if (!preg_match("/^\d+$/", $housenumber)) {
             $errors[] = "enkel cijfers";
         }
     }
     if (isset($_POST["bus"])) {
         $bus = $_POST["bus"];
+    } else {
+        $bus = "";
+    }
+
+
+    print $username;
+    if (!count($errors)) {
+        $newId = insertNewUser($username, $password1, $firstname, $lastname, $email, $district, $street, $postal, $housenumber, $bus);
+        if (!$newId) {
+            $errors[] = "An unknown error has occured, pleace contact us...";
+        } else {
+
+            header("Location: login.php");
+            exit;
+        }
     }
 }
 
@@ -133,15 +156,23 @@ if (isset($_POST["button"])) {
 ?>
 
 
+<?php if (count($errors)): ?>
+    <ul>
+        <?php foreach ($errors as $error): ?>
+            <li><?= $error; ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
 <form method="post" action="register.php">
     <div>
         <input name="inputusername" id="inputusername" type="text" placeholder="Username" value="<?= $username ? $username : "" ?>">
     </div>
     <div>
-        <input name="inputpassword1" id="inputpassword1" type="password" placeholder="Password">
+        <input name="inputpassword1" id="inputpassword1" type="text" placeholder="Password">
     </div>
     <div>
-        <input name="inputpassword2" id="inputpassword2" type="password" placeholder="Repeat Password">
+        <input name="inputpassword2" id="inputpassword2" type="text" placeholder="Repeat Password">
     </div>
     <div>
         <input name="inputfirstname" id="inputfirstname" type="text" placeholder="Firstname" value="<?= $firstname ? $firstname : "" ?>">
@@ -160,7 +191,7 @@ if (isset($_POST["button"])) {
         <input name="inputstreet" id="inputstreet" type="text" placeholder="Enter your street" value="<?= $street ? $street : "" ?>">
     </div>
     <div>
-        <input name="inputpostalcode" id="inputpostalcode" type="" placeholder="Enter your postalcode" value="<?= $postalcode ? $postalcode : "" ?>">
+        <input name="inputpostal" id="inputpostal" type="" placeholder="Enter your postalcode" value="<?= $postal ? $postal : "" ?>">
     </div>
     <div>
         <input name="inputhousenumber" id="inputhousenumber" type="text" placeholder="Enter your housenumber" value="<?= $housenumber ? $housenumber : "" ?>">

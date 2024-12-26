@@ -25,25 +25,44 @@ function connectToDB()
 
 function mailExists(String $email): bool
 {
-    $sql = "SELECT COUNT(*) AS total FROM users WHERE mail=:mail";
+    $sql = "SELECT COUNT(*) AS total FROM users WHERE email=:email";
 
     $stmt = connectToDB()->prepare($sql);
     $stmt->execute([
-        ':mail' => $email
+        ':email' => $email
     ]);
 
     return (bool)$stmt->fetchColumn();
 }
 
 
-function userExists(String $email): bool
+function userExists(String $user): bool
 {
-    $sql = "SELECT COUNT(*) AS total FROM users WHERE mail=:mail";
+    $sql = "SELECT COUNT(*) AS total FROM users WHERE username=:user";
 
     $stmt = connectToDB()->prepare($sql);
     $stmt->execute([
-        ':mail' => $email
+        ':user' => $user
     ]);
 
     return (bool)$stmt->fetchColumn();
+}
+function insertNewUser(String $username, String $password, String $firstname, String $lastname, String $email, String $district, String $street, int $postalcode, int $housenumber, String $bus): bool|int
+{
+    $db = connectToDB();
+    $sql = "INSERT INTO users(username, password , firstname, lastname, email, district, street, postalcode,housenumber, bus) VALUES (:username, :password, :firstname, :lastname, :email, :district, :street, :postalcode, :housenumber, :bus)";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':username' => $username,
+        ':password' => md5($password),
+        ':firstname' => $firstname,
+        ':lastname' => $lastname,
+        ':email' => $email,
+        ':district' => $district,
+        ':street' => $street,
+        ':postalcode' => $postalcode,
+        ':housenumber' => $housenumber,
+        ':bus' => $bus,
+    ]);
+    return $db->lastInsertId();
 }
