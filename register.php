@@ -111,6 +111,14 @@ if (isset($_POST["button"])) {
     } else {
         $street = $_POST["inputstreet"];
     }
+    if (!isset($_POST["inputhousenumber"])) {
+        $errors[] = "housenumber required";
+    } else {
+        $housenumber = $_POST["inputhousenumber"];
+        if (preg_match("^\d+$", $housenumber)) {
+            $errors[] = "enkel cijfers";
+        }
+    }
     if (isset($_POST["bus"])) {
         $bus = $_POST["bus"];
     }
@@ -143,8 +151,21 @@ if (isset($_POST["button"])) {
         <input name="inputmail" id="inputmail" type="text" placeholder="Enter your email" value="<?= $email ? $email : "" ?>">
     </div>
     <div>
-        <input name="inputpass" id="inputpass" type="password" placeholder="Password">
+        <input name="inputdistrict" id="inputdistrict" type="text" placeholder="Enter your distric" value="<?= $district ? $district : "" ?>">
     </div>
+    <div>
+        <input name="inputstreet" id="inputstreet" type="text" placeholder="Enter your street" value="<?= $street ? $street : "" ?>">
+    </div>
+    <div>
+        <input name="inputpostalcode" id="inputpostalcode" type="" placeholder="Enter your postalcode" value="<?= $postalcode ? $postalcode : "" ?>">
+    </div>
+    <div>
+        <input name="inputhousenumber" id="inputhousenumber" type="text" placeholder="Enter your housenumber" value="<?= $housenumber ? $housenumber : "" ?>">
+    </div>
+    <div>
+        <input name="inputbus" id="inputbus" type="text" placeholder="Enter your bus" value="<?= $bus ? $bus : "" ?>">
+    </div>
+
 
 
 
