@@ -11,7 +11,8 @@ $email = "";
 $district = "";
 $street = "";
 $postalcode = "";
-$housenumber = "";
+$housenumber = 0;
+$bus = 0;
 $isAdmin = 0;
 
 
@@ -40,6 +41,79 @@ if (isset($_POST["button"])) {
         }
     }
     //firstname
+    // Validatie voor first name
+    if (!isset($_POST['inputfirstname'])) {
+        $errors[] = "Firstname is required.";
+    } else {
+        $firstname = $_POST['inputfirstname'];
+
+        if (strlen($firstname) < 1) {
+            $errors[] = "Firstname is required.";
+        }
+
+        if (preg_match("/[\^<,\"@\/\{\}\(\)\*\$%\?=>:\|;#]+/i", $firstname)) {
+            $errors[] = "Firstname can not contain special characters";
+        }
+    }
+
+    // Validatie voor last name
+    if (!isset($_POST['inputlastname'])) {
+        $errors[] = "Lastname is required.";
+    } else {
+        $lastname = $_POST['inputlastname'];
+
+        if (strlen($lastname) < 1) {
+            $errors[] = "Lastname is required.";
+        }
+
+        if (preg_match("/[\^<,\"@\/\{\}\(\)\*\$%\?=>:\|;#]+/i", $lastname)) {
+            $errors[] = "Lastname can not contain special characters";
+        }
+    }
+
+    // Validatie voor e-mail
+    if (!isset($_POST['inputmail'])) {
+        $errors[] = "E-mail address is invalid.";
+    } else {
+        $email = $_POST['inputmail'];
+        //is het email adres syntax-gewijs valid
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "E-mail address is invalid.";
+        } else {
+            //syntax is valid maar is deze email uniek
+            if (mailExists($email)) {
+                $errors[] = "this email already regeister are you trying to login instead";
+            }
+        }
+    }
+    if (!isset($_POST["inputdistrict"])) {
+        $errors[] = "district is required";
+    } else {
+        $district = $_POST["inputdistrict"];
+    }
+
+    if (!isset($_POST["inputstreet"])) {
+        $errors[] = "street is required";
+    } else {
+        $street = $_POST["inputstreet"];
+    }
+
+    if (!isset($_POST["inputpostal"])) {
+        $errors[] = "postal is required";
+    } else {
+        $postalcode = $_POST["inputpostal"];
+        if (preg_match("^(1000|[1-9][0-9]{3})$", $postalcode)) {
+            $errors[] = "postalcode must be between 1000 en 9999";
+        }
+    }
+    if (!isset($_POST["inputstreet"])) {
+        $errors[] = "street required";
+    } else {
+        $street = $_POST["inputstreet"];
+    }
+    if (isset($_POST["bus"])) {
+        $bus = $_POST["bus"];
+    }
 }
 
 
@@ -49,6 +123,15 @@ if (isset($_POST["button"])) {
 
 
 <form method="post" action="register.php">
+    <div>
+        <input name="inputusername" id="inputusername" type="text" placeholder="Username" value="<?= $username ? $username : "" ?>">
+    </div>
+    <div>
+        <input name="inputpassword1" id="inputpassword1" type="password" placeholder="Password">
+    </div>
+    <div>
+        <input name="inputpassword2" id="inputpassword2" type="password" placeholder="Repeat Password">
+    </div>
     <div>
         <input name="inputfirstname" id="inputfirstname" type="text" placeholder="Firstname" value="<?= $firstname ? $firstname : "" ?>">
     </div>
