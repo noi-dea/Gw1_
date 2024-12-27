@@ -18,14 +18,14 @@ include_once "includes/css_js.inc.php";
 </head>
 
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/hp_header.php'; ?>
     <main>
-        <?php include 'includes/banner.php'; ?>
-        <?php include 'includes/searchfilter.php'; ?>
-        <?php include 'includes/categorie.php'; ?>
+        <?php include 'includes/hp_banner.php'; ?>
+        <?php include 'includes/hp_searchfilter.php'; ?>
+        <?php include 'includes/hp_categorie.php'; ?>
 
     </main>
-    <?php include 'includes/footer.php'; ?>
+    <?php include 'includes/hp_footer.php'; ?>
 </body>
 
 </html>

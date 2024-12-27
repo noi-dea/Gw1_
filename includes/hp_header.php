@@ -8,7 +8,7 @@
         </ul>
         <ul>
             <li><a href="login">Login</a></li>
-            <li><a href="register">Registreren</a></li>
+            <li><a href="/register.php">Registreren</a></li>
             <li><a href="admin">Admin</a></li>
             <li><a href="logout">Logout</a></li>
         </ul>
