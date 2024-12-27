@@ -13,7 +13,8 @@ include_once "includes/css_js.inc.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GROEPS WEIRK</title>
-    <link rel="stylesheet" href="./dist/<?= $cssPath ?>" />
+    <!-- <link rel="stylesheet" href="./dist/<?= $cssPath ?>" /> -->
+    <link rel="stylesheet" href="./css/style.css" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
 </head>
 

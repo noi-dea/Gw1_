@@ -71,3 +71,72 @@ function insertNewUser(String $username, String $password, String $firstname, St
     ]);
     return $db->lastInsertId();
 }
+
+function searchFilterFunction($filters)
+{
+    $sql = "SELECT * FROM cars WHERE 1=1";
+    $searchCriteria = [];
+
+    // Prijs
+    if (!empty($filters['price_min'])) {
+        $sql = $sql . " AND price >= :price_min";
+        $searchCriteria[':price_min'] = $filters['price_min'];
+    }
+    if (!empty($filters['price_max'])) {
+        $sql = $sql . " AND price <= :price_max";
+        $searchCriteria[':price_max'] = $filters['price_max'];
+    }
+
+    // Brand
+    if (!empty($filters['brand'])) {
+        $sql = $sql . " AND brand = :brand";
+        $searchCriteria[':brand'] = $filters['brand'];
+    }
+
+    // Model
+    if (!empty($filters['model'])) {
+        $sql = $sql . " AND model = :model";
+        $searchCriteria[':model'] = $filters['model'];
+    }
+
+    // Year
+    if (!empty($filters['year'])) {
+        $sql = $sql . " AND year = :year";
+        $searchCriteria[':year'] = $filters['year'];
+    }
+
+    // Mileage
+    if (!empty($filters['min_km'])) {
+        $sql = $sql . " AND mileage >= :min_km";
+        $searchCriteria[':min_km'] = $filters['min_km'];
+    }
+    if (!empty($filters['max_km'])) {
+        $sql = $sql . " AND mileage <= :max_km";
+        $searchCriteria[':max_km'] = $filters['max_km'];
+    }
+
+    // Fueltype
+    if (!empty($filters['fueltype'])) {
+        $sql = $sql . " AND fueltype = :fueltype";
+        $searchCriteria[':fueltype'] = $filters['fueltype'];
+    }
+
+    // Transmission
+    if (!empty($filters['transmission'])) {
+        $sql = $sql . " AND transmission = :transmission";
+        $searchCriteria[':transmission'] = $filters['transmission'];
+    }
+
+    // Color
+    if (!empty($filters['colour'])) {
+        $sql = $sql . " AND color = :colour";
+        $searchCriteria[':colour'] = $filters['colour'];
+    }
+
+    $db = connectToDB();
+    $stmt = $db->prepare($sql);
+    $stmt->execute($searchCriteria);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $results;
+}
