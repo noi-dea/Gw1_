@@ -1,4 +1,7 @@
 <?php
+// echo '<pre>';
+// Print_r($_POST);
+// echo '</pre>';
 ?>
 
 <!DOCTYPE html>
