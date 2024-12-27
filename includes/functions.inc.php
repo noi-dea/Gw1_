@@ -71,3 +71,14 @@ function insertNewUser(String $username, String $password, String $firstname, St
     ]);
     return $db->lastInsertId();
 }
+function isValidLogin(String $username, String $password): bool|int
+{
+    $sql = "SELECT id FROM users WHERE username=:username AND password=MD5(:password)";
+
+    $stmt = connectToDB()->prepare($sql);
+    $stmt->execute([
+        ':username' => $username,
+        ':password' => $password
+    ]);
+    return $stmt->fetchColumn();
+}

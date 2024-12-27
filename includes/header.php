@@ -1,16 +1,16 @@
 <header>
     <nav>
-        <h1>Groeps Weirk</h1>
+        <h1>Groepswerk</h1>
         <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="contact">Contact</a></li>
-            <li><a href="wishlist">Mijn Wishlist</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="wishlist.php">Mijn Wishlist</a></li>
         </ul>
         <ul>
-            <li><a href="login">Login</a></li>
-            <li><a href="register">Registreren</a></li>
-            <li><a href="admin">Admin</a></li>
-            <li><a href="logout">Logout</a></li>
+            <li><a href="includes/login.php">Login</a></li>
+            <li><a href="includes/register.php">Registreren</a></li>
+            <li><a href="admin.php">Admin</a></li>
+            <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
 </header>
