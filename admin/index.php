@@ -27,7 +27,7 @@ $cars = [0 => ['id'=>1,'brand'=>'Toyota','model'=>'M','year'=>2014,'fueltype'=>'
             <h1>Overzicht: <small>beheer je autos</small></h1>
         </div>
         
-        <a class="btn btn-info" href="#" role="button">auto toevoegen</a>
+        <a class="btn btn-info" href="create.php" role="button">auto toevoegen</a>
         
         <div class="table-responsive">
             <table class="table table-hover table-striped">
