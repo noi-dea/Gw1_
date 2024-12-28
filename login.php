@@ -29,7 +29,18 @@ if (isset($_POST["button"])) {
 </head>
 
 <body>
+
     <h1>login</h1>
+    <form method="post" action="login.php">
+        <div class="">
+            <input name="inputusername" id="inputusername" type="text" placeholder="Enter your username">
+        </div>
+        <div class="">
+            <input name="inputpassword" id="inputpassword" type="password" placeholder="Enter your password">
+        </div>
+
+        <button>Login</button>
+    </form>
 </body>
 
 </html>
