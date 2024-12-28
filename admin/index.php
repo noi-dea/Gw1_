@@ -3,7 +3,7 @@ $_SERVER["admin"] = true;
 include_once "../includes/css_js.inc.php";
 
 // dummy data (will be replaced after creation databasefunction)
-$cars = [0 => ['id'=>1,'brand'=>'Toyota','model'=>'M','year'=>2014,'fueltype'=>'benzine','colour'=>'red','doors' => 5,'transmission'=>'handgeschakeld','price'=>10000.99,'mileage'=>5000,'bodywork'=>'suv','fotoUrl'=>'https://nl.toyota.be/content/dam/toyota/nmsc/luxemburg/de/RAV4.png'],1 => ['id'=>2,'brand'=>'Toyota','model'=>'M','year'=>2014,'fueltype'=>'benzine','colour'=>'red','doors'=>5,'transmission'=>'handgeschakeld','price'=>10000.99,'mileage'=>5000,'bodywork'=>'suv','fotoUrl' => 'https://nl.toyota.be/content/dam/toyota/nmsc/luxemburg/de/RAV4.png']]
+$cars = [0 => ['id' => 1, 'brand' => 'Toyota', 'model' => 'M', 'year' => 2014, 'fueltype' => 'benzine', 'colour' => 'red', 'doors' => 5, 'transmission' => 'handgeschakeld', 'price' => 10000.99, 'mileage' => 5000, 'bodywork' => 'suv', 'fotoUrl' => 'https://nl.toyota.be/content/dam/toyota/nmsc/luxemburg/de/RAV4.png'], 1 => ['id' => 2, 'brand' => 'Toyota', 'model' => 'M', 'year' => 2014, 'fueltype' => 'benzine', 'colour' => 'red', 'doors' => 5, 'transmission' => 'handgeschakeld', 'price' => 10000.99, 'mileage' => 5000, 'bodywork' => 'suv', 'fotoUrl' => 'https://nl.toyota.be/content/dam/toyota/nmsc/luxemburg/de/RAV4.png']]
 // end dummy data
 ?>
 <!DOCTYPE html>
@@ -21,14 +21,14 @@ $cars = [0 => ['id'=>1,'brand'=>'Toyota','model'=>'M','year'=>2014,'fueltype'=>'
 
 <body>
     <div class="container">
-    
-    
+
+
         <div class="page-header">
             <h1>Overzicht: <small>beheer je autos</small></h1>
         </div>
-        
+
         <a class="btn btn-info" href="#" role="button">auto toevoegen</a>
-        
+
         <div class="table-responsive">
             <table class="table table-hover table-striped">
                 <thead>
@@ -50,25 +50,25 @@ $cars = [0 => ['id'=>1,'brand'=>'Toyota','model'=>'M','year'=>2014,'fueltype'=>'
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach($cars as $car): ?>
-                    <tr>
-                        <td><img src="<?= $car['fotoUrl']; ?>" alt="foto van de auto" style="height:50px;"></td>
-                        <td><?= $car['id']; ?></td>
-                        <td><?= $car['brand']; ?></td>
-                        <td><?= $car['model']; ?></td>
-                        <td><?= $car['year']; ?></td>
-                        <td><?= $car['fueltype']; ?></td>
-                        <td><?= $car['colour']; ?></td>
-                        <td><?= $car['doors']; ?></td>
-                        <td><?= $car['transmission']; ?></td>
-                        <td><?= $car['price']; ?></td>
-                        <td><?= $car['mileage']; ?></td>
-                        <td><?= $car['bodywork']; ?></td>
-                        <!-- placeholders, functionality to be added -->
-                        <td><button type="button" class="btn btn-primary">edit</button></td>
-                        <td><button type="button" class="btn btn-danger">delete</button></td>
-                    </tr>
-                <?php endforeach; ?>
+                    <?php foreach ($cars as $car): ?>
+                        <tr>
+                            <td><img src="<?= $car['fotoUrl']; ?>" alt="foto van de auto" style="height:50px;"></td>
+                            <td><?= $car['id']; ?></td>
+                            <td><?= $car['brand']; ?></td>
+                            <td><?= $car['model']; ?></td>
+                            <td><?= $car['year']; ?></td>
+                            <td><?= $car['fueltype']; ?></td>
+                            <td><?= $car['colour']; ?></td>
+                            <td><?= $car['doors']; ?></td>
+                            <td><?= $car['transmission']; ?></td>
+                            <td><?= $car['price']; ?></td>
+                            <td><?= $car['mileage']; ?></td>
+                            <td><?= $car['bodywork']; ?></td>
+                            <!-- placeholders, functionality to be added -->
+                            <td><a href="edit.php?id=<?php echo $car['id']; ?>" class="btn btn-primary">Edit</a></td>
+                            <td><a href="delete.php?id=<?php echo $car['id']; ?>" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div> <!--end tag table div-->
