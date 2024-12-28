@@ -2,6 +2,9 @@
 // echo '<pre>';
 // Print_r($_POST);
 // echo '</pre>';
+
+$errors = [];
+$errors[] = 'test';
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +42,17 @@
             <div class="page-header">
               <h1>Admin: <small>voeg een auto toe.</small></h1>
             </div>
+
+            <!-- Error messages -->
+            <?php if (count($errors)>0): ?> 
+                <?php foreach ($errors as $error): ?>
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>ERROR</strong> <?= $error; ?>
+                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            <!-- End Error messages -->
             
             <form action="" method="POST" role="form" class="form-horizontal">
 <!-- input fields with datalists are refered to as dropdown, non-listed values will be dealt with in validation -->
@@ -78,7 +92,7 @@
                     </div>
                 </div>
 
-                <!-- dropdown bodywork -->
+        <!-- dropdown bodywork -->
             <div class="form-group a">
                     <label for="bodywork" class="control-label col-sm-2">Carrosserie: </label>
                     <div class="col-sm-5">
@@ -96,13 +110,16 @@
                     </div>
                 </div>
 
-                <!-- dropdown fueltype + mileage-->
+        <!-- dropdown fueltype + mileage-->
             <div class="form-group b">
                     <label for="fueltype" class="control-label col-sm-2">Brandstof: </label>
                     <div class="col-sm-5">
                         <select name="fueltype" class="form-control" id="fueltype">
                             <option>-- Selecteer een optie --</option>
                             <option>Benzine</option>
+                            <option>Diesel</option>
+                            <option>Elektrisch</option>
+                            <option>Hybride</option>
                         </select>
                     </div>
                     <label for="mileage" class="control-label col-sm-2">Kilometerstand: </label>
@@ -112,7 +129,7 @@
                 </div>
 
 
-                                <!-- dropdown transmission -->
+        <!-- dropdown transmission -->
             <div class="form-group a">
                     <label for="transmission" class="control-label col-sm-2">Transmissie: </label>
                     <div class="col-sm-5">
@@ -127,7 +144,7 @@
                     </div>
                 </div>
 
-            <!-- Textfield foto url -->
+        <!-- Textfield foto url -->
                 <div class="form-group b">
                     <label for="fotoUrl" class="control-label col-sm-2">url: </label>
                     <div class="col-sm-10">
@@ -135,8 +152,9 @@
                     </div>
                 </div>
 
-            
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group">
+                <i class="col-sm-11"></i><button type="submit" class="btn btn-secondary col-sm-1">Submit</button>
+                </div>
             </form>
             
             
