@@ -87,7 +87,9 @@ $errors[] = 'test';
                     <div class="col-sm-3">
                         <select name="year" class="form-control" id="year">
                             <option>-- selecteer een jaar --</option>
-                            <option>2024</option>
+                            <?php for ($i=date('Y'); $i>=date('Y')-50; $i--): ?>
+                            <option><?= $i; ?></option>
+                            <?php endfor; ?>
                         </select>
                     </div>
                 </div>
