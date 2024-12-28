@@ -17,6 +17,7 @@ $cars = [0 => ['id'=>1,'brand'=>'Toyota','model'=>'M','year'=>2014,'fueltype'=>'
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>body{height: 100vh;background-image: linear-gradient(lightgrey, grey);}</style>
 </head>
 
 <body>
@@ -27,7 +28,7 @@ $cars = [0 => ['id'=>1,'brand'=>'Toyota','model'=>'M','year'=>2014,'fueltype'=>'
             <h1>Overzicht: <small>beheer je autos</small></h1>
         </div>
         
-        <a class="btn btn-info" href="#" role="button">auto toevoegen</a>
+        <a class="btn btn-info" href="create.php" role="button">auto toevoegen</a>
         
         <div class="table-responsive">
             <table class="table table-hover table-striped">
