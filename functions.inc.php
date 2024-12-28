@@ -99,9 +99,9 @@ function searchFilterFunction($filters)
     }
 
     // Brand
-    if (!empty($filters['brand'])) {
-        $sql = $sql . " AND brand = :brand";
-        $searchCriteria[':brand'] = $filters['brand'];
+    if (!empty($filters['makes_id'])) {
+        $sql = $sql . " AND makes_id = :makes_id";
+        $searchCriteria[':makes_id'] = $filters['makes_id'];
     }
 
     // Model
@@ -140,7 +140,7 @@ function searchFilterFunction($filters)
 
     // Color
     if (!empty($filters['colour'])) {
-        $sql = $sql . " AND color = :colour";
+        $sql = $sql . " AND colours_id = :colour";
         $searchCriteria[':colour'] = $filters['colour'];
     }
 

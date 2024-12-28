@@ -4,15 +4,18 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require 'functions.inc.php';
+$makes = getMakes();
+$colours = getColours();
+$bodies = getBodyworks();
 
 $filters = [
     'price_min' => isset($_GET['price_min']) ? $_GET['price_min'] : '',
     'price_max' => isset($_GET['price_max']) ? $_GET['price_max'] : '',
-    'brand' => isset($_GET['brand']) ? $_GET['brand'] : '',
+    'makes_id' => isset($_GET['makes_id']) ? $_GET['makes_id'] : '',
     'model' => isset($_GET['model']) ? $_GET['model'] : '',
     'fueltype' => isset($_GET['fueltype']) ? $_GET['fueltype'] : '',
     'transmission' => isset($_GET['transmission']) ? $_GET['transmission'] : '',
-    'color' => isset($_GET['color']) ? $_GET['color'] : '',
+    'colour' => isset($_GET['colours_id']) ? $_GET['colours_id'] : '',
     'km_min' => isset($_GET['km_min']) ? $_GET['km_min'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];
@@ -37,12 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty($filters)) {
     </div>
 
     <div class="filter-section">
-        <label for="brand">Merk:</label>
-        <select id="brand" name="brand">
+        <label for="makes_id">Merk:</label>
+        <select id="makes_id" name="makes_id">
             <option value="">Selecteer Merk</option>
-            <option value="BMW">BMW</option>
-            <option value="Audi">Audi</option>
-            <option value="Volkswagen">Volkswagen</option>
+            <?php foreach ($makes as $make):?>
+            <option value="<?= $make['id']; ?>"> <?= $make['makeName'] ;?></option>
+            <?php endforeach; ?>
         </select>
     </div>
 
@@ -74,17 +77,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty($filters)) {
     </div>
 
     <div class="filter-section">
-        <label for="color">Kleur:</label>
-        <select id="color" name="color">
+        <label for="colours_id">Kleur:</label>
+        <select id="colours_id" name="colours_id">
             <option value="">Selecteer Kleur</option>
-            <option value="wit">Wit</option>
-            <option value="zwart">Zwart</option>
-            <option value="grijs">Grijs</option>
-            <option value="blauw">Blauw</option>
-            <option value="rood">Rood</option>
-            <option value="groen">Groen</option>
-            <option value="geel">Geel</option>
-            <option value="bruin">Bruin</option>
+            <?php foreach ($colours as $colour): ?>
+            <option value="<?= $colour['id']; ?>"><?= $colour['colourName']; ?></option>
+            <?php endforeach; ?>
         </select>
     </div>
 
