@@ -1,7 +1,8 @@
 <?php
+
 $_SERVER["admin"] = true;
 include_once "../includes/css_js.inc.php";
-
+$msg = $_GET['message'];
 // dummy data (will be replaced after creation databasefunction)
 $cars = [0 => ['id' => 1, 'brand' => 'Toyota', 'model' => 'M', 'year' => 2014, 'fueltype' => 'benzine', 'colour' => 'red', 'doors' => 5, 'transmission' => 'handgeschakeld', 'price' => 10000.99, 'mileage' => 5000, 'bodywork' => 'suv', 'fotoUrl' => 'https://nl.toyota.be/content/dam/toyota/nmsc/luxemburg/de/RAV4.png'], 1 => ['id' => 2, 'brand' => 'Toyota', 'model' => 'M', 'year' => 2014, 'fueltype' => 'benzine', 'colour' => 'red', 'doors' => 5, 'transmission' => 'handgeschakeld', 'price' => 10000.99, 'mileage' => 5000, 'bodywork' => 'suv', 'fotoUrl' => 'https://nl.toyota.be/content/dam/toyota/nmsc/luxemburg/de/RAV4.png']]
 // end dummy data
@@ -17,6 +18,12 @@ $cars = [0 => ['id' => 1, 'brand' => 'Toyota', 'model' => 'M', 'year' => 2014, '
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            height: 100vh;
+            background-image: linear-gradient(lightgrey, grey);
+        }
+    </style>
 </head>
 
 <body>
@@ -27,7 +34,14 @@ $cars = [0 => ['id' => 1, 'brand' => 'Toyota', 'model' => 'M', 'year' => 2014, '
             <h1>Overzicht: <small>beheer je autos</small></h1>
         </div>
 
-        <a class="btn btn-info" href="#" role="button">auto toevoegen</a>
+        <?php if (isset($msg)): ?>
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong></strong> <?= $msg; ?>
+            </div>
+        <?php endif; ?>
+
+        <a class="btn btn-info" href="create.php" role="button">auto toevoegen</a>
 
         <div class="table-responsive">
             <table class="table table-hover table-striped">

@@ -18,11 +18,47 @@ USE `gw1` ;
 -- Table `gw1`.`fotosets`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gw1`.`fotosets` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `front` VARCHAR(150) NULL DEFAULT NULL,
   `back` VARCHAR(150) NULL DEFAULT NULL,
   `inner` VARCHAR(150) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `gw1`.`colours`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gw1`.`colours` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    colourName VARCHAR(50) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `colourName_UNIQUE` (`colourName` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `gw1`.`makes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gw1`.`makes` (
+    `id` INT AUTO_INCREMENT,
+    makeName VARCHAR(100),
+    PRIMARY KEY(`id`),
+    UNIQUE INDEX `makeName_UNIQUE` (`makeName` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `gw1`.`colours`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gw1`.`bodyworks` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    typeName VARCHAR(50) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `typeName_UNIQUE` (`typeName` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
@@ -55,16 +91,16 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gw1`.`cars` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `brand` VARCHAR(45) NOT NULL,
+  `makes_id` INT NOT NULL,
   `model` VARCHAR(45) NOT NULL,
   `year` YEAR NOT NULL,
-  `fueltype` ENUM('benzine', 'diesel', 'hybride', 'elektrisch') NOT NULL,
-  `colour` VARCHAR(45) NOT NULL,
+  `fueltype` VARCHAR(45) NOT NULL,
+  `colours_id` INT NOT NULL,
   `doors` TINYINT NOT NULL,
-  `transmission` ENUM('handmatig', 'automatisch') NOT NULL,
+  `transmission` VARCHAR(45) NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
   `mileage` INT NOT NULL,
-  `bodywork` VARCHAR(45) NOT NULL,
+  `bodywork_id` INT NOT NULL,
   `fotoUrl` VARCHAR(150) NOT NULL,
   `fotosets_id` INT NOT NULL,
   `users_id` INT NOT NULL,
@@ -151,3 +187,60 @@ DEFAULT CHARACTER SET = utf8mb3;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- DATA INSERTION
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Common colours data insertion
+-- -----------------------------------------------------
+INSERT INTO colours (colourName) VALUES
+('wit'),
+('zwart'),
+('zilver'),
+('grijs'),
+('blauw'),
+('rood'),
+('groen'),
+('geel'),
+('bruin'),
+('oranje');
+
+
+-- -----------------------------------------------------
+-- Most common car makes data insertion
+-- -----------------------------------------------------
+INSERT INTO makes (makeName) VALUES
+('Toyota'),
+('Ford'),
+('Honda'),
+('Chevrolet'),
+('BMW'),
+('Mercedes-Benz'),
+('Audi'),
+('Nissan'),
+('Hyundai'),
+('Volkswagen'),
+('Tesla'),
+('Subaru'),
+('Kia'),
+('Jeep'),
+('Chrysler');
+
+
+-- -----------------------------------------------------
+-- Most common car bodyworks data insertion
+-- -----------------------------------------------------
+INSERT INTO bodyworks (typeName) VALUES
+('hatchback'),
+('sedan'),
+('SUV'),
+('MUV'),
+('coupe'),
+('convertible'),
+('pickup truck'),
+('ander');
