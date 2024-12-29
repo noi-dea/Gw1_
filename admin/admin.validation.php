@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $errors = [];
 
 $makes = getMakes();
@@ -39,7 +42,7 @@ if ($_POST['submit']){
         $colour = $_POST['colour'];
         if (preg_match('/[^0-9]/',$colour)){
             $errors[] = 'Ongeldige selectie: Kleur!!!';
-        } else if ($colour == 0 || $colour<count($colours)){
+        } else if ($colour == 0 || $colour>count($colours)){
                 $errors[] = 'Ongeldige selectie: Kleur!!!';
         }
         
@@ -141,5 +144,12 @@ if ($_POST['submit']){
         } else if (!preg_match('/.*\.[JPEG|JPG|PNG|WEBP].*/', strtoupper($url))){
                 $errors[] = 'Ongeldige selectie: URL!!!';    
         }
+    }
+
+    // If all fields are correctly filled
+    if (count($errors) == 0){
+        // addCar($make, $model, $year, $fuel, $colour, $doors, $transmission, $price, $mileage, $body, $url);
+        header("Location: index.php?message=Auto toegevoegd");
+        exit;
     }
 }
