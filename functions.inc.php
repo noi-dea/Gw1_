@@ -153,11 +153,12 @@ function searchFilterFunction($filters)
 }
 
 // Insert a new car into the database
-function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colour, INT $doors, STRING $transmission, INT $price, INT $mileage, INT $body, STRING $url){
+function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colour, INT $doors, STRING $transmission, INT $price, INT $mileage, INT $body, STRING $url)
+{
     $db = connectToDB();
 
-    $sql = 'INSERT INTO cars (makes_id, model, year, fueltype, colours_id, doors, transmission, price, mileage, bodywork_id, fotoUrl)
-    VALUES (:make, :model, :y, :fuel, :col, :doors, :trans, :price, :mil, :body, :foto);';
+    $sql = 'INSERT INTO cars (brand, model, year, fueltype, colour, doors, transmission, price, mileage, bodywork, fotoUrl)
+    VALUES (:make, :model, :y, :fuelt, :col, :doors, :trans, :price, :mil, :body, :foto);';
     $stmt = $db->prepare($sql);
     $stmt->execute([
         ':make' => $make,
@@ -175,7 +176,8 @@ function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colo
 }
 
 // Get the colours currently stored in the database
-function getColours(){
+function getColours()
+{
     $db = connectToDB();
 
     $sql = 'SELECT * from colours';
@@ -186,7 +188,8 @@ function getColours(){
 }
 
 // Get the brands/makes currently stored in the database
-function getMakes(){
+function getMakes()
+{
     $db = connectToDB();
 
     $sql = 'SELECT * from makes';
@@ -197,7 +200,8 @@ function getMakes(){
 }
 
 // Get the bodyworks currently stored in the database
-function getBodyworks(){
+function getBodyworks()
+{
     $db = connectToDB();
 
     $sql = 'SELECT * from bodyworks';
