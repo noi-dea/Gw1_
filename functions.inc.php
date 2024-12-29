@@ -87,6 +87,7 @@ function searchFilterFunction($filters)
 {
     $sql = "SELECT * FROM cars WHERE 1=1";
     $searchCriteria = [];
+    $errors = [];
 
     // Prijs
     if (!empty($filters['price_max'])) {
@@ -155,7 +156,7 @@ function searchFilterFunction($filters)
     $stmt->execute($searchCriteria);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    return $results;
+    return [$results, $errors];
 }
 
 // Insert a new car into the database

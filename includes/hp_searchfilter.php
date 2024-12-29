@@ -20,15 +20,18 @@ $filters = [
     'km_min' => isset($_GET['km_min']) ? $_GET['km_min'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty($filters)) {
-    $results = searchFilterFunction($filters);
-
-    if (count($results) > 0) {
-        header("Location: ../carlist.php");
-        exit;
-    } else {
-        $message = "GEEN RESULTAAT GEVONDEN";
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (empty(array_filter($filters))) {
+        $errors[] = "Vul minstens één zoekcriterium in";
+    }
+    if (empty($errors)) {
+        $results = searchFilterFunction($filters);
+        if (count($results) > 0) {
+            header("Location: ../carlist.php");
+            exit;
+        } else {
+            $message = "Géén auto's gevonden die aan je criteria voldoen";
+        }
     }
 }
 ?>
