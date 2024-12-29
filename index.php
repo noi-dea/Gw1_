@@ -13,8 +13,7 @@ include_once "includes/css_js.inc.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GROEPS WEIRK</title>
-    <!-- <link rel="stylesheet" href="./dist/<?= $cssPath ?>" /> -->
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./dist/<?= $cssPath ?>" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
 </head>
 
@@ -23,8 +22,7 @@ include_once "includes/css_js.inc.php";
     <main>
         <?php include 'includes/hp_banner.php'; ?>
         <?php include 'includes/hp_searchfilter.php'; ?>
-        <?php include 'includes/hp_categorie.php'; ?>
-
+        <?php include 'includes/carlistpage.php'; ?>
     </main>
     <?php include 'includes/hp_footer.php'; ?>
 </body>

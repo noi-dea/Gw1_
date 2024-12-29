@@ -1,6 +1,6 @@
 <?php
 
-require("functions.inc.php");
+require("../functions.inc.php");
 
 $errors = [];
 
