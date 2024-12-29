@@ -89,9 +89,12 @@ function searchFilterFunction($filters)
     $searchCriteria = [];
 
     // Prijs
-    if (!empty($filters['price_min'])) {
-        $sql = $sql . " AND price >= :price_min";
-        $searchCriteria[':price_min'] = $filters['price_min'];
+    if (!empty($filters['price_max'])) {
+        if (!is_numeric($filters['price_max'])) {
+            $errors[] = "Maximum prijs moet een geldig getal zijn.";
+        } elseif ($filters['price_max'] < 0 || $filters['price_max'] > 200000) {
+            $errors[] = "Maximum prijs moet tussen 0 en 200000 liggen.";
+        }
     }
     if (!empty($filters['price_max'])) {
         $sql = $sql . " AND price <= :price_max";
@@ -117,13 +120,16 @@ function searchFilterFunction($filters)
     }
 
     // Mileage
-    if (!empty($filters['min_km'])) {
-        $sql = $sql . " AND mileage >= :min_km";
-        $searchCriteria[':min_km'] = $filters['min_km'];
+    if (!empty($filters['km_max'])) {
+        if (!is_numeric($filters['km_max'])) {
+            $errors[] = "Maximum kilometerstand moet een geldig getal zijn.";
+        } elseif ($filters['km_max'] < 0 || $filters['km_max'] > 500000) {
+            $errors[] = "Maximum kilometerstand moet tussen 0 en 500000 liggen.";
+        }
     }
-    if (!empty($filters['max_km'])) {
-        $sql = $sql . " AND mileage <= :max_km";
-        $searchCriteria[':max_km'] = $filters['max_km'];
+    if (!empty($filters['km_max'])) {
+        $sql = $sql . " AND mileage <= :km_max";
+        $searchCriteria[':km_max'] = $filters['km_max'];
     }
 
     // Fueltype
@@ -153,7 +159,8 @@ function searchFilterFunction($filters)
 }
 
 // Insert a new car into the database
-function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colour, INT $doors, STRING $transmission, INT $price, INT $mileage, INT $body, STRING $url){
+function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colour, INT $doors, STRING $transmission, INT $price, INT $mileage, INT $body, STRING $url)
+{
     $db = connectToDB();
 
     $sql = 'INSERT INTO cars (makes_id, model, year, fueltype, colours_id, doors, transmission, price, mileage, bodywork_id, fotoUrl)
@@ -175,7 +182,8 @@ function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colo
 }
 
 // Get the colours currently stored in the database
-function getColours(){
+function getColours()
+{
     $db = connectToDB();
 
     $sql = 'SELECT * from colours';
@@ -186,7 +194,8 @@ function getColours(){
 }
 
 // Get the brands/makes currently stored in the database
-function getMakes(){
+function getMakes()
+{
     $db = connectToDB();
 
     $sql = 'SELECT * from makes';
@@ -197,7 +206,8 @@ function getMakes(){
 }
 
 // Get the bodyworks currently stored in the database
-function getBodyworks(){
+function getBodyworks()
+{
     $db = connectToDB();
 
     $sql = 'SELECT * from bodyworks';

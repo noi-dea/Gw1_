@@ -36,8 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty($filters)) {
 <form class="search-form" action="../index.php" method="GET">
     <div class="filter-section">
         <label for="price_min">Prijs:</label>
-        <input type="number" id="price_min" name="price_min" placeholder="Min" min="0" max="100000">
-        <input type="number" id="price_max" name="price_max" placeholder="Max" min="0" max="100000">
+        <input type="number" id="price_max" name="price_max" placeholder="Max 200000" min="0" max="200000">
     </div>
 
     <div class="filter-section">
@@ -89,8 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty($filters)) {
 
     <div class="filter-section">
         <label for="km_min">Kilometer:</label>
-        <input type="number" id="km_min" name="km_min" placeholder="Min 0" min="0" max="100000">
-        <input type="number" id="km_max" name="km_max" placeholder="Max 100.000" min="0" max="100000">
+        <input type="number" id="km_max" name="km_max" placeholder="Max 500000" min="0" max="100000">
     </div>
 
     <button type="submit">Zoek</button>
