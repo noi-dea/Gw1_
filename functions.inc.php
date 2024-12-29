@@ -99,9 +99,9 @@ function searchFilterFunction($filters)
     }
 
     // Brand
-    if (!empty($filters['brand'])) {
-        $sql = $sql . " AND brand = :brand";
-        $searchCriteria[':brand'] = $filters['brand'];
+    if (!empty($filters['makes_id'])) {
+        $sql = $sql . " AND makes_id = :makes_id";
+        $searchCriteria[':makes_id'] = $filters['makes_id'];
     }
 
     // Model
@@ -140,7 +140,7 @@ function searchFilterFunction($filters)
 
     // Color
     if (!empty($filters['colour'])) {
-        $sql = $sql . " AND color = :colour";
+        $sql = $sql . " AND colours_id = :colour";
         $searchCriteria[':colour'] = $filters['colour'];
     }
 
@@ -150,4 +150,59 @@ function searchFilterFunction($filters)
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     return $results;
+}
+
+// Insert a new car into the database
+function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colour, INT $doors, STRING $transmission, INT $price, INT $mileage, INT $body, STRING $url){
+    $db = connectToDB();
+
+    $sql = 'INSERT INTO cars (makes_id, model, year, fueltype, colours_id, doors, transmission, price, mileage, bodywork_id, fotoUrl)
+    VALUES (:make, :model, :y, :fuel, :col, :doors, :trans, :price, :mil, :body, :foto);';
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':make' => $make,
+        ':model' => $model,
+        ':y' => $year,
+        ':fuelt' => $fueltype,
+        ':col' => $colour,
+        ':doors' => $doors,
+        ':trans' => $transmission,
+        ':price' => $price,
+        ':mil' => $mileage,
+        ':body' => $body,
+        ':foto' => $url
+    ]);
+}
+
+// Get the colours currently stored in the database
+function getColours(){
+    $db = connectToDB();
+
+    $sql = 'SELECT * from colours';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Get the brands/makes currently stored in the database
+function getMakes(){
+    $db = connectToDB();
+
+    $sql = 'SELECT * from makes';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Get the bodyworks currently stored in the database
+function getBodyworks(){
+    $db = connectToDB();
+
+    $sql = 'SELECT * from bodyworks';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
