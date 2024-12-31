@@ -160,12 +160,12 @@ function searchFilterFunction($filters)
 }
 
 // Insert a new car into the database
-function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colour, INT $doors, STRING $transmission, INT $price, INT $mileage, INT $body, STRING $url)
+function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colour, INT $doors, STRING $transmission, INT $price, INT $mileage, INT $body, STRING $url, INT $fid, INT $sid)
 {
     $db = connectToDB();
 
-    $sql = 'INSERT INTO cars (brand, model, year, fueltype, colour, doors, transmission, price, mileage, bodywork, fotoUrl)
-    VALUES (:make, :model, :y, :fuelt, :col, :doors, :trans, :price, :mil, :body, :foto);';
+    $sql = 'INSERT INTO cars (makes_id, model, year, fueltype, colours_id, doors, transmission, price, mileage, bodywork_id, fotoUrl, fotosets_id, users_id)
+    VALUES (:make, :model, :y, :fuelt, :col, :doors, :trans, :price, :mil, :body, :foto, :ftID, :usID);';
     $stmt = $db->prepare($sql);
     $stmt->execute([
         ':make' => $make,
@@ -178,7 +178,9 @@ function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colo
         ':price' => $price,
         ':mil' => $mileage,
         ':body' => $body,
-        ':foto' => $url
+        ':foto' => $url,
+        ':ftID' => $fid,
+        ':usID' => $sid
     ]);
 }
 
@@ -256,5 +258,54 @@ function getWishlist($userId)
     $stmt->execute([
         ':users_id' => $userId
     ]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Get id of last fotoset
+function getLastSet()
+{
+    $db = connectToDB();
+
+    $sql = 'SELECT id FROM fotosets ORDER BY id DESC LIMIT 1;';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $output = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $output['id'];
+}
+
+// create new fotoset and get its id (for creation new entry car)
+function newSet()
+{
+    // get the current highest index
+    $highest = getLastSet();
+    // increase it to get the first unused index
+    $highest++;
+
+    $db = connectToDB();
+
+    $sql = 'INSERT INTO fotosets (id) VALUES (:id);';
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $highest
+    ]);
+    return $highest;
+}
+
+// Get a car with specific id from database
+function getCar(INT $id)
+{
+    $db = connectToDB();
+
+    $sql = 'SELECT makeName as make, model, year, fueltype, colourName as colour, doors, transmission, price, mileage, typeName as body, fotoUrl as ul FROM cars
+    LEFT JOIN makes on makes.id = makes_id
+    LEFT JOIN colours on colours.id = colours_id
+    LEFT JOIN bodyworks on bodyworks.id = bodywork_id
+    WHERE cars.id = :id;';
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $id
+    ]);
+
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
