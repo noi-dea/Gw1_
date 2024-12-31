@@ -7,8 +7,27 @@ git checkout -b dev
 switch to dev branch:
 git checkout dev
 
-latest changes, always pull first:
+navigeer naar repo:
+git init
+
+git rm --cached UITLEG
+wat werd er reeds gecommite:
+git log --oneline
+
+wat werd er reeds gepushet:
+git log origin/dev --oneline
+
+!!!!STAPPEN:
+git checkout dev
 git pull origin dev
+git checkout -b GW_009_searchfilter
+git add .
+git commit -m "GW_009_searchfilter: description"
+git push origin GW_009_searchfilter
+git checkout dev
+git pull origin dev
+git merge gw_009_searchfilter
+git push origin dev
 
 om updates/veranderingen te zien:
 git log origin/dev
