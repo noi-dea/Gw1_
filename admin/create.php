@@ -1,10 +1,27 @@
 <?php
 include('../functions.inc.php');
 include('admin.validation.php');
-echo '<pre>';
-Print_r($_POST);
-echo '</pre>';
+// echo '<pre>';
+// Print_r($_POST);
+// echo '</pre>';
 
+function keepValue($var){
+    if(isset($var)){
+        echo "value = $var";
+    }
+}
+
+function keepSelection($var1, $var2){
+    $isSelected = false;
+    if (isset($var1)){
+        if ($var1 == $var2){
+            $isSelected = true;
+        }
+    }
+    if ($isSelected){
+        echo 'selected';
+    }
+}
 // exit;
 ?>
 
@@ -72,7 +89,7 @@ echo '</pre>';
             <div class="form-group a">
                 <label for="make" class="control-label col-sm-2">Merk:</label>
                 <div class="col-sm-5">
-                    <input name="make" id="input make" class="form-control" list="make" placeholder="Merk zoeken...">
+                    <input name="make" id="input make" class="form-control" list="make" placeholder="Merk zoeken..." <?php keepValue($_POST['make']); ?>>
                     <datalist id="make">
                         <?php foreach ($makes as $make): ?>
                             <option value="<?= $make['id']; ?>" script="onClick.selectValue()"><?= $make['makeName']; ?></option>
@@ -84,7 +101,7 @@ echo '</pre>';
                     <select name="colour" class="form-control" id="colour">
                         <option>-- selecteer een kleur --</option>
                         <?php foreach ($colours as $colour): ?>
-                            <option value="<?= $colour['id']; ?>"><?= $colour['colourName']; ?></option>
+                            <option <?php keepSelection($_POST['colour'], $colour['id']); ?> value="<?= $colour['id']; ?>"><?= $colour['colourName']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -93,7 +110,7 @@ echo '</pre>';
             <div class="form-group b">
                 <label for="model" class="control-label col-sm-2">Model:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="model" placeholder="zoek model">
+                    <input type="text" class="form-control" name="model" placeholder="zoek model" <?php keepValue($_POST['model']); ?>>
                     <!-- <datalist name="model" id="model">
                             <option value="M">m</option>
                         </datalist> -->
@@ -104,7 +121,7 @@ echo '</pre>';
                         <option>-- selecteer een jaar --</option>
                         <!-- Limit to cars up to 50 years old -->
                         <?php for ($i = date('Y'); $i >= date('Y') - 50; $i--): ?>
-                            <option><?= $i; ?></option>
+                            <option <?php keepSelection($_POST['year'], $i); ?>><?= $i; ?></option>
                         <?php endfor; ?>
                     </select>
                 </div>
@@ -117,7 +134,7 @@ echo '</pre>';
                     <select name="bodywork" class="form-control" id="bodywork">
                         <option>-- selecteer een optie --</option>
                         <?php foreach ($bodyworks as $body): ?>
-                            <option value="<?= $body['id']; ?>"><?= $body['typeName']; ?></option>
+                            <option <?php keepSelection($_POST['bodywork'], $body['id']); ?> value="<?= $body['id']; ?>"><?= $body['typeName']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -127,7 +144,7 @@ echo '</pre>';
                         <option>-- selecteer een optie --</option>
                         <!-- Whilst 1 door and 6+ door cars exist, I'm limiting to 2-5 -->
                         <?php for ($i = 2; $i < 6; $i++): ?>
-                            <option><?= $i; ?></option>
+                            <option <?php keepSelection($_POST['doors'], $i); ?>><?= $i; ?></option>
                         <?php endfor; ?>
                     </select>
                 </div>
@@ -139,15 +156,14 @@ echo '</pre>';
                 <div class="col-sm-5">
                     <select name="fueltype" class="form-control" id="fueltype">
                         <option>-- Selecteer een optie --</option>
-                        <option>benzine</option>
-                        <option>diesel</option>
-                        <option>elektrisch</option>
-                        <option>hybride</option>
+                        <?php for ($i = 0; $i < count($ftypes); $i++): ?>
+                        <option <?php keepSelection($_POST['fueltype'], $ftypes[$i]); ?>><?= $ftypes[$i]; ?></option>
+                        <?php endfor; ?>
                     </select>
                 </div>
                 <label for="mileage" class="control-label col-sm-2">Kilometerstand: </label>
                 <div class="col-sm-3">
-                    <input type="text" name="mileage" class="form-control" id="input mileage" placeholder="...km">
+                    <input <?php keepValue($_POST['mileage']); ?> type="text" name="mileage" class="form-control" id="input mileage" placeholder="...km">
                 </div>
             </div>
 
@@ -158,13 +174,14 @@ echo '</pre>';
                 <div class="col-sm-5">
                     <select name="transmission" class="form-control" id="transmission">
                         <option>-- selecteer een optie --</option>
-                        <option>handmatig</option>
-                        <option>automatisch</option>
+                        <?php for ($i = 0; $i < count($tmissions); $i++): ?>
+                        <option <?php keepSelection($_POST['transmission'], $tmissions[$i]); ?>><?= $tmissions[$i]; ?></option>
+                        <?php endfor; ?>
                     </select>
                 </div>
                 <label for="price" class="control-label col-sm-2">Vraagprijs: </label>
                 <div class="col-sm-3">
-                    <input type="text" name="price" class="form-control" id="input price" placeholder="... EURO">
+                    <input type="text" name="price" class="form-control" id="input price" placeholder="... EURO" <?php keepValue($_POST['price']); ?>>
                 </div>
             </div>
 
@@ -172,7 +189,7 @@ echo '</pre>';
             <div class="form-group b">
                 <label for="fotoUrl" class="control-label col-sm-2">*url: </label>
                 <div class="col-sm-10">
-                    <input type="text" name="fotoUrl" class="form-control" id="input fotoUrl" placeholder="https://">
+                    <input type="text" name="fotoUrl" class="form-control" id="input fotoUrl" placeholder="https://" <?php keepValue($_POST['fotoUrl']); ?>>
                 </div>
             </div>
 

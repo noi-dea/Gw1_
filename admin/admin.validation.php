@@ -1,17 +1,20 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 $errors = [];
 
-echo '<pre>';
-Print_r($_POST);
-echo '</pre>';
+// echo '<pre>';
+// Print_r($_POST);
+// echo '</pre>';
+// data-variables
 $makes = getMakes();
 $colours = getColours();
 $bodyworks = getBodyworks();
 $ftypes = ['benzine', 'diesel', 'elektrisch', 'hybride'];
 $tmissions = ['handmatig', 'automatisch'];
+
+// start validation
 if (isset($_POST['submit'])) {
     // creation variables 
     $make = 0;
@@ -50,13 +53,12 @@ if (isset($_POST['submit'])) {
         }
     }
     // validation 3rd field: models
-    // TODO (don't know much about models)
-
     if (!$_POST['model']) {
         $errors[] = 'Model is een verplicht veld!!!';
     } else {
         $model = $_POST['model'];
     }
+
     // validation 4th field: year
     if (!$_POST['year'] || $_POST['year'] == '-- selecteer een jaar --') {
         $errors[] = 'Jaar is een verplicht veld!!!';
@@ -155,7 +157,7 @@ if (isset($_POST['submit'])) {
 
     // If all fields are correctly filled
     if (count($errors) == 0) {
-        addCar($make, $model, $year, $fuel, $colour, $doors, $transmission, $price, $mileage, $body, $url);
+        // addCar($make, $model, $year, $fuel, $colour, $doors, $transmission, $price, $mileage, $body, $url);
         header("Location: index.php?message=Auto toegevoegd");
         exit;
     }
