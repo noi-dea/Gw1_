@@ -1,0 +1,55 @@
+<?php
+require_once 'functions.inc.php';
+
+// Harde gebruiker-ID (bijv. van sessie, hier als voorbeeld ID 1)
+$userId = 1;
+
+// Voeg een auto toe als er een AJAX-verzoek of een formulier wordt ingediend
+if (isset($_POST['add'])) {
+    $carId = intval($_POST['car_id']);
+    addToWishlist($carId, $userId);
+    exit; // Geen verdere uitvoer nodig bij AJAX-aanroep
+}
+
+// Verwijder een auto als er een formulier is ingediend
+if (isset($_POST['remove'])) {
+    $carId = intval($_POST['car_id']);
+    removeFromWishlist($carId, $userId);
+}
+
+$wishlist = getWishlist($userId);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+</head>
+
+<body>
+
+    <h1>Mijn Wishlist</h1>
+
+    <h2>Geselecteerde auto's:</h2>
+    <form method="POST" action="wishlist.php">
+        <?php if (count($wishlist) > 0): ?>
+            <ul>
+                <?php foreach ($wishlist as $item): ?>
+                    <li>
+                        <?= $item['makeName'] . ' ' . $item['model'] . ' - &euro;' . number_format($item['price'], 2) ?>
+                        <img src="<?= $item['fotoUrl'] ?>" alt="Auto afbeelding" style="width:100px;height:auto;">
+                        <button type="submit" name="remove" value="<?= $item['id'] ?>">Verwijderen</button>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>Uw wishlist is leeg.</p>
+        <?php endif; ?>
+    </form>
+
+</body>
+
+</html>
