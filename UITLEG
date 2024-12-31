@@ -1,0 +1,161 @@
+om alle bracnhes(remote)op te halen:
+git fetch origin
+
+the dev bracnh local maken:
+git checkout -b dev
+
+switch to dev branch:
+git checkout dev
+
+latest changes, always pull first:
+git pull origin dev
+
+om updates/veranderingen te zien:
+git log origin/dev
+
+om te zien welke files zijn veranderd:
+git diff origin/dev
+
+CENTREREN?
+inline element : span, as, em, strong => parent op text-align: center;
+block element :
+manier 1: element zelf margin left en margin right op auto.
+manier 2: body display: flex, justify content: center.
+manier 3: body op grid en justify-items: center.
+manier 4: p op grid en justify-content: center.
+
+vite installeren, model bundler:
+npm init -g vite (comando), 1 x installeren
+
+voor een NIEUW project starten met:
+npm create vite@latest my-project
+cd my-project
+npm install
+
+voor een BESTAAND project:(eerst package json!)
+npm init -y
+dan:
+npm install vite --save-dev
+
+(!)NIEUWE CODE OM EEN PROJECT TE STARTEN: (dit gebruiken)
+npm create vite@latest . -- --template vanilla
+("--" zijn flags die je kan meegeven met npm, bij de volgende 2 "--" geef je de template vanilla mee met vite)
+("." om aan te geven in welke folder je dat wil plaatsen)
+
+NA BOVENSTAANDE CODE:
+npm i
+
+chown --help (voor toepassingen)
+
+toevoege aan script v package json:
+"test": "echo \"Error: no test specified\" && exit 1",
+"dev": "vite --open --host",
+"build" : "vite build",
+"preview" : "vite preview --open --host",
+"deploy": "surge ./dist serapella.surge.sh",
+"postdeploy": "open chrome https://serapella.surge.sh"
+
+in terminal: " start chrome.exe https://www.google.com "
+
+create optioneel een file: vite.config.js
+
+file word opgeslagen in dist folder.
+live server via: npm run dev
+SVG is een formule. preview
+in terminal:
+cd /c/SYNTRA/fsd_front/2.html_css/vite-project om naar de juist folder te gaan.
+pushd /c/SYNTRA/fsd_front/2.html_css/vite-project om in vite-projects map te komen.
+
+je kan een SHORTCUTlink creeren met een symbool vb:
+ln -s /c/SYNTRA/fsd_front/2.html_css/vite-project /vite-project
+
+cd .. om terug te gaan naar vorige
+
+HTML:
+div: zo weinig mogelijk gebruiken. zeker niet voor de main-content
+aside: voor extra info dat loshangt van de main
+
+STYLE.CSS:
+:root { font-size: 62.5%; }:
+:root is a pseudo-class that targets the root element of the document, which is typically the <html> element.
+Setting font-size: 62.5% makes it easier to work with REM UNITS. Since 62.5% of the browser's default font size (usually 16px) is 10px, this allows for simpler calculations: 1rem = 10px. For example, 1.6rem equals 16px, and 2rem equals 20px.
+
+- { box-sizing: border-box; }:
+  The \* is a universal selector that applies styles to all elements on the page.
+  box-sizing: border-box; ensures that padding and border are included within the total width and height of an element.
+  Without this, padding and borders are added outside of the set dimensions, making layout calculations more complicated.
+  For example:
+  With box-sizing: border-box, if you set width: 100px and padding: 10px, the total width remains 100px
+  (content area shrinks slightly to fit the padding).
+  Without border-box, the total width would become 100px (content) + 20px (padding) = 120px.
+
+==> $ touch index.html style.css .gitignore
+via touch maak je files aan. .gitignore: om de folder er niet mee op te zetten. dus de map 'assets' vb kan niet worden getrackt.
+bij de map .gitignore hoort altijd een NODE MODULES map bij.
+
+==> git add . (=>punt)
+om alles klaar te zetten om te committen
+
+==> git config -l
+om de lijst op te halen
+
+==> ctrl + q  
+quit (nieuwe lijn in terminal)
+
+==> touch README.md
+readme file aanmaken.
+
+https://www.jsdelivr.com/package/npm/modern-css-reset
+
+https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css (DEZE GEBRUIKEN IPV DIE VAN MEYER, duurzamer)
+
+==> npm run div,
+npm run build,
+npm run deploy,  
+npm run postdeploy (om meteen in de browser te openen)
+npm remote add origin https... ('origin' kan je vervangen, origin is een shortcut naar je hoofd repository)
+
+==> hierna
+==> git add .
+warnings negeren
+
+==> git commit -m "naam file"
+file aanmaken
+hier staat het nog niet online!
+dep
+==> git log
+de sleutel = code in het geel. om de volledige evolutie vd file op te vragen. (bij elke update of dergelijke wordt
+er een nieuwe lijn code aangemaakt)
+
+om online te zetten dien je te pushen.
+==> git push
+om van brache naar main te pushen. main is online.
+
+==> git push origin main
+om de branche naar de remote location te pushen
+
+==> git push -u origin main
+setting om altijd naar de main te pushen
+
+==> git push --set-upstream origin main
+
+==> git add . && git commit -m "added surge settings for multiple branches" && git push
+alles in een keer
+
+=> git branch develop
+om een 2de branch te maken(je zit er nog niet in)
+
+=> git checkout develop
+hierna werken we PARALELLL
+
+=> fork
+gebeurt niet locaal in de terminal, dit gebeurt online.
+een webstarter maken zonder te wijzigen.
+een bestaande repo aanpassen.
+hiermee kan je achteraf pushen
+
+=> git cloon???
+aanpassingen, wijzigingen, synchroniseren
+
+==> vb
+https://dummyimage.com/id/$ ide $ om de foto uniek te maken
