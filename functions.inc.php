@@ -217,3 +217,44 @@ function getBodyworks()
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+//WISHLIST Add car:
+function addToWishlist($carId, $userId)
+{
+    $db = connectToDB();
+    $sql = "INSERT INTO wishlist (cars_id, users_id) VALUES (:cars_id, :users_id)";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':cars_id' => $carId,
+        ':users_id' => $userId
+    ]);
+}
+
+// WISHLIST Remove cars
+function removeFromWishlist($carId, $userId)
+{
+    $db = connectToDB();
+    $sql = "DELETE FROM wishlist WHERE cars_id = :cars_id AND users_id = :users_id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':cars_id' => $carId,
+        ':users_id' => $userId
+    ]);
+}
+
+// WISHLIST Get alle cars
+function getWishlist($userId)
+{
+    $db = connectToDB();
+    $sql = "SELECT cars.id, cars.model, cars.price, cars.fotoUrl, makes.makeName AS makeName
+    FROM cars
+    JOIN makes ON cars.makes_id = makes.id
+    JOIN wishlist ON cars.id = wishlist.cars_id
+    WHERE wishlist.users_id = :users_id";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':users_id' => $userId
+    ]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

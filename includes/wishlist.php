@@ -1,17 +1,17 @@
 <?php
-require_once 'functions.inc.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require '../functions.inc.php';
 
-// Harde gebruiker-ID (bijv. van sessie, hier als voorbeeld ID 1)
 $userId = 1;
 
-// Voeg een auto toe als er een AJAX-verzoek of een formulier wordt ingediend
 if (isset($_POST['add'])) {
     $carId = intval($_POST['car_id']);
     addToWishlist($carId, $userId);
-    exit; // Geen verdere uitvoer nodig bij AJAX-aanroep
+    exit;
 }
 
-// Verwijder een auto als er een formulier is ingediend
 if (isset($_POST['remove'])) {
     $carId = intval($_POST['car_id']);
     removeFromWishlist($carId, $userId);
