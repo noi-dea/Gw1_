@@ -15,20 +15,30 @@
       "assets/icomoon-DQfcDdS4.svg"
     ]
   },
+  "fonts/Merriweather/Merriweather-Regular.ttf": {
+    "file": "assets/Merriweather-Regular-rtU9Xc2a.ttf",
+    "src": "fonts/Merriweather/Merriweather-Regular.ttf"
+  },
+  "fonts/Roboto/Roboto-Regular.ttf": {
+    "file": "assets/Roboto-Regular-ia0dPpEo.ttf",
+    "src": "fonts/Roboto/Roboto-Regular.ttf"
+  },
   "fonts/icomoon.svg": {
     "file": "assets/icomoon-Dd2_tEE8.svg",
     "src": "fonts/icomoon.svg"
   },
   "js/index.js": {
-    "file": "assets/index-x4eLPAEJ.js",
+    "file": "assets/index-MT6wwGRU.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-C7EqoEu8.css"
+      "assets/index-Ba8dkCcH.css"
     ],
     "assets": [
-      "assets/icomoon-DQfcDdS4.svg"
+      "assets/icomoon-Dd2_tEE8.svg",
+      "assets/Merriweather-Regular-rtU9Xc2a.ttf",
+      "assets/Roboto-Regular-ia0dPpEo.ttf"
     ]
   }
 }

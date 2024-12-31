@@ -164,8 +164,8 @@ function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colo
 {
     $db = connectToDB();
 
-    $sql = 'INSERT INTO cars (makes_id, model, year, fueltype, colours_id, doors, transmission, price, mileage, bodywork_id, fotoUrl)
-    VALUES (:make, :model, :y, :fuel, :col, :doors, :trans, :price, :mil, :body, :foto);';
+    $sql = 'INSERT INTO cars (brand, model, year, fueltype, colour, doors, transmission, price, mileage, bodywork, fotoUrl)
+    VALUES (:make, :model, :y, :fuelt, :col, :doors, :trans, :price, :mil, :body, :foto);';
     $stmt = $db->prepare($sql);
     $stmt->execute([
         ':make' => $make,

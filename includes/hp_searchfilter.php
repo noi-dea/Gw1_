@@ -3,7 +3,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require '../functions.inc.php';
+require 'functions.inc.php'; 
+//verwijzing naar bovenstaande map weggehaald doordat deze problemen gaf op de index.php
+//de searchfilter geeft dan zelf problemen op de localhost pagina, maar deze pagina hoort toch niet
+//beschikt te worden
 $makes = getMakes();
 $colours = getColours();
 $bodies = getBodyworks();
@@ -26,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (empty($errors)) {
         $results = searchFilterFunction($filters);
         if (count($results) > 0) {
-            header("Location: ../carlist.php");
+            header("Location: includes/carlistpage.php");
+            // ../ vervangen door includes/ doordat er vanuit de index geredirect wordt
             exit;
         } else {
             $message = "Géén auto's gevonden die aan je criteria voldoen";
