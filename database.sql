@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `gw1`.`cars` (
   `price` DECIMAL(10,2) NOT NULL,
   `mileage` INT NOT NULL,
   `bodywork_id` INT NOT NULL,
-  `fotoUrl` VARCHAR(150) NOT NULL,
+  `fotoUrl` VARCHAR(320) NOT NULL,
   `fotosets_id` INT NOT NULL,
   `users_id` INT NOT NULL,
   PRIMARY KEY (`id`, `fotosets_id`, `users_id`),
