@@ -309,3 +309,21 @@ function getCar(INT $id)
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+// Get all cars of admin with id
+function getAdminCars(INT $id){
+    $db = connectToDB();
+
+    $sql = "SELECT cars.id, makes.makeName as make, cars.model, cars.year, cars.fueltype, colours.colourName as colour, cars.doors, cars.transmission, cars.price, cars.mileage, bodyworks.typeName as bodywork, fotoUrl 
+    FROM cars
+    LEFT JOIN makes on makes.id = makes_id
+    LEFT JOIN colours on colours.id = colours_id
+    LEFT JOIN bodyworks on bodyworks.id = bodywork_id
+    WHERE users_id = :id;";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id'=>$id,
+    ]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

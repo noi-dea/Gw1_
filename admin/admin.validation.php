@@ -14,7 +14,7 @@ $bodyworks = getBodyworks();
 $ftypes = ['benzine', 'diesel', 'elektrisch', 'hybride'];
 $tmissions = ['handmatig', 'automatisch'];
 
-// start validation
+// start validation create.php
 if (isset($_POST['submit'])) {
     // creation variables 
     $make = 0;
