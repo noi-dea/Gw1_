@@ -1,0 +1,47 @@
+functionlist
+--------------------------------------
+template: functionname(variablecount)
+01. connectToDB(0)
+02. mailExists(1)
+03. userExists(1)
+04. insertNewUser(10)
+05. isValidLogin(2)
+06. searchFilterFunction(1)
+07. addCar(13)
+08. getColours(0)
+09. getMakes(0)
+10. getBodyWorks(0)
+11. addToWishlist(2)
+12. removeFromWishlist(2)
+13. getWishlist(1)
+14. getLastSet(0)
+15. newSet(0)
+16. getCar(1)
+17. getAdminCars(1)
+    
+used varlist
+--------------------------------------
+02. mail
+
+03. user
+
+04. username, password, firstname, lastname, email
+    district, street, postalcode, housenumber, bus
+
+05. username, password
+
+06. $filters array
+
+07. make ID, model, year, fueltype, colour ID, doors, 
+    transmission, price, mileage, bodywork ID, fotoUrl,
+    fotoset ID, user ID
+
+11. car ID, user ID
+
+12. car ID, user ID
+
+13. user ID
+
+16. car ID
+
+17. admin ID
