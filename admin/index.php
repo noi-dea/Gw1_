@@ -7,17 +7,10 @@ error_reporting(E_ALL);
 // Start code
 $_SERVER["admin"] = true;
 include_once "../includes/css_js.inc.php";
-<<<<<<< HEAD
 include('../functions.inc.php');
 include('../includes/hp_header.php');
 // message for after successful addition new car
 if (isset($_GET['message'])) {
-=======
-include ('../functions.inc.php');
-include('../includes/hp_header.php');
-// message for after successful addition new car
-if (isset($_GET['message'])){
->>>>>>> 1aa87cde9445627391f5e08805be18f028127efd
     $msg = $_GET['message'];
 }
 
@@ -29,21 +22,12 @@ $cars = getAdminCars(1);
 $pagelimit = 5;
 //-----// pageindexes
 $firstpage = 1;
-<<<<<<< HEAD
 $lastpage = ceil(count($cars) / $pagelimit);
 include('../includes/pagination.validation.php');
 //-----// car indexes
 $firstIndex = 1 + (($pagenr - 1) * $pagelimit);
 $lastIndex = $firstIndex + 4;
 if ($lastIndex > count($cars)) {
-=======
-$lastpage = ceil(count($cars)/$pagelimit);
-include ('../includes/pagination.validation.php');
-//-----// car indexes
-$firstIndex = 1+(($pagenr-1)*$pagelimit);
-$lastIndex = $firstIndex + 4;
-if ($lastIndex > count($cars)){
->>>>>>> 1aa87cde9445627391f5e08805be18f028127efd
     $lastIndex = count($cars);
 }
 
@@ -79,9 +63,9 @@ if ($lastIndex > count($cars)){
 
         <a class="btn btn-info" href="create.php" role="button">auto toevoegen</a>
 
-        
+
         <span class="label" style="color:black;">Getoonde resultaten: <?= $firstIndex . ' - ' . $lastIndex; ?> van <?= count($cars); ?></span>
-        
+
 
         <div class="table-responsive">
             <table class="table table-hover table-striped">
@@ -105,26 +89,27 @@ if ($lastIndex > count($cars)){
                 </thead>
                 <tbody>
                     <?php foreach ($cars as $car): ?>
-                        <?php for ($i = $firstIndex; $i < $firstIndex+5; $i++){
+                        <?php for ($i = $firstIndex; $i < $firstIndex + 5; $i++) {
                             if ($car['id'] == $i): ?>
-                        <tr>
-                            <td><img src="<?= $car['fotoUrl']; ?>" alt="foto van de auto" style="height:50px;"></td>
-                            <td><?= $car['id']; ?></td>
-                            <td><?= $car['make']; ?></td>
-                            <td><?= $car['model']; ?></td>
-                            <td><?= $car['year']; ?></td>
-                            <td><?= $car['fueltype']; ?></td>
-                            <td><?= $car['colour']; ?></td>
-                            <td><?= $car['doors']; ?></td>
-                            <td><?= $car['transmission']; ?></td>
-                            <td><?= $car['price']; ?></td>
-                            <td><?= $car['mileage']; ?></td>
-                            <td><?= $car['bodywork']; ?></td>
-                            <!-- placeholders, functionality to be added -->
-                            <td><a href="edit.php?id=<?php echo $car['id']; ?>" class="btn btn-primary">Edit</a></td>
-                            <td><a href="delete.php?id=<?php echo $car['id']; ?>" class="btn btn-danger">Delete</a></td>
-                        </tr>
-                        <?php endif; } ?>
+                                <tr>
+                                    <td><img src="<?= $car['fotoUrl']; ?>" alt="foto van de auto" style="height:50px;"></td>
+                                    <td><?= $car['id']; ?></td>
+                                    <td><?= $car['make']; ?></td>
+                                    <td><?= $car['model']; ?></td>
+                                    <td><?= $car['year']; ?></td>
+                                    <td><?= $car['fueltype']; ?></td>
+                                    <td><?= $car['colour']; ?></td>
+                                    <td><?= $car['doors']; ?></td>
+                                    <td><?= $car['transmission']; ?></td>
+                                    <td><?= $car['price']; ?></td>
+                                    <td><?= $car['mileage']; ?></td>
+                                    <td><?= $car['bodywork']; ?></td>
+                                    <!-- placeholders, functionality to be added -->
+                                    <td><a href="edit.php?id=<?php echo $car['id']; ?>" class="btn btn-primary">Edit</a></td>
+                                    <td><a href="delete.php?id=<?php echo $car['id']; ?>" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                        <?php endif;
+                        } ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -132,7 +117,7 @@ if ($lastIndex > count($cars)){
 
     </div> <!--end tag container div-->
 
-    <?php include ('../includes/pagination.logic.php'); ?>
+    <?php include('../includes/pagination.logic.php'); ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

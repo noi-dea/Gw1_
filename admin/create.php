@@ -1,21 +1,14 @@
 <?php
-<<<<<<< HEAD
-
-=======
->>>>>>> 1aa87cde9445627391f5e08805be18f028127efd
 $_SERVER['admin'] = true;
 include_once "../includes/css_js.inc.php";
 include('../functions.inc.php');
 include('admin.validation.php');
 include('../includes/hp_header.php');
-<<<<<<< HEAD
 
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-=======
->>>>>>> 1aa87cde9445627391f5e08805be18f028127efd
 // echo '<pre>';
 // Print_r($_POST);
 // echo '</pre>';
