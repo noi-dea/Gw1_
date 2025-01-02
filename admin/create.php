@@ -1,28 +1,39 @@
 <?php
+
+$_SERVER['admin'] = true;
+include_once "../includes/css_js.inc.php";
 include('../functions.inc.php');
 include('admin.validation.php');
+include('../includes/hp_header.php');
+
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+
 // echo '<pre>';
 // Print_r($_POST);
 // echo '</pre>';
 
-function keepValue($var){
-    if(isset($var)){
+function keepValue($var)
+{
+    if (isset($var)) {
         echo "value = $var";
     }
 }
 
-function keepSelection($var1, $var2){
+function keepSelection($var1, $var2)
+{
     $isSelected = false;
-    if (isset($var1)){
-        if ($var1 == $var2){
+    if (isset($var1)) {
+        if ($var1 == $var2) {
             $isSelected = true;
         }
     }
-    if ($isSelected){
+    if ($isSelected) {
         echo 'selected';
     }
 }
-// exit;
+//exit;
 ?>
 
 <!DOCTYPE html>
@@ -157,13 +168,13 @@ function keepSelection($var1, $var2){
                     <select name="fueltype" class="form-control" id="fueltype">
                         <option>-- Selecteer een optie --</option>
                         <?php for ($i = 0; $i < count($ftypes); $i++): ?>
-                        <option <?php keepSelection($_POST['fueltype'], $ftypes[$i]); ?>><?= $ftypes[$i]; ?></option>
+                            <option <?php keepSelection($_POST['fueltype'], $ftypes[$i]); ?>><?= $ftypes[$i]; ?></option>
                         <?php endfor; ?>
                     </select>
                 </div>
                 <label for="mileage" class="control-label col-sm-2">Kilometerstand: </label>
                 <div class="col-sm-3">
-                    <input <?php keepValue($_POST['mileage']); ?> type="text" name="mileage" class="form-control" id="input mileage" placeholder="...km">
+                    <input <?php keepValue($_POST['mileage']); ?> type="number" name="mileage" class="form-control" id="input mileage" placeholder="...km">
                 </div>
             </div>
 
@@ -175,7 +186,7 @@ function keepSelection($var1, $var2){
                     <select name="transmission" class="form-control" id="transmission">
                         <option>-- selecteer een optie --</option>
                         <?php for ($i = 0; $i < count($tmissions); $i++): ?>
-                        <option <?php keepSelection($_POST['transmission'], $tmissions[$i]); ?>><?= $tmissions[$i]; ?></option>
+                            <option <?php keepSelection($_POST['transmission'], $tmissions[$i]); ?>><?= $tmissions[$i]; ?></option>
                         <?php endfor; ?>
                     </select>
                 </div>

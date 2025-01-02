@@ -1,11 +1,37 @@
 <?php
+// debugg lines
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
+// Start code
 $_SERVER["admin"] = true;
 include_once "../includes/css_js.inc.php";
-$msg = $_GET['message'];
-// dummy data (will be replaced after creation databasefunction)
-$cars = [0 => ['id' => 1, 'brand' => 'Toyota', 'model' => 'M', 'year' => 2014, 'fueltype' => 'benzine', 'colour' => 'red', 'doors' => 5, 'transmission' => 'handgeschakeld', 'price' => 10000.99, 'mileage' => 5000, 'bodywork' => 'suv', 'fotoUrl' => 'https://nl.toyota.be/content/dam/toyota/nmsc/luxemburg/de/RAV4.png'], 1 => ['id' => 2, 'brand' => 'Toyota', 'model' => 'M', 'year' => 2014, 'fueltype' => 'benzine', 'colour' => 'red', 'doors' => 5, 'transmission' => 'handgeschakeld', 'price' => 10000.99, 'mileage' => 5000, 'bodywork' => 'suv', 'fotoUrl' => 'https://nl.toyota.be/content/dam/toyota/nmsc/luxemburg/de/RAV4.png']]
-// end dummy data
+include('../functions.inc.php');
+include('../includes/hp_header.php');
+// message for after successful addition new car
+if (isset($_GET['message'])) {
+    $msg = $_GET['message'];
+}
+
+// variables
+// get car data
+$cars = getAdminCars(1);
+// pagination variables
+//-----// limiting cars per page to 5
+$pagelimit = 5;
+//-----// pageindexes
+$firstpage = 1;
+$lastpage = ceil(count($cars) / $pagelimit);
+include('../includes/pagination.validation.php');
+//-----// car indexes
+$firstIndex = 1 + (($pagenr - 1) * $pagelimit);
+$lastIndex = $firstIndex + 4;
+if ($lastIndex > count($cars)) {
+    $lastIndex = count($cars);
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

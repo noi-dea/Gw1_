@@ -159,7 +159,10 @@ if (isset($_POST['submit'])) {
     if (count($errors) == 0) {
         $set = newSet();
         $user = 1; //hardcoded for now until loginsystem and session are in place to track actual user
-        addCar($make, $model, $year, $fuel, $colour, $doors, $transmission, $price, $mileage, $body, $url, $set, $user);
+
+
+        $newCar = addCar($make, $model, $year, $fuel, $colour, $doors, $transmission, $price, $mileage, $body, $url, $set, $user);
+
         header("Location: index.php?message=Auto toegevoegd");
         exit;
     }

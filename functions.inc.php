@@ -220,8 +220,50 @@ function getBodyworks()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+//WISHLIST Add car:
+function addToWishlist($carId, $userId)
+{
+    $db = connectToDB();
+    $sql = "INSERT INTO wishlist (cars_id, users_id) VALUES (:cars_id, :users_id)";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':cars_id' => $carId,
+        ':users_id' => $userId
+    ]);
+}
+
+// WISHLIST Remove cars
+function removeFromWishlist($carId, $userId)
+{
+    $db = connectToDB();
+    $sql = "DELETE FROM wishlist WHERE cars_id = :cars_id AND users_id = :users_id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':cars_id' => $carId,
+        ':users_id' => $userId
+    ]);
+}
+
+// WISHLIST Get alle cars
+function getWishlist($userId)
+{
+    $db = connectToDB();
+    $sql = "SELECT cars.id, cars.model, cars.price, cars.fotoUrl, makes.makeName AS makeName
+    FROM cars
+    JOIN makes ON cars.makes_id = makes.id
+    JOIN wishlist ON cars.id = wishlist.cars_id
+    WHERE wishlist.users_id = :users_id";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':users_id' => $userId
+    ]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 // Get id of last fotoset
-function getLastSet(){
+function getLastSet()
+{
     $db = connectToDB();
 
     $sql = 'SELECT id FROM fotosets ORDER BY id DESC LIMIT 1;';
@@ -233,7 +275,8 @@ function getLastSet(){
 }
 
 // create new fotoset and get its id (for creation new entry car)
-function newSet(){
+function newSet()
+{
     // get the current highest index
     $highest = getLastSet();
     // increase it to get the first unused index
@@ -244,13 +287,14 @@ function newSet(){
     $sql = 'INSERT INTO fotosets (id) VALUES (:id);';
     $stmt = $db->prepare($sql);
     $stmt->execute([
-        ':id'=> $highest
+        ':id' => $highest
     ]);
     return $highest;
 }
 
 // Get a car with specific id from database
-function getCar(INT $id){
+function getCar(INT $id)
+{
     $db = connectToDB();
 
     $sql = 'SELECT makeName as make, model, year, fueltype, colourName as colour, doors, transmission, price, mileage, typeName as body, fotoUrl as ul FROM cars
@@ -261,6 +305,25 @@ function getCar(INT $id){
     $stmt = $db->prepare($sql);
     $stmt->execute([
         ':id' => $id
+    ]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Get all cars of admin with id
+function getAdminCars(INT $id)
+{
+    $db = connectToDB();
+
+    $sql = "SELECT cars.id, makes.makeName as make, cars.model, cars.year, cars.fueltype, colours.colourName as colour, cars.doors, cars.transmission, cars.price, cars.mileage, bodyworks.typeName as bodywork, fotoUrl 
+    FROM cars
+    LEFT JOIN makes on makes.id = makes_id
+    LEFT JOIN colours on colours.id = colours_id
+    LEFT JOIN bodyworks on bodyworks.id = bodywork_id
+    WHERE users_id = :id;";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
     ]);
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
