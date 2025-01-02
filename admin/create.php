@@ -1,15 +1,21 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1aa87cde9445627391f5e08805be18f028127efd
 $_SERVER['admin'] = true;
 include_once "../includes/css_js.inc.php";
 include('../functions.inc.php');
 include('admin.validation.php');
 include('../includes/hp_header.php');
+<<<<<<< HEAD
 
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
+=======
+>>>>>>> 1aa87cde9445627391f5e08805be18f028127efd
 // echo '<pre>';
 // Print_r($_POST);
 // echo '</pre>';
@@ -44,7 +50,8 @@ function keepSelection($var1, $var2)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title Page</title>
-
+    <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
+    <script type="module" src="../dist/<?= $jsPath ?>"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {

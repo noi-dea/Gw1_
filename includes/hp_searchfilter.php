@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require 'functions.inc.php'; 
+require 'functions.inc.php';
 //verwijzing naar bovenstaande map weggehaald doordat deze problemen gaf op de index.php
 //de searchfilter geeft dan zelf problemen op de localhost pagina, maar deze pagina hoort toch niet
 //beschikt te worden
