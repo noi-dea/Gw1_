@@ -328,3 +328,39 @@ function getAdminCars(INT $id)
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function getCarBrand(INT $id)
+{ //function to get brand name in carlistpage
+    $db = connectToDB();
+    $sql = "SELECT makeName from makes where id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
+    ]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result["makeName"] : "";
+}
+
+function getColor(INT $id)
+{ //function to get colour in carlistpage
+    $db = connectToDB();
+    $sql = "SELECT colourName from colours where id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
+    ]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result["colourName"] : "";
+}
+
+function getbodywork(INT $id)
+{ //function to get colour in carlistpage
+    $db = connectToDB();
+    $sql = "SELECT typeName from bodyworks where id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
+    ]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result["typeName"] : "";
+}
