@@ -297,17 +297,18 @@ function getCar(INT $id)
 {
     $db = connectToDB();
 
-    $sql = 'SELECT makeName as make, model, year, fueltype, colourName as colour, doors, transmission, price, mileage, typeName as body, fotoUrl as ul FROM cars
+    $sql = 'SELECT makeName as make, model, year, fueltype, colourName as colour, doors, transmission, price, mileage, typeName as body, fotoUrl as ul, fotosets.* FROM cars
     LEFT JOIN makes on makes.id = makes_id
     LEFT JOIN colours on colours.id = colours_id
     LEFT JOIN bodyworks on bodyworks.id = bodywork_id
+    LEFT JOIN fotosets on fotosets.id = fotosets_id
     WHERE cars.id = :id;';
     $stmt = $db->prepare($sql);
     $stmt->execute([
         ':id' => $id
     ]);
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 // Get all cars of admin with id
