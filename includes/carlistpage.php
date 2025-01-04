@@ -40,14 +40,10 @@ if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
                     Brand
                 </th>
                 <th>model</th>
-                <th>year</th>
-                <th>fueltype</th>
-                <th>color</th>
-                <th>doors</th>
-                <th>transmission</th>
+
+
                 <th>prize</th>
-                <th>mileage</th>
-                <th>bodywork</th>
+
                 <th>picture</th>
             </tr>
         </thead>
@@ -63,17 +59,10 @@ if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
                             <tr class='car'>
                                 <td><?= getCarBrand($car["makes_id"]); ?></td>
                                 <td><?= $car["model"]; ?></td>
-                                <td><?= $car["year"]; ?></td>
-                                <td><?= $car["fueltype"]; ?></td>
-
-                                <td><?= getColor($car["colours_id"]); ?></td>
-                                <td><?= $car["doors"]; ?></td>
-                                <td><?= $car["transmission"]; ?></td>
 
                                 <td>€<?= number_format($car["price"], 2, ',', '.'); ?> </td>
-                                <td><?= $car["mileage"]; ?>km</td>
-                                <td><?= getBodywork($car["bodywork_id"]); ?></td>
-                                <td><img src="<?= $car["fotoUrl"]; ?>" alt="<?= $car["model"]; ?>" width="100" height="auto"></td>
+
+                                <td><a href="cardetailpage.php?id=<?= $car["id"]; ?>"><img src="<?= $car["fotoUrl"]; ?>" alt="<?= $car["model"]; ?>" width="100" height="auto"></a></td>
                             </tr>
             <?php endforeach;
                     }

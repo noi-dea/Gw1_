@@ -342,38 +342,40 @@ function getCarBrand(INT $id)
     return $result ? $result["makeName"] : "";
 }
 
-function getColor(INT $id)
-{ //function to get colour in carlistpage
-    $db = connectToDB();
-    $sql = "SELECT colourName from colours where id = :id";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([
-        ':id' => $id,
-    ]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result ? $result["colourName"] : "";
-}
+// niet meer nodig 
+// function getColor(INT $id)
+// { //function to get colour in carlistpage
+//     $db = connectToDB();
+//     $sql = "SELECT colourName from colours where id = :id";
+//     $stmt = $db->prepare($sql);
+//     $stmt->execute([
+//         ':id' => $id,
+//     ]);
+//     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+//     return $result ? $result["colourName"] : "";
+// }
 
-function getbodywork(INT $id)
-{ //function to get colour in carlistpage
-    $db = connectToDB();
-    $sql = "SELECT typeName from bodyworks where id = :id";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([
-        ':id' => $id,
-    ]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result ? $result["typeName"] : "";
-}
+// function getbodywork(INT $id)
+// { //function to get colour in carlistpage
+//     $db = connectToDB();
+//     $sql = "SELECT typeName from bodyworks where id = :id";
+//     $stmt = $db->prepare($sql);
+//     $stmt->execute([
+//         ':id' => $id,
+//     ]);
+//     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+//     return $result ? $result["typeName"] : "";
+// }
 
 
 
 // Get the id of the last car
-function getIdLastCar(){
+function getIdLastCar()
+{
 
     $db = connectToDB();
-    
-    $sql ='SELECT cars.id FROM cars ORDER BY id DESC;';
+
+    $sql = 'SELECT cars.id FROM cars ORDER BY id DESC;';
     $stmt = $db->prepare($sql);
     $stmt->execute();
 
