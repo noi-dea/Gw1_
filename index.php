@@ -26,6 +26,7 @@ include_once "includes/css_js.inc.php";
         <?php include 'includes/hp_categorie.php'; ?>
 
     </main>
+
     <?php include 'includes/hp_footer.php'; ?>
 </body>
 

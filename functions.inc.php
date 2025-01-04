@@ -311,7 +311,8 @@ function getCar(INT $id)
 }
 
 // Get all cars of admin with id
-function getAdminCars(INT $id){
+function getAdminCars(INT $id)
+{
     $db = connectToDB();
 
     $sql = "SELECT cars.id, makes.makeName as make, cars.model, cars.year, cars.fueltype, colours.colourName as colour, cars.doors, cars.transmission, cars.price, cars.mileage, bodyworks.typeName as bodywork, fotoUrl 
@@ -322,11 +323,48 @@ function getAdminCars(INT $id){
     WHERE users_id = :id;";
     $stmt = $db->prepare($sql);
     $stmt->execute([
-        ':id'=>$id,
+        ':id' => $id,
     ]);
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function getCarBrand(INT $id)
+{ //function to get brand name in carlistpage
+    $db = connectToDB();
+    $sql = "SELECT makeName from makes where id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
+    ]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result["makeName"] : "";
+}
+
+function getColor(INT $id)
+{ //function to get colour in carlistpage
+    $db = connectToDB();
+    $sql = "SELECT colourName from colours where id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
+    ]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result["colourName"] : "";
+}
+
+function getbodywork(INT $id)
+{ //function to get colour in carlistpage
+    $db = connectToDB();
+    $sql = "SELECT typeName from bodyworks where id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
+    ]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result["typeName"] : "";
+}
+
 
 
 // Get the id of the last car
