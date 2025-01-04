@@ -327,3 +327,16 @@ function getAdminCars(INT $id){
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+
+// Get the id of the last car
+function getIdLastCar(){
+
+    $db = connectToDB();
+    
+    $sql ='SELECT cars.id FROM cars ORDER BY id DESC;';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_NUM)[0]; //only want the value, not the single value array fetch creates
+}
