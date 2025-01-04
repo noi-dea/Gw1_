@@ -381,3 +381,46 @@ function getIdLastCar()
 
     return $stmt->fetch(PDO::FETCH_NUM)[0]; //only want the value, not the single value array fetch creates
 }
+
+
+//SESSIONS LOGIN
+function requiredLoggedIn()
+{
+    if (!isLoggedIn()) {
+        header("Location: includes\login.php");
+        exit;
+    }
+}
+
+function requiredLoggedOut()
+{
+    if (isLoggedIn()) {
+        header("Location: ../index.php");
+        exit;
+    }
+}
+
+function isLoggedIn(): bool
+{
+    session_start();
+
+    $loggedin = FALSE;
+
+    if (isset($_SESSION['loggedin'])) {
+        if ($_SESSION['loggedin'] > time()) {
+            $loggedin = TRUE;
+            setLogin();
+        }
+    }
+
+    return $loggedin;
+}
+
+function setLogin($uid = false)
+{
+    $_SESSION['loggedin'] = time() + 3600;
+
+    if ($uid) {
+        $_SESSION['uid'] = $uid;
+    }
+}
