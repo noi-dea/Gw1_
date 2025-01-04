@@ -4,6 +4,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+$pageInIncludes = true;
+include_once "./css_js.inc.php";
+
 require('../functions.inc.php');
 $lastId = getIdLastCar();
 $id = 1; //by declaring it and only changing it when there's a get value we save 1 else{} in the code
@@ -35,58 +38,70 @@ $carDummy['inner'] = 'https://cdn.pixabay.com/photo/2015/12/19/10/27/seat-cushio
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $car['year'] . " " . $car['make'] . " " . $car['model']; ?></title>
+    <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
+    <script type="module" src="../dist/<?= $jsPath ?>"></script>
+
+
 </head>
 <body>
-    <div class="container">
+    <?php include('./hp_header.php'); ?>
+    <main>
+        <div class="container">
+            <div class="g">
 
-        <div>
-            <div id="imgDetail">
-                <img src="<?= $car['ul']?>" alt="">
+                    <div id="imgdetail">
+                        <img src="<?= $car['ul']?>" alt="">
+                    </div>
+                    <div id="imgpreviews"> 
+                        <!-- //TODO: after css styling revert from carDummy to car data and uncomment if statements -->
+                         <img class="shown" src="<?= $car['ul']; ?>" alt="">
+                        <!-- <// if ($car['front'] !== null): ?> -->
+                        <img src="<?= $carDummy['front']; ?>" alt=""> 
+                        <!-- <// endif; if ($car['back'] !== null) :?> -->
+                        <img src="<?= $carDummy['back']; ?>" alt=""> 
+                        <!-- <// endif; if ($car['inner'] !== null): ?> -->
+                        <img src="<?= $carDummy['inner']; ?>" alt=""> 
+                        <!-- <// endif; ?> -->
+                    </div>
+                <div class="description">
+
+                    <h2><?= $car['make'] . " " . $car['model']; ?> </h2>
+                    <h3>&euro;<?= $car['price']; ?></h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> Product Specificaties </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bouwjaar: </td><td><?= $car['year']; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Brandstof: </td><td><?= $car['fueltype']; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Kleur: </td><td><?= $car['colour']; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Aantal deuren: </td><td><?= $car['doors']; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Transmissie: </td><td><?= $car['transmission']; ?></td>
+                            </tr>
+                            <tr>
+                                <td>KM stand: </td><td><?= $car['mileage']; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Carrosserie: </td><td><?= $car['body']; ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div id="imgPreviews"> 
-                <!-- //TODO: after css styling revert from carDummy to car data and uncomment if statements -->
-                <!-- <// if ($car['front'] !== null): ?> -->
-                <img src="<?= $carDummy['front']; ?>" alt=""> 
-                <!-- <// endif; if ($car['back'] !== null) :?> -->
-                <img src="<?= $carDummy['back']; ?>" alt=""> 
-                <!-- <// endif; if ($car['inner'] !== null): ?> -->
-                <img src="<?= $carDummy['inner']; ?>" alt=""> 
-                <!-- <// endif; ?> -->
-            </div>
-            <h2><?= $car['make'] . " " . $car['model']; ?> </h2>
-            <h3>&euro;<?= $car['price']; ?></h3>
         </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th> Product Specificaties </th>
-                </tr>
-            </thead>
-            <tbody>
-                    <td>Bouwjaar: </td><td><?= $car['year']; ?></td>
-                <tr>
-                    <td>Brandstof: </td><td><?= $car['fueltype']; ?></td>
-                </tr>
-                <tr>
-                    <td>Kleur: </td><td><?= $car['colour']; ?></td>
-                </tr>
-                <tr>
-                    <td>Aantal deuren: </td><td><?= $car['doors']; ?></td>
-                </tr>
-                <tr>
-                    <td>Transmissie: </td><td><?= $car['transmission']; ?></td>
-                </tr>
-                <tr>
-                    <td>KM stand: </td><td><?= $car['mileage']; ?></td>
-                </tr>
-                <tr>
-                    <td>Carrosserie: </td><td><?= $car['body']; ?></td>
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
+    </main>
     
 </body>
 </html>
