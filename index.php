@@ -4,6 +4,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include_once "includes/css_js.inc.php";
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +25,7 @@ include_once "includes/css_js.inc.php";
 
 <body>
     <?php include 'includes/hp_header.php'; ?>
+
     <main>
         <?php include 'includes/hp_banner.php'; ?>
         <?php include 'includes/hp_searchfilter.php'; ?>
