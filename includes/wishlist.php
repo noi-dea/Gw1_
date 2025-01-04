@@ -6,14 +6,14 @@ require '../functions.inc.php';
 
 $userId = 1;
 
-if (isset($_POST['add'])) {
-    $carId = intval($_POST['car_id']);
+if (isset($_POST['add']) && !empty($_POST['add'])) {
+    $carId = intval($_POST['add']);
     addToWishlist($carId, $userId);
     exit;
 }
 
-if (isset($_POST['remove'])) {
-    $carId = intval($_POST['car_id']);
+if (isset($_POST['remove']) && !empty($_POST['remove'])) {
+    $carId = intval($_POST['remove']);
     removeFromWishlist($carId, $userId);
 }
 
