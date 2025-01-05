@@ -297,17 +297,18 @@ function getCar(INT $id)
 {
     $db = connectToDB();
 
-    $sql = 'SELECT makeName as make, model, year, fueltype, colourName as colour, doors, transmission, price, mileage, typeName as body, fotoUrl as ul FROM cars
+    $sql = 'SELECT makeName as make, model, year, fueltype, colourName as colour, doors, transmission, price, mileage, typeName as body, fotoUrl as ul, fotosets.* FROM cars
     LEFT JOIN makes on makes.id = makes_id
     LEFT JOIN colours on colours.id = colours_id
     LEFT JOIN bodyworks on bodyworks.id = bodywork_id
+    LEFT JOIN fotosets on fotosets.id = fotosets_id
     WHERE cars.id = :id;';
     $stmt = $db->prepare($sql);
     $stmt->execute([
         ':id' => $id
     ]);
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 // Get all cars of admin with id
@@ -327,4 +328,99 @@ function getAdminCars(INT $id)
     ]);
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getCarBrand(INT $id)
+{ //function to get brand name in carlistpage
+    $db = connectToDB();
+    $sql = "SELECT makeName from makes where id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
+    ]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result["makeName"] : "";
+}
+
+// niet meer nodig 
+// function getColor(INT $id)
+// { //function to get colour in carlistpage
+//     $db = connectToDB();
+//     $sql = "SELECT colourName from colours where id = :id";
+//     $stmt = $db->prepare($sql);
+//     $stmt->execute([
+//         ':id' => $id,
+//     ]);
+//     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+//     return $result ? $result["colourName"] : "";
+// }
+
+// function getbodywork(INT $id)
+// { //function to get colour in carlistpage
+//     $db = connectToDB();
+//     $sql = "SELECT typeName from bodyworks where id = :id";
+//     $stmt = $db->prepare($sql);
+//     $stmt->execute([
+//         ':id' => $id,
+//     ]);
+//     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+//     return $result ? $result["typeName"] : "";
+// }
+
+
+
+// Get the id of the last car
+function getIdLastCar()
+{
+
+    $db = connectToDB();
+
+    $sql = 'SELECT cars.id FROM cars ORDER BY id DESC;';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_NUM)[0]; //only want the value, not the single value array fetch creates
+}
+
+
+//SESSIONS LOGIN
+function requiredLoggedIn()
+{
+    if (!isLoggedIn()) {
+        header("Location: includes\login.php");
+        exit;
+    }
+}
+
+function requiredLoggedOut()
+{
+    if (isLoggedIn()) {
+        header("Location: ../index.php");
+        exit;
+    }
+}
+
+function isLoggedIn(): bool
+{
+    session_start();
+
+    $loggedin = FALSE;
+
+    if (isset($_SESSION['loggedin'])) {
+        if ($_SESSION['loggedin'] > time()) {
+            $loggedin = TRUE;
+            setLogin();
+        }
+    }
+
+    return $loggedin;
+}
+
+function setLogin($uid = false)
+{
+    $_SESSION['loggedin'] = time() + 3600;
+
+    if ($uid) {
+        $_SESSION['uid'] = $uid;
+    }
 }

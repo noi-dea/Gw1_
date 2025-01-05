@@ -18,6 +18,7 @@ template: functionname(variablecount)
 15. newSet(0)
 16. getCar(1)
 17. getAdminCars(1)
+18. getIdLastCar(0)
     
 used varlist
 --------------------------------------
