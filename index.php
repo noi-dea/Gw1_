@@ -29,7 +29,7 @@ include_once "includes/css_js.inc.php";
     <main>
         <?php include 'includes/hp_banner.php'; ?>
         <?php include 'includes/hp_searchfilter.php'; ?>
-        <?php include 'includes/hp_categorie.php'; ?>
+        <!-- <?php include 'includes/hp_categorie.php'; ?> -->
 
     </main>
 

@@ -6,7 +6,7 @@ if (isset($_SERVER["admin"])) {
     $manifestUrl = "./dist/.vite/manifest.json";
     $source = "js/index.js";
 }
-if ($pageInIncludes){ //added the if to avoid souping up stuff by moving php files around
+if ($pageInIncludes) { //added the if to avoid souping up stuff by moving php files around BIG THANKS!
     $manifestUrl = "../dist/.vite/manifest.json";
 }
 $manifestJson = file_get_contents($manifestUrl);
