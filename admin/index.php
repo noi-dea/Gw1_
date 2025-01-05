@@ -3,12 +3,23 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+session_start();
 
 // Start code
 $_SERVER["admin"] = true;
 include_once "../includes/css_js.inc.php";
 include('../functions.inc.php');
 include('../includes/hp_header.php');
+
+
+if (isset($_SESSION["uid"])) {
+    $uid = $_SESSION["uid"];
+    $result = IsAdmin($uid);
+
+    if (!$result) {
+        header("Location: ../includes/login.php");
+    }
+}
 // message for after successful addition new car
 if (isset($_GET['message'])) {
     $msg = $_GET['message'];
@@ -16,7 +27,7 @@ if (isset($_GET['message'])) {
 
 // variables
 // get car data
-$cars = getAdminCars(1);
+$cars = getAdminCars($uid);
 // pagination variables
 //-----// limiting cars per page to 5
 $pagelimit = 5;
@@ -118,6 +129,8 @@ if ($lastIndex > count($cars)) {
     </div> <!--end tag container div-->
 
     <?php include('../includes/pagination.logic.php'); ?>
+    <?php include('../includes/hp_footer.php'); ?>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
