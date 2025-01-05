@@ -82,6 +82,16 @@ function isValidLogin(String $username, String $password): bool|int
     ]);
     return $stmt->fetchColumn();
 }
+function isAdmin($id)
+{
+    $sql = "SELECT IsAdmin from users WHERE id=:id";
+    $stmt = connectToDB()->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
+
+    ]);
+    return $stmt->fetchColumn();
+}
 
 function searchFilterFunction($filters)
 {

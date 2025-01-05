@@ -57,6 +57,9 @@ if (isset($_POST['submit'])) {
         $errors[] = 'Model is een verplicht veld!!!';
     } else {
         $model = $_POST['model'];
+        if (preg_match('/[^À-ü\w\-\/]/', $model)){
+            $errors[] = 'Oneldige ingave: Model!!!';
+        }
     }
 
     // validation 4th field: year

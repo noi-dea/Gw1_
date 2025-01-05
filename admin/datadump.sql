@@ -1,7 +1,7 @@
 INSERT INTO users
 (id, username, password, firstname, lastname, email, district, street, postalcode, housenumber, bus, isAdmin)
 VALUES
-(1, 'W.Harper', 'AdminPass-01', 'William', 'Harper', 'wilper@hotmail.com', 'Herentals', 'nietbestaandestraat', 2200, 5, 2, 1);
+(1, 'W.Harper', md5('AdminPass-01'), 'William', 'Harper', 'wilper@hotmail.com', 'Herentals', 'nietbestaandestraat', 2200, 5, 2, 1);
 
 INSERT INTO fotosets
 (id)

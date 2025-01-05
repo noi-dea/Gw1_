@@ -70,7 +70,7 @@ if (isset($_GET["login"])) {
             <input name="inputusername" id="inputusername" type="text" placeholder="Enter your username">
         </div>
         <div class="">
-            <input name="inputpassword" id="inputpassword" type="text" placeholder="Enter your password">
+            <input name="inputpassword" id="inputpassword" type="password" placeholder="Enter your password">
         </div>
 
         <input type="submit" value="login" name="login">

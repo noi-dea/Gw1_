@@ -5,13 +5,6 @@ include('../functions.inc.php');
 include('admin.validation.php');
 include('../includes/hp_header.php');
 
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
-
-// echo '<pre>';
-// Print_r($_POST);
-// echo '</pre>';
 
 function keepValue($var)
 {
@@ -121,10 +114,8 @@ function keepSelection($var1, $var2)
             <div class="form-group b">
                 <label for="model" class="control-label col-sm-2">Model:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="model" placeholder="zoek model" <?php keepValue($_POST['model']); ?>>
-                    <!-- <datalist name="model" id="model">
-                            <option value="M">m</option>
-                        </datalist> -->
+                    <input type="text" class="form-control" name="model" placeholder="Geef het model in" <?php keepValue($_POST['model']); ?>>
+
                 </div>
                 <label for="year" class="control-label col-sm-2">Bouwjaar: </label>
                 <div class="col-sm-3">
@@ -214,7 +205,7 @@ function keepSelection($var1, $var2)
         </div>
     </div>
 
-
+    <?php include('../includes/hp_footer.php'); ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

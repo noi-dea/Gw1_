@@ -6,8 +6,13 @@ error_reporting(E_ALL);
 include_once "includes/css_js.inc.php";
 
 
+session_start();
 
+if (!isset($_SESSION["uid"])) {
 
+    header("Location: /includes/login.php");
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
