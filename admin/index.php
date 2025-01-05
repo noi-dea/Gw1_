@@ -3,12 +3,23 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+session_start();
 
 // Start code
 $_SERVER["admin"] = true;
 include_once "../includes/css_js.inc.php";
 include('../functions.inc.php');
 include('../includes/hp_header.php');
+
+
+if (isset($_SESSION["uid"])) {
+
+    $result = IsAdmin($_SESSION["uid"]);
+
+    if (!$result) {
+        header("Location: ../includes/login.php");
+    }
+}
 // message for after successful addition new car
 if (isset($_GET['message'])) {
     $msg = $_GET['message'];
