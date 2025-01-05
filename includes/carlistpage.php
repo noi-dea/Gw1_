@@ -8,13 +8,13 @@ require("../functions.inc.php");
 
 session_start();
 
-
+echo '<pre>';
+Print_r($_SESSION);
+echo '</pre>';
 
 if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
     $results = $_SESSION['results'];
-    echo '<pre>';
-    Print_r($results);
-    echo '</pre>';
+
 
     unset($_SESSION['results']);
 }

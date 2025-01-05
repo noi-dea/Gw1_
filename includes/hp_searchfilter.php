@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+session_start();
 require 'functions.inc.php';
 //verwijzing naar bovenstaande map weggehaald doordat deze problemen gaf op de index.php
 //de searchfilter geeft dan zelf problemen op de localhost pagina, maar deze pagina hoort toch niet
@@ -30,6 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $results = searchFilterFunction($filters);
         if (count($results) > 0) {
             $_SESSION["results"] = $results;
+            echo '<pre>';
+            Print_r($results);
+            echo '</pre>';
             header("Location: includes/carlistpage.php");
             // ../ vervangen door includes/ doordat er vanuit de index geredirect wordt
             exit;
