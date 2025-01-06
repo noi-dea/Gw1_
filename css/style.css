@@ -217,6 +217,87 @@ body {
       display: block;
       object-fit: cover;
     }
+
+    /* detailpage */
+    div.container {
+      /* overflow: hidden; */
+      width: 90%;
+      margin: 0 auto;
+      padding-top: 5rem;
+      div.g {
+        background-color: var(--cool-silver);
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        place-items: center;
+        div#imgdetail {
+          height: 35rem;
+          padding: 1rem;
+          aspect-ratio: 2 / 1;
+          img {
+            display: block;
+            object-fit: cover;
+            aspect-ratio: inherit;
+            height: inherit;
+          }
+        }
+        div#imgpreviews {
+          padding-left: 1rem;
+          padding-top: 0.5rem;
+          width: 100%;
+          display: flex;
+          grid-row: 2;
+          gap: 0.5rem;
+          background-color: var(--graphite);
+          img {
+            padding: 0.5rem;
+            height: 10rem;
+            aspect-ratio: 2 / 1;
+            &.shown {
+              border: 0.5rem solid var(--charcoal);
+              padding: 0;
+            }
+          }
+        }
+        div.description {
+          height: 45.5rem;
+          text-align: center;
+          background-color: var(--jet-black);
+          color: var(--platinum);
+          padding-top: 2.5rem;
+          width: 100%;
+          grid-row: span 2;
+          h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+          }
+          h3 {
+            margin-top: 10px;
+            font-size: 2rem;
+            font-weight: 500;
+          }
+          table {
+            margin-top: 1rem;
+            width: 100%;
+            text-align: center;
+            thead {
+              font-size: 1.8rem;
+              font-weight: 600;
+            }
+            tbody {
+              font-size: 1.6rem;
+              display: grid;
+              margin-top: 1.5rem;
+              tr {
+                padding: 0.75rem;
+              }
+              tr:nth-of-type(odd) {
+                background-color: var(--charcoal);
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   footer {
