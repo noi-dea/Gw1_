@@ -438,5 +438,9 @@ function setLogin($uid = false)
 // remove car from database
 function removeCar(INT $id): void
 {
-    connectToDB()->prepare("DELETE FROM cars WHERE id = :id;")->execute([':id' => $id]);
+    $db = connectToDB();
+
+    $sql = "DELETE FROM cars WHERE cars.id = :id;";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([':id' => $id]);
 }

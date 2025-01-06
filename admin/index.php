@@ -5,16 +5,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
-echo '<pre>';
-Print_r($_POST);
-echo '</pre>';
-
 // Start code
 $_SERVER["admin"] = true;
 include_once "../includes/css_js.inc.php";
 include('../functions.inc.php');
 include('../includes/hp_header.php');
-
+include('./admin.validation.php');
 
 if (isset($_SESSION["uid"])) {
     $uid = $_SESSION["uid"];
@@ -42,8 +38,8 @@ include('../includes/pagination.validation.php');
 //-----// car indexes
 $firstIndex = 0 + (($pagenr - 1) * $pagelimit);
 $lastIndex = $firstIndex + 4;
-if ($lastIndex > count($cars)) {
-    $lastIndex = count($cars);
+if ($lastIndex > count($cars)-1) {
+    $lastIndex = count($cars)-1;
 }
 
 ?>
@@ -117,13 +113,8 @@ if ($lastIndex > count($cars)) {
                                     <td><?= $cars[$i]['mileage']; ?></td>
                                     <td><?= $cars[$i]['bodywork']; ?></td>
                                     <!-- placeholders, functionality to be added -->
-                                    <td><a href="edit.php?id=<?php echo $cars[$i]['id']; ?>" class="btn btn-primary">Edit</a></td>
-                                    <td>
-                                        <form method="post" action="index.php">
-                                            <input type="text" value="<?= $cars[$i]['id']; ?>" hidden>
-                                            <input type="submit" value="delete" class="btn btn-danger">
-                                        </form>
-                                    </td>
+                                    <td><a href="edit.php?id=<?= $cars[$i]['id']; ?>" class="btn btn-primary">Edit</a></td>
+                                    <td><a href="index.php?id=<?= $cars[$i]['id']; ?>" class="btn btn-danger">Delete</a></td>
                                 </tr>
                         <?php endfor;?>
                 </tbody>

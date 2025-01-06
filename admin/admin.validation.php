@@ -170,3 +170,14 @@ if (isset($_POST['submit'])) {
         exit;
     }
 }
+
+// delete
+if (isset($_GET['id'])){
+    $id = $_GET['id'];
+    if (preg_match('/[^\d]/', $id)){
+    echo "<script> alert('Ongeldige actie') </script>";
+    } else {
+        removeCar($id);
+    }
+
+}
