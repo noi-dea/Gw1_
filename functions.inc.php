@@ -434,3 +434,9 @@ function setLogin($uid = false)
         $_SESSION['uid'] = $uid;
     }
 }
+
+// remove car from database
+function removeCar(INT $id): void
+{
+    connectToDB()->prepare("DELETE FROM cars WHERE id = :id;")->execute([':id' => $id]);
+}
