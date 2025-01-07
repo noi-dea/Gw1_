@@ -24,12 +24,7 @@ $car = getCar($id);
 // Print_r($car);
 // echo '</pre>';
 
-// dummydata for css purposes
-$carDummy = [];
-$carDummy['front'] = 'https://images.unsplash.com/photo-1614687153862-b0e115ebcef1?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3JTIwY2FyfGVufDB8fDB8fHww';
-$carDummy['back'] = 'https://static.vecteezy.com/system/resources/thumbnails/026/992/343/small_2x/classic-modified-car-with-dark-smokie-background-ai-generative-free-photo.jpg';
-$carDummy['inner'] = 'https://cdn.pixabay.com/photo/2015/12/19/10/27/seat-cushion-1099616_1280.jpg';
-// end dummydata
+
 ?>
 
 <!DOCTYPE html>
@@ -51,20 +46,20 @@ $carDummy['inner'] = 'https://cdn.pixabay.com/photo/2015/12/19/10/27/seat-cushio
         <div class="container">
             <div class="g">
 
-                    <div id="imgdetail">
-                        <img src="<?= $car['ul']?>" alt="">
-                    </div>
-                    <div id="imgpreviews"> 
-                        <!-- //TODO: after css styling revert from carDummy to car data and uncomment if statements -->
-                         <img class="shown" src="<?= $car['ul']; ?>" alt="">
-                        <!-- <// if ($car['front'] !== null): ?> -->
-                        <img src="<?= $carDummy['front']; ?>" alt=""> 
-                        <!-- <// endif; if ($car['back'] !== null) :?> -->
-                        <img src="<?= $carDummy['back']; ?>" alt=""> 
-                        <!-- <// endif; if ($car['inner'] !== null): ?> -->
-                        <img src="<?= $carDummy['inner']; ?>" alt=""> 
-                        <!-- <// endif; ?> -->
-                    </div>
+                <div id="imgdetail">
+                    <img src="<?= $car['ul'] ?>" alt="">
+                </div>
+                <div id="imgpreviews">
+                    <!-- //TODO: after css styling revert from carDummy to car data and uncomment if statements -->
+                    <img class="shown" src="<?= $car['ul']; ?>" alt="">
+                    <!-- <// if ($car['front'] !== null): ?> -->
+                    <img src="<?= isset($car['front']) ? $car['front'] : "..\logo_auto\carnotfound.jpg"; ?>" alt="">
+                    <!-- <// endif; if ($car['back'] !== null) :?> -->
+                    <img src="<?= isset($car['back']) ? $car["back"] : "..\logo_auto\carnotfound.jpg"; ?>" alt="">
+                    <!-- <// endif; if ($car['inner'] !== null): ?> -->
+                    <img src="<?= isset($car['inner']) ? $car["inner"] : "..\logo_auto\carnotfound.jpg"; ?>" alt="">
+                    <!-- <// endif; ?> -->
+                </div>
                 <div class="description">
 
                     <h2><?= $car['make'] . " " . $car['model']; ?> </h2>
@@ -111,7 +106,7 @@ $carDummy['inner'] = 'https://cdn.pixabay.com/photo/2015/12/19/10/27/seat-cushio
             </div>
         </div>
     </main>
-    
+
 </body>
 
 </html>
