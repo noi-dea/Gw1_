@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 include_once "includes/css_js.inc.php";
 
@@ -32,10 +32,9 @@ if (!isset($_SESSION["uid"])) {
     <?php include 'includes/hp_header.php'; ?>
 
     <main>
-        <?php include 'includes/hp_banner.php'; ?>
+        <!-- <?php include 'includes/hp_banner.php'; ?> -->
         <?php include 'includes/hp_searchfilter.php'; ?>
         <?php include 'includes/hp_categorie.php'; ?>
-
     </main>
 
     <?php include 'includes/hp_footer.php'; ?>
