@@ -1,7 +1,12 @@
 <?php
-$adminpath = 'admin';
-if (isset($_SERVER['admin'])){
-    $adminpath = "index.php";
+$homepath = '';
+if (isset($_SERVER['admin']) || isset($pageInIncludes)){
+    $homepath = '../';
+}
+if(isset($_SESSION['user'])){
+    $username = $_SESSION['user'];
+} else {
+    $username = 'Meld je aan';
 }
 ?>
 
@@ -15,12 +20,20 @@ if (isset($_SERVER['admin'])){
             <li><a href="/contact.php">Contact</a></li>
         </ul>
 
-        <ul class="user-nav">
-            <li><a href="includes/login.php" class="login-btn">Login</a></li>
-            <li><a href="includes/register.php" class="register-btn">Sign Up</a></li>
-            <li><a href="includes/logout.php" class="logout-btn">Logout</a></li>
-            <li><a href="includes/wishlist.php" class="wishlist-link">Wishlist</a></li>
-            <li><a href="<?= $adminpath; ?>" class="admin-btn"><i></i>Admin</a></li>
-        </ul>
+        <div class="dropdown">
+            <button class="dropbtn"><?= $username; ?></button>
+                <div class="dropdown-content">
+                    <?php if (isset($_SESSION['adminbtn']) && $_SESSION['adminbtn'] == true):?>
+                    <a href="<?= $homepath; ?>/admin">Admin</a>
+                    <?php endif; ?>
+                    <?php if($username !== 'Meld je aan'){ ?>
+                    <a href="<?= $homepath; ?>includes/wishlist.php">Wishlist</a>
+                    <a href="<?= $homepath; ?>includes/logout.php">Log Out</a>
+                    <?php } else { ?>
+                    <a href="<?= $homepath; ?>includes/login.php">Log In</a></li>
+                    <a href="<?= $homepath; ?>includes/register.php">Sign Up</a></li>
+                    <?php } ?>
+                </div>
+        </div> 
     </nav>
 </header>
