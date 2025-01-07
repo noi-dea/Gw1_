@@ -8,11 +8,11 @@ include_once "includes/css_js.inc.php";
 
 session_start();
 
-if (!isset($_SESSION["uid"])) {
+// if (!isset($_SESSION["uid"])) {
 
-    header("Location: /includes/login.php");
-    exit;
-}
+//     header("Location: /includes/login.php");
+//     exit;
+// }
 
 ?>
 <!DOCTYPE html>
