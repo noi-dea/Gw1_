@@ -16,6 +16,14 @@ git log --oneline
 
 wat werd er reeds gepushet:
 git log origin/dev --oneline
+om de tijd te tracken van de commits: 
+gebruik: git log --pretty=format:"%h - %an, %ar : %s" --date=local
+info:
+Commit hash (%h)
+Author name (%an)
+Relative date (%ar), like "2 days ago"
+Commit message (%s)
+
 
 !!!!STAPPEN:
 git checkout dev

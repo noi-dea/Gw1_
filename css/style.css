@@ -45,6 +45,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 
   header {
     background-color: var(--charcoal);
@@ -119,50 +120,71 @@ body {
   }
 
   main {
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: 2rem;
+    position: relative;
+    background: url("../images/banner4.jpg") no-repeat center center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
     flex: 1;
+    min-height: calc(100vh - 8rem);
+    margin-top: 8rem;
+    /* overflow: hidden; */
+    .bg-image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      /* top:50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: auto;
+      background-size: contain;
+      object-fit: cover; */
 
-    .search-form {
-      background-color: white;
-      padding: 2.4rem;
-      border-radius: 0.8rem;
-      box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
+      .search-form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 90%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 2.4rem;
+        border-radius: 0.8rem;
+        box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
 
-      .filter-section {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-
-        label {
-          font-size: 1.4rem;
-          font-weight: bold;
-          color: var(--graphite);
-        }
-
-        select,
-        input {
-          width: 100%;
-          padding: 1rem;
-          border: 0.1rem solid var(--smoke-gray);
-          border-radius: 0.4rem;
-          font-size: 1.4rem;
-          color: var(--charcoal);
-          transition: border-color 0.2s ease;
-
-          &:focus {
-            outline: none;
-            border-color: var(--steel-blue);
+        filter-section {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
+          label {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--graphite);
           }
-        }
 
-        input::placeholder {
-          color: var(--cool-silver);
+          select,
+          input {
+            width: 100%;
+            padding: 1rem;
+            border: 0.1rem solid var(--smoke-gray);
+            border-radius: 0.4rem;
+            font-size: 1.4rem;
+            color: var(--charcoal);
+            transition: border-color 0.2s ease;
+
+            &:focus {
+              outline: none;
+              border-color: var(--steel-blue);
+            }
+          }
+
+          input::placeholder {
+            color: var(--cool-silver);
+          }
         }
       }
 
@@ -203,20 +225,20 @@ body {
     }
 
     /* BANNER AFWERKEN HIERONDER */
-    .banner {
-      width: 100%;
-      height: 100px;
-      height: auto;
-      overflow: hidden;
-      display: block;
-    }
+    /* .banner {
+    width: 100%;
+    height: 100px;
+    height: auto;
+    overflow: hidden;
+    display: block;
+  } */
 
-    .banner-image {
+    /* .banner-image {
       width: 100%;
       height: auto;
       display: block;
       object-fit: cover;
-    }
+    } */
 
     /* detailpage */
     div.container {
@@ -315,31 +337,31 @@ body {
       }
     }
   }
-}
 
-@media (max-width: 768px) {
-  body {
-    header {
-      padding: 1.5rem;
+  @media (max-width: 768px) {
+    body {
+      header {
+        padding: 1.5rem;
 
-      .nav-container {
-        flex-direction: column;
-        gap: 1.5rem;
+        .nav-container {
+          flex-direction: column;
+          gap: 1.5rem;
 
-        .main-nav,
-        .user-nav {
-          flex-wrap: wrap;
-          justify-content: center;
+          .main-nav,
+          .user-nav {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
         }
       }
-    }
 
-    main {
-      padding: 1rem;
+      main {
+        padding: 1rem;
 
-      .search-form {
-        grid-template-columns: 1fr;
-        padding: 1.6rem;
+        .search-form {
+          grid-template-columns: 1fr;
+          padding: 1.6rem;
+        }
       }
     }
   }
