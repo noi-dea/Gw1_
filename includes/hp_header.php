@@ -17,7 +17,7 @@ if (isset($_SESSION['user'])) {
         <ul class="main-nav">
             <li><a href="/index.php">Home</a></li>
             <li><a href="includes/carlistpage.php">Car Stock</a></li>
-            <li><a href="/contact.php">Contact</a></li>
+            <li><a href="includes/contact.php">Contact</a></li>
         </ul>
 
         <div class="dropdown">
