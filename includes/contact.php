@@ -7,22 +7,6 @@ session_start();
 $pageInIncludes = true;
 include_once "./css_js.inc.php";
 
-require('../functions.inc.php');
-$lastId = getIdLastCar();
-$id = 1; //by declaring it and only changing it when there's a get value we save 1 else{} in the code
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    if ($id < 1 || preg_match('/[\D]/', $id)) {
-        $id = 1;
-    }
-    if ($id > $lastId) {
-        $id = $lastId;
-    }
-}
-$car = getCar($id);
-// echo '<pre>';
-// Print_r($car);
-// echo '</pre>';
 
 
 ?>
@@ -33,7 +17,7 @@ $car = getCar($id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $car['year'] . " " . $car['make'] . " " . $car['model']; ?></title>
+    <title>Contact </title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
