@@ -1,6 +1,6 @@
 <?php
 $adminpath = 'admin';
-if (isset($_SERVER['admin'])){
+if (isset($_SERVER['admin'])) {
     $adminpath = "index.php";
 }
 ?>
