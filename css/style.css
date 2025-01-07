@@ -220,10 +220,8 @@ body {
 
     /* detailpage */
     div.container {
-      /* overflow: hidden; */
-      width: 90%;
-      margin: 0 auto;
-      padding-top: 5rem;
+      overflow: hidden;
+      padding-top: 3rem;
       div.g {
         background-color: var(--cool-silver);
         display: grid;
