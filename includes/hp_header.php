@@ -1,9 +1,9 @@
 <?php
 $homepath = '';
-if (isset($_SERVER['admin']) || isset($pageInIncludes)){
+if (isset($_SERVER['admin']) || isset($pageInIncludes)) {
     $homepath = '../';
 }
-if(isset($_SESSION['user'])){
+if (isset($_SESSION['user'])) {
     $username = $_SESSION['user'];
 } else {
     $username = 'Meld je aan';
@@ -22,18 +22,18 @@ if(isset($_SESSION['user'])){
 
         <div class="dropdown">
             <button class="dropbtn"><?= $username; ?></button>
-                <div class="dropdown-content">
-                    <?php if (isset($_SESSION['adminbtn']) && $_SESSION['adminbtn'] == true):?>
+            <div class="dropdown-content">
+                <?php if (isset($_SESSION['adminbtn']) && $_SESSION['adminbtn'] == true): ?>
                     <a href="<?= $homepath; ?>/admin">Admin</a>
-                    <?php endif; ?>
-                    <?php if($username !== 'Meld je aan'){ ?>
+                <?php endif; ?>
+                <?php if ($username !== 'Meld je aan') { ?>
                     <a href="<?= $homepath; ?>includes/wishlist.php">Wishlist</a>
                     <a href="<?= $homepath; ?>includes/logout.php">Log Out</a>
-                    <?php } else { ?>
+                <?php } else { ?>
                     <a href="<?= $homepath; ?>includes/login.php">Log In</a></li>
                     <a href="<?= $homepath; ?>includes/register.php">Sign Up</a></li>
-                    <?php } ?>
-                </div>
-        </div> 
+                <?php } ?>
+            </div>
+        </div>
     </nav>
 </header>

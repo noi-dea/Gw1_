@@ -34,6 +34,7 @@ $car = getCar($id);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $car['year'] . " " . $car['make'] . " " . $car['model']; ?></title>
+    <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
 
@@ -41,7 +42,7 @@ $car = getCar($id);
 </head>
 
 <body>
-    <?php include('./hp_header.php'); ?>
+    <?php include('hp_header.php'); ?>
     <main>
         <div class="container">
             <div class="g">
@@ -106,7 +107,7 @@ $car = getCar($id);
             </div>
         </div>
     </main>
-
+    <?php include 'hp_footer.php'; ?>
 </body>
 
 </html>
