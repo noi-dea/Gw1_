@@ -9,14 +9,36 @@ include('../functions.inc.php');
 include('../includes/hp_header.php');
 
 
-$id = $_GET["id"];
-$cars = getCar($id);
-print '<pre>';
-print_r($cars);
-print '</pre>';
-print '<pre>';
-print_r($_GET);
-print '</pre>';
+// Haal de id op uit de URL
+$id = $_GET['id'] ?? null;
+if ($id) {
+    $cars = getCar($id);
+}
+
+if (isset($_GET["uid"])) {
+    $updateId = (int)$_GET["uid"];
+    $fotoUrl = $_GET["fotoUrl"];
+    $fotoUrlFront = $_GET["fotoUrlFront"];
+    $fotoUrlBack = $_GET["fotoUrlBack"];
+    $fotoUrlInner = $_GET["fotoUrlInner"];
+    $prize = (float) $_GET["prize"];
+    $mileage = (int)$_GET["mileage"];
+    print "<pre>";
+    print_r($_GET);
+    print "</pre>";
+    $updatedCar = updateCar($updateId, $fotoUrl, $fotoUrlFront, $fotoUrlBack, $fotoUrlInner, $prize, $mileage);
+
+    if ($updatedCar) {
+        header(("Location: index.php?message=Auto gewijzigd"));
+        exit;
+    } else {
+        header(("Location: index.php?message=Auto niet gewijzigd"));
+        exit;
+    }
+}
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -100,7 +122,8 @@ print '</pre>';
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" name="action" value="update" class="btn btn-primary">Opslaan</button>
+                <input type="hidden" name="uid" value="<?php echo $cars["id"]; ?>">
+                <button type="submit" class="btn btn-primary">Opslaan</button>
             </div>
         </form>
         <div>

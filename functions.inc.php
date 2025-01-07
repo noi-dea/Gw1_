@@ -444,46 +444,32 @@ function removeCar(INT $id): void
     $stmt = $db->prepare($sql);
     $stmt->execute([':id' => $id]);
 }
-function updateCar($fotoUrl,  $fotoUrlFront,  $fotoUrlBack, $fotoUrlInner, $prize, $mileage, $id)
+function updateCar($id, $fotoUrl,  $fotoUrlFront,  $fotoUrlBack, $fotoUrlInner, $prize, $mileage)
 {
-    try {
-        $db = connectToDB();
 
-        // Begin een transactiesessie
-        $db->beginTransaction();
+    $db = connectToDB();
 
-        // Update `cars` tabel
-        $sqlCars = "UPDATE cars 
+    $sqlCars = "UPDATE cars 
                 SET price = :prize, mileage = :mileage, fotoUrl = :fotoUrl 
                 WHERE id = :id";
-        $stmtCars = $db->prepare($sqlCars);
-        $stmtCars->execute([
-            ':id' => $id,
-            ':fotoUrl' => $fotoUrl,
-            ':prize' => $prize,
-            ':mileage' => $mileage,
-        ]);
+    $stmtCars = $db->prepare($sqlCars);
+    $stmtCars->execute([
+        ':id' => $id,
+        ':fotoUrl' => $fotoUrl,
+        ':prize' => $prize,
+        ':mileage' => $mileage
+    ]);
 
-        // Update `fotosets` tabel
-        $sqlFotosets = "UPDATE fotosets 
+
+    $sqlFotosets = "UPDATE fotosets 
                     SET front = :fotoUrlFront, back = :fotoUrlBack, `inner` = :fotoUrlInner 
                     WHERE id = :id";
-        $stmtFotosets = $db->prepare($sqlFotosets);
-        $stmtFotosets->execute([
-            ':id' => $id,
-            ':fotoUrlFront' => $fotoUrlFront,
-            ':fotoUrlBack' => $fotoUrlBack,
-            ':fotoUrlInner' => $fotoUrlInner,
-        ]);
-
-        // Commit de transacties
-        $db->commit();
-        echo "Auto en fotoset succesvol bijgewerkt.";
-        return true;
-    } catch (PDOException $e) {
-        // Rollback bij fouten
-        $db->rollBack();
-        echo "Fout bij bijwerken: " . $e->getMessage();
-        return false;
-    }
+    $stmtFotosets = $db->prepare($sqlFotosets);
+    $stmtFotosets->execute([
+        ':id' => $id,
+        ':fotoUrlFront' => $fotoUrlFront,
+        ':fotoUrlBack' => $fotoUrlBack,
+        ':fotoUrlInner' => $fotoUrlInner
+    ]);
+    return $stmtCars->rowCount() > 0 || $stmtFotosets->rowCount() > 0;
 }
