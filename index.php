@@ -33,7 +33,7 @@ if (!isset($_SESSION["uid"])) {
 
     <main>
         <?php include 'includes/hp_banner.php'; ?>
-        <?php include 'includes/hp_searchfilter.php'; ?>
+        <!-- weggehaald omdat het nu in de banner zit! <?php include 'includes/hp_searchfilter.php'; ?> -->
         <?php include 'includes/hp_categorie.php'; ?>
 
     </main>

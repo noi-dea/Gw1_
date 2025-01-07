@@ -47,6 +47,10 @@ body {
   flex-direction: column;
 
   header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     background-color: var(--charcoal);
     padding: 2rem;
     box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
@@ -119,10 +123,13 @@ body {
   }
 
   main {
+    background-image: url("./images/banner1.jpg");
+    background-size: cover;
+    /* z-index: -1; */
     max-width: 120rem;
     margin: 0 auto;
     padding: 2rem;
-    flex: 1;
+    flex: 2;
 
     .search-form {
       background-color: white;

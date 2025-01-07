@@ -1,19 +1,19 @@
 {
   "admin/fonts/icomoon.svg": {
-    "file": "assets/icomoon-DQfcDdS4.svg",
+    "file": "assets/icomoon-C-EAromZ.svg",
     "src": "admin/fonts/icomoon.svg"
   },
   "admin/js/index.js": {
-    "file": "assets/index-Cug-uzsF.js",
+    "file": "assets/index-aCtwg6gr.js",
     "name": "index",
     "src": "admin/js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-f46TH_HD.css"
+      "assets/index-BQ4-73G2.css"
     ],
     "assets": [
-      "assets/icomoon-DQfcDdS4.svg",
-      "assets/icomoon-Dd2_tEE8.svg",
+      "assets/icomoon-C-EAromZ.svg",
+      "assets/icomoon-BeRJgAey.svg",
       "assets/Merriweather-Regular-rtU9Xc2a.ttf",
       "assets/Roboto-Regular-ia0dPpEo.ttf"
     ]
@@ -27,19 +27,27 @@
     "src": "fonts/Roboto/Roboto-Regular.ttf"
   },
   "fonts/icomoon.svg": {
-    "file": "assets/icomoon-Dd2_tEE8.svg",
+    "file": "assets/icomoon-BeRJgAey.svg",
     "src": "fonts/icomoon.svg"
   },
+  "images/banner1.jpg": {
+    "file": "assets/banner1-TuxGnViL.jpg",
+    "src": "images/banner1.jpg"
+  },
+  "images/banner2.jpg": {
+    "file": "assets/banner2-BQuxU2OB.jpg",
+    "src": "images/banner2.jpg"
+  },
   "js/index.js": {
-    "file": "assets/index-CeabJ4pb.js",
+    "file": "assets/index-DVVW8dJ7.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-Az88ICvg.css"
+      "assets/index-qdctHWa6.css"
     ],
     "assets": [
-      "assets/icomoon-Dd2_tEE8.svg",
+      "assets/icomoon-BeRJgAey.svg",
       "assets/Merriweather-Regular-rtU9Xc2a.ttf",
       "assets/Roboto-Regular-ia0dPpEo.ttf"
     ]
