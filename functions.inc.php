@@ -482,6 +482,6 @@ function getAllCars(){
     LEFT JOIN makes on makes.id = makes_id;';
 
     $stmt = $db->prepare($sql);
-    $stmt->execute()
+    $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
