@@ -35,17 +35,17 @@
     "src": "images/banner4.jpg"
   },
   "js/index.js": {
-    "file": "assets/index-C9zkWWAz.js",
+    "file": "assets/index-Ci_ew_my.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-CQ9f0G4v.css"
+      "assets/index-CS3lOxSB.css"
     ],
     "assets": [
       "assets/Merriweather-Regular-rtU9Xc2a.ttf",
       "assets/Roboto-Regular-ia0dPpEo.ttf",
-      "assets/banner4-CXsYekqC.jpg"
+      "assets/banner4-BOMv2u66.jpg"
     ]
   }
 }
