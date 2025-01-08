@@ -25,16 +25,18 @@ session_start();
     <title>GROEPS WEIRK</title>
     <link rel="stylesheet" href="./dist/<?= $cssPath ?>" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="icons.css" />
+    <link rel="stylesheet" href="./icons.css" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
 </head>
 
 <body>
     <?php include 'includes/hp_header.php'; ?>
+
     <main>
         <?php include 'includes/hp_banner.php'; ?>
         <?php include 'includes/hp_searchfilter.php'; ?>
         <?php include 'includes/hp_categorie.php'; ?>
+
     </main>
     <?php include 'includes/hp_footer.php'; ?>
 </body>

@@ -10,7 +10,7 @@ if (isset($_SESSION['user'])) {
 }
 ?>
 
-<header class="header">
+<header>
     <nav class="nav-container">
         <a href="/" class="site-logo">Groeps Weirk</a>
 
