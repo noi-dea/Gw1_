@@ -101,6 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <input type="number" id="km_max" name="km_max" placeholder="Max 500000" min="0" max="100000">
         </div>
 
-        <button type="submit">Zoek</button>
+        <button type="submit"><i class="icon-search"></i> Zoek</button>
     </form>
 </div>

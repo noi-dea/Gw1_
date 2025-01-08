@@ -14,24 +14,25 @@ if (isset($_SESSION['user'])) {
     <nav class="nav-container">
         <a href="/" class="site-logo">Groeps Weirk</a>
 
-        <ul class="main-nav">
-            <li><a href="/index.php">Home</a></li>
-            <li><a href="includes/carlistpage.php">Car Stock</a></li>
-            <li><a href="includes/contact.php">Contact</a></li>
+        <ul class="main-nav"><i class="icon-menu1"></i>
+
+            <li><a href="/index.php"><i class="icon-home"></i> Home</a></li>
+            <li><a href="includes/carlistpage.php"><i class="icon-travel-car "></i> Car Stock</a></li>
+            <li><a href="includes/contact.php"> <i class="icon-mail"></i> Contact</a></li>
         </ul>
 
         <div class="dropdown">
-            <button class="dropbtn"><?= $username; ?></button>
+            <button class="dropbtn"><i class="icon-user1"></i><?= " " . $username; ?></button>
             <div class="dropdown-content">
                 <?php if (isset($_SESSION['adminbtn']) && $_SESSION['adminbtn'] == true): ?>
-                    <a href="<?= $homepath; ?>/admin">Admin</a>
+                    <a href="<?= $homepath; ?>/admin"><i class="icon-user"></i> Admin</a>
                 <?php endif; ?>
                 <?php if ($username !== 'Meld je aan') { ?>
-                    <a href="<?= $homepath; ?>includes/wishlist.php">Wishlist</a>
-                    <a href="<?= $homepath; ?>includes/logout.php">Log Out</a>
+                    <a href="<?= $homepath; ?>includes/wishlist.php"><i class="icon-heart2"></i> Wishlist</a>
+                    <a href="<?= $homepath; ?>includes/logout.php"><i class="icon-log-out"></i> Log Out</a>
                 <?php } else { ?>
-                    <a href="<?= $homepath; ?>includes/login.php">Log In</a></li>
-                    <a href="<?= $homepath; ?>includes/register.php">Sign Up</a></li>
+                    <a href="<?= $homepath; ?>includes/login.php"><i class="icon-login"></i> Log In</a></li>
+                    <a href="<?= $homepath; ?>includes/register.php"><i class="icon-clipboard"></i> Sign Up</a></li>
                 <?php } ?>
             </div>
         </div>

@@ -31,7 +31,6 @@ $wishlist = getWishlist($userId);
 </head>
 
 <body>
-
     <h1>Mijn Wishlist</h1>
 
     <h2>Geselecteerde auto's:</h2>
