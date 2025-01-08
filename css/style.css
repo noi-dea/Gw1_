@@ -119,6 +119,9 @@ body {
             display: block;
             border-radius: 0.4rem;
             a {
+              .icon-heart2 {
+                color: var(--jet-black);
+              }
               border-radius: 0.4rem;
               &:hover {
                 color: var(--steel-blue);
@@ -370,18 +373,40 @@ body {
         font-size: 1.4rem;
         margin: 0.5rem 0;
       }
+
+      .social-icons {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .social-icons a {
+        color: var(--platinum);
+        font-size: 2.4rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      footer .social-icons a:hover {
+        color: var(--steel-blue);
+      }
     }
   }
-
-  @media (max-width: 768px) {
+  /* @media only screen and (min-width: 768px) {
+  } */
+  @media only screen and (max-width: 768px) {
     body {
       header {
         padding: 1.5rem;
 
         .nav-container {
+          /* display: none; */
           flex-direction: column;
           gap: 1.5rem;
 
+          .icon-menu1 {
+          }
           .main-nav,
           .user-nav {
             flex-wrap: wrap;
@@ -401,5 +426,3 @@ body {
     }
   }
 }
-
-/* -------probeersel--------- */
