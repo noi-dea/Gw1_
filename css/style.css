@@ -101,19 +101,54 @@ body {
           }
         }
       }
+      .dropbtn {
+        background-color: var(--smoke-gray);
+        color: var(--jet-black);
+        font-weight: 500;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        border-radius: 0.4rem;
+      }
 
-      .user-nav {
-        li {
-          a {
-            background-color: var(--smoke-gray);
-            color: var(--jet-black);
-            font-weight: 500;
-
-            &:hover {
-              color: var(--dusty-rose);
-              background-color: rgba(255, 255, 255, 0.1);
+      .dropdown {
+        position: relative;
+        display: inline-block;
+        &:hover {
+          .dropdown-content {
+            display: block;
+            border-radius: 0.4rem;
+            a {
+              border-radius: 0.4rem;
+              &:hover {
+                color: var(--steel-blue);
+                background-color: rgba(255, 255, 255, 0.5);
+              }
             }
           }
+          .dropbtn {
+            color: var(--dusty-rose);
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+        }
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        &:hover {
+          background-color: #ddd;
         }
       }
     }
@@ -366,3 +401,5 @@ body {
     }
   }
 }
+
+/* -------probeersel--------- */

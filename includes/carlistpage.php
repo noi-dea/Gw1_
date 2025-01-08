@@ -8,9 +8,9 @@ require("../functions.inc.php");
 
 session_start();
 
-echo '<pre>';
-Print_r($_SESSION);
-echo '</pre>';
+// echo '<pre>';
+// Print_r($_SESSION);
+// echo '</pre>';
 
 if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
     $results = $_SESSION['results'];
@@ -29,10 +29,13 @@ if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./dist/<?= $cssPath ?>" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script type="module" src="./dist/<?= $jsPath ?>"></script>
 </head>
 
 <body>
-
+    <?php include 'hp_header.php'; ?>
     <table>
         <thead>
             <tr>
@@ -76,6 +79,7 @@ if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
             ?>
         </tbody>
     </table>
+    <?php include 'hp_footer.php'; ?>
 </body>
 
 </html>
