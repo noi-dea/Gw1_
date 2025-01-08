@@ -31,14 +31,11 @@ session_start();
 
 <body>
     <?php include 'includes/hp_header.php'; ?>
-
     <main>
         <?php include 'includes/hp_banner.php'; ?>
         <?php include 'includes/hp_searchfilter.php'; ?>
         <?php include 'includes/hp_categorie.php'; ?>
-
     </main>
-
     <?php include 'includes/hp_footer.php'; ?>
 </body>
 
