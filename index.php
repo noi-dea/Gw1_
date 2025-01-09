@@ -30,15 +30,14 @@ session_start();
 </head>
 
 <body>
-    <?php include 'includes/hp_header.php'; ?>
-
-    <main>
-        <?php include 'includes/hp_banner.php'; ?>
-        <?php include 'includes/hp_searchfilter.php'; ?>
-        <?php include 'includes/hp_categorie.php'; ?>
-
-    </main>
-    <?php include 'includes/hp_footer.php'; ?>
+    <div>
+        <?php include 'includes/hp_header.php'; ?>
+        <main>
+            <?php include 'includes/hp_hero.php'; ?>
+            <?php include 'includes/hp_categorie.php'; ?>
+        </main>
+        <?php include 'includes/hp_footer.php'; ?>
+    </div>
 </body>
 
 </html>

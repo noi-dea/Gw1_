@@ -13,14 +13,12 @@ if (isset($_SESSION['user'])) {
 <header>
     <nav class="nav-container">
         <a href="/" class="site-logo">Groeps Weirk</a>
-
-        <ul class="main-nav"><i class="icon-menu1"></i>
-
+        <i class="icon-menu1"></i>
+        <ul class="main-nav">
             <li><a href="/index.php"><i class="icon-home"></i> Home</a></li>
             <li><a href="includes/carlistpage.php"><i class="icon-travel-car "></i> Car Stock</a></li>
             <li><a href="includes/contact.php"> <i class="icon-mail"></i> Contact</a></li>
         </ul>
-
         <div class="dropdown">
             <button class="dropbtn"><i class="icon-user1"></i><?= " " . $username; ?></button>
             <div class="dropdown-content">
