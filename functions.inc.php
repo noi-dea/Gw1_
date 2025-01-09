@@ -478,7 +478,7 @@ function updateCar($id, $fotoUrl,  $fotoUrlFront,  $fotoUrlBack, $fotoUrlInner, 
 function getAllCars(){
     $db = connectToDB();
 
-    $sql = 'SELECT makeName as make, model, fotoURL FROM cars
+    $sql = 'SELECT cars.id as id, makeName as make, model, fotoURL, year FROM cars
     LEFT JOIN makes on makes.id = makes_id;';
 
     $stmt = $db->prepare($sql);
