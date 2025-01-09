@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 // session_start();
 require 'functions.inc.php';
 //verwijzing naar bovenstaande map weggehaald doordat deze problemen gaf op de index.php
@@ -42,78 +42,81 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 ?>
-
-<div class="main-intro">
-    <h1>- Get Yours Today!<br></h1>
-    <p>Looking for your dream car? We’ve got it!</p>
-    <a href="#">Get Started</a>
-</div>
-
-<div class="search-container">
-    <div>
-        <form class="search-form" action="../index.php" method="GET">
-            <div class="filter-section">
-                <label for="price_min">Price:</label>
-                <input type="number" id="price_max" name="price_max" placeholder="Max(€): 200,000" min="0" max="200000">
-            </div>
-
-            <div class="filter-section">
-                <label for="makes_id">Brand:</label>
-                <select id="makes_id" name="makes_id">
-                    <option value="">Select Brand</option>
-                    <?php foreach ($makes as $make): ?>
-                        <option value="<?= $make['id']; ?>"> <?= $make['makeName']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <label for="model">Model:</label>
-                <select id="model" name="model">
-                    <option value="">Select Model</option>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <label for="fueltype">Fuel Type:</label>
-                <select id="fueltype" name="fueltype">
-                    <option value="">Select Fuel type</option>
-                    <option value="petrol">Petrol</option>
-                    <option value="diesel">Diesel</option>
-                    <option value="hybrid">Hybrid</option>
-                    <option value="electric">Electric</option>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <label for="transmission">Transmission:</label>
-                <select id="transmission" name="transmission">
-                    <option value="">Select Transmission</option>
-                    <option value="manual">Manual</option>
-                    <option value="automatic">Automatic</option>
-                </select>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <label for="colours_id">Color:</label>
-                <select id="colours_id" name="colours_id">
-                    <option value="">Select Color</option>
-                    <?php foreach ($colours as $colour): ?>
-                        <option value="<?= $colour['id']; ?>"><?= $colour['colourName']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <label for="km_min">Mileage:</label>
-                <input type="number" id="km_max" name="km_max" placeholder="Max(km): 500,000" min="0" max="100,000">
-            </div>
-
-            <button type="submit"><i class="icon-search"></i> Search</button>
-        </form>
+<div class="hero-image">
+    <div class="main-intro">
+        <h1>- Get Yours Today!<br></h1>
+        <p>Looking for your dream car? We’ve got it!</p>
+        <a href="#">Get Started</a>
     </div>
 
-    <div class="hero-content">
-        <?php include('hp_category.php'); ?>
+    <div class="search-container">
+        <div>
+            <form class="search-form" action="../index.php" method="GET">
+                <div class="filter-section">
+                    <label for="price_min">Price:</label>
+                    <input type="number" id="price_max" name="price_max" placeholder="Max(€): 200,000" min="0" max="200000">
+                </div>
+
+                <div class="filter-section">
+                    <label for="makes_id">Brand:</label>
+                    <select id="makes_id" name="makes_id">
+                        <option value="">Select Brand</option>
+                        <?php foreach ($makes as $make): ?>
+                            <option value="<?= $make['id']; ?>"> <?= $make['makeName']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <label for="model">Model:</label>
+                    <select id="model" name="model">
+                        <option value="">Select Model</option>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <label for="fueltype">Fuel Type:</label>
+                    <select id="fueltype" name="fueltype">
+                        <option value="">Select Fuel type</option>
+                        <option value="petrol">Petrol</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="hybrid">Hybrid</option>
+                        <option value="electric">Electric</option>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <label for="transmission">Transmission:</label>
+                    <select id="transmission" name="transmission">
+                        <option value="">Select Transmission</option>
+                        <option value="manual">Manual</option>
+                        <option value="automatic">Automatic</option>
+                    </select>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <label for="colours_id">Color:</label>
+                    <select id="colours_id" name="colours_id">
+                        <option value="">Select Color</option>
+                        <?php foreach ($colours as $colour): ?>
+                            <option value="<?= $colour['id']; ?>"><?= $colour['colourName']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <label for="km_min">Mileage:</label>
+                    <input type="number" id="km_max" name="km_max" placeholder="Max(km): 500,000" min="0" max="100,000">
+                </div>
+
+                <button type="submit"><i class="icon-search"></i> Search</button>
+            </form>
+        </div>
+
+        <div class="hero-content">
+            <div class="category-container">
+                <?php include('hp_categorie.php'); ?>
+            </div>
+        </div>
     </div>
