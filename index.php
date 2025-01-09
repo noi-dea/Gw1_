@@ -30,15 +30,17 @@ session_start();
 </head>
 
 <body>
-    <?php include 'includes/hp_header.php'; ?>
-
-    <main>
-        <?php include 'includes/hp_banner.php'; ?>
-        <?php include 'includes/hp_searchfilter.php'; ?>
-        <?php include 'includes/hp_categorie.php'; ?>
-
-    </main>
-    <?php include 'includes/hp_footer.php'; ?>
+    <div class="bg-image">
+        <section class="parallax">
+            <div class="background"></div>
+        </section>
+        <?php include 'includes/hp_header.php'; ?>
+        <main>
+            <?php include 'includes/hp_hero.php'; ?>
+            <?php include 'includes/hp_categorie.php'; ?>
+        </main>
+        <?php include 'includes/hp_footer.php'; ?>
+    </div>
 </body>
 
 </html>
