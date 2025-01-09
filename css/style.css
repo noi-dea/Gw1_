@@ -60,6 +60,17 @@ body {
   /* background-color: var(--dark-slate-gray); */
   display: flex;
   flex-direction: column;
+  position: relative;
+  .overlay {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    background: rgba(255, 255, 255, 0.2); /* Glass-like effect */
+    border-radius: 1rem;
+    z-index: 1;
+  }
   header {
     width: 100%;
     z-index: 3;
@@ -218,10 +229,12 @@ body {
       /* background-position: center, bottom; */
 
       width: 100%;
-      min-height: calc(100vh - 2rem);
-      height: calc(100vh + 10rem);
+      min-height: calc(100vh - 3rem);
+      /* height: calc(100vh + 10rem); */
+      height: auto;
       margin: 0;
       padding-top: 5rem;
+      padding-bottom: 10rem;
       /* flex: 1; */
 
       .main-intro {
