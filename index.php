@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 include_once "includes/css_js.inc.php";
 
 
-session_start();
 
 // if (!isset($_SESSION["uid"])) {
 
@@ -34,7 +33,6 @@ session_start();
         <?php include 'includes/hp_header.php'; ?>
         <main>
             <?php include 'includes/hp_hero.php'; ?>
-            <?php include 'includes/hp_categorie.php'; ?>
         </main>
         <?php include 'includes/hp_footer.php'; ?>
     </div>

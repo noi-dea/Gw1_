@@ -6,13 +6,13 @@ if (isset($_SERVER['admin']) || isset($pageInIncludes)) {
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user'];
 } else {
-    $username = 'Meld je aan';
+    $username = 'Get Started';
 }
 ?>
 
 <header>
     <nav class="nav-container">
-        <a href="/" class="site-logo">Groeps Weirk</a>
+        <a href="/" class="site-logo">Groeps Weirk.</a>
         <i class="icon-menu1"></i>
         <ul class="main-nav">
             <li><a href="/index.php"><i class="icon-home"></i> Home</a></li>
@@ -25,7 +25,7 @@ if (isset($_SESSION['user'])) {
                 <?php if (isset($_SESSION['adminbtn']) && $_SESSION['adminbtn'] == true): ?>
                     <a href="<?= $homepath; ?>/admin"><i class="icon-user"></i> Admin</a>
                 <?php endif; ?>
-                <?php if ($username !== 'Meld je aan') { ?>
+                <?php if ($username !== 'Get Started') { ?>
                     <a href="<?= $homepath; ?>includes/wishlist.php"><i class="icon-heart2"></i> Wishlist</a>
                     <a href="<?= $homepath; ?>includes/logout.php"><i class="icon-log-out"></i> Log Out</a>
                 <?php } else { ?>
