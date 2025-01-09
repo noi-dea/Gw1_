@@ -42,65 +42,74 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 ?>
-<div class="bg-image">
-    <form class="search-form" action="../index.php" method="GET">
-        <div class="filter-section">
-            <label for="price_min">Prijs:</label>
-            <input type="number" id="price_max" name="price_max" placeholder="Max €200000" min="0" max="200000">
-        </div>
+<section class="hero">
+    <div class="hero-text">
+        <h1>- Vandaag Nog!</h1>
+        <p>Op zoek naar je nieuwe auto? Wij hebben 'm!</p>
+    </div>
 
-        <div class="filter-section">
-            <label for="makes_id">Merk:</label>
-            <select id="makes_id" name="makes_id">
-                <option value="">Selecteer Merk</option>
-                <?php foreach ($makes as $make): ?>
-                    <option value="<?= $make['id']; ?>"> <?= $make['makeName']; ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+    <div class="search-section">
+        <div class="bg-image">
+            <form class="search-form" action="../index.php" method="GET">
+                <div class="filter-section">
+                    <label for="price_min">Prijs:</label>
+                    <input type="number" id="price_max" name="price_max" placeholder="Max €200000" min="0" max="200000">
+                </div>
 
-        <div class="filter-section">
-            <label for="model">Model:</label>
-            <select id="model" name="model">
-                <option value="">Selecteer Model</option>
-            </select>
-        </div>
+                <div class="filter-section">
+                    <label for="makes_id">Merk:</label>
+                    <select id="makes_id" name="makes_id">
+                        <option value="">Selecteer Merk</option>
+                        <?php foreach ($makes as $make): ?>
+                            <option value="<?= $make['id']; ?>"> <?= $make['makeName']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-        <div class="filter-section">
-            <label for="fueltype">Brandstof:</label>
-            <select id="fueltype" name="fueltype">
-                <option value="">Selecteer Brandstof</option>
-                <option value="benzine">Benzine</option>
-                <option value="diesel">Diesel</option>
-                <option value="hybride">Hybride</option>
-                <option value="elektrisch">Elektrisch</option>
-            </select>
-        </div>
+                <div class="filter-section">
+                    <label for="model">Model:</label>
+                    <select id="model" name="model">
+                        <option value="">Selecteer Model</option>
+                    </select>
+                </div>
 
-        <div class="filter-section">
-            <label for="transmission">Transmissie:</label>
-            <select id="transmission" name="transmission">
-                <option value="">Selecteer Transmissie</option>
-                <option value="handmatig">Handmatig</option>
-                <option value="automatisch">Automatisch</option>
-            </select>
-        </div>
+                <div class="filter-section">
+                    <label for="fueltype">Brandstof:</label>
+                    <select id="fueltype" name="fueltype">
+                        <option value="">Selecteer Brandstof</option>
+                        <option value="benzine">Benzine</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="hybride">Hybride</option>
+                        <option value="elektrisch">Elektrisch</option>
+                    </select>
+                </div>
 
-        <div class="filter-section">
-            <label for="colours_id">Kleur:</label>
-            <select id="colours_id" name="colours_id">
-                <option value="">Selecteer Kleur</option>
-                <?php foreach ($colours as $colour): ?>
-                    <option value="<?= $colour['id']; ?>"><?= $colour['colourName']; ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+                <div class="filter-section">
+                    <label for="transmission">Transmissie:</label>
+                    <select id="transmission" name="transmission">
+                        <option value="">Selecteer Transmissie</option>
+                        <option value="handmatig">Handmatig</option>
+                        <option value="automatisch">Automatisch</option>
+                    </select>
+                </div>
 
-        <div class="filter-section">
-            <label for="km_min">Kilometer:</label>
-            <input type="number" id="km_max" name="km_max" placeholder="Max 500000km" min="0" max="100000">
-        </div>
+                <div class="filter-section">
+                    <label for="colours_id">Kleur:</label>
+                    <select id="colours_id" name="colours_id">
+                        <option value="">Selecteer Kleur</option>
+                        <?php foreach ($colours as $colour): ?>
+                            <option value="<?= $colour['id']; ?>"><?= $colour['colourName']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-        <button type="submit"><i class="icon-search"></i> Zoek</button>
-    </form>
-</div>
+                <div class="filter-section">
+                    <label for="km_min">Kilometer:</label>
+                    <input type="number" id="km_max" name="km_max" placeholder="Max 500000km" min="0" max="100000">
+                </div>
+
+                <button type="submit"><i class="icon-search"></i> Zoek</button>
+            </form>
+        </div>
+    </div>
+</section>

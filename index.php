@@ -25,7 +25,7 @@ session_start();
     <title>GROEPS WEIRK</title>
     <link rel="stylesheet" href="./dist/<?= $cssPath ?>" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="icons.css" />
+    <link rel="stylesheet" href="./icons.css" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
 </head>
 
@@ -38,7 +38,6 @@ session_start();
         <?php include 'includes/hp_categorie.php'; ?>
 
     </main>
-
     <?php include 'includes/hp_footer.php'; ?>
 </body>
 
