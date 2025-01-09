@@ -30,10 +30,7 @@ session_start();
 </head>
 
 <body>
-    <div class="bg-image">
-        <section class="parallax">
-            <div class="background"></div>
-        </section>
+    <div>
         <?php include 'includes/hp_header.php'; ?>
         <main>
             <?php include 'includes/hp_hero.php'; ?>

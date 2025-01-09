@@ -43,13 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 ?>
 
-<section class="main-intro">
+<div class="main-intro">
     <h1>- Get Yours Today!<br></h1>
     <p>Looking for your dream car? We’ve got it!</p>
     <a href="#">Get Started</a>
-</section>
+</div>
 
-<section class="search-section">
+<div class="search-container">
     <div>
         <form class="search-form" action="../index.php" method="GET">
             <div class="filter-section">
@@ -112,4 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
             <button type="submit"><i class="icon-search"></i> Search</button>
         </form>
-        </secttion>
+    </div>
+
+    <div class="hero-content">
+        <?php include('hp_category.php'); ?>
+    </div>
