@@ -48,10 +48,10 @@
 }
 
 body {
-  background: url("../images/background6.jpg") no-repeat center center;
-  height: 100vh;
+  /* background: url("../images/background6.jpg") no-repeat center center; */
+  /* height: 100vh;
   background-position: center;
-  background-size: cover;
+  background-size: cover; */
   object-fit: contain;
   font-family: "Roboto", sans-serif;
   font-size: 7rem;
@@ -61,16 +61,6 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  .overlay {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
-    background: rgba(255, 255, 255, 0.2); /* Glass-like effect */
-    border-radius: 1rem;
-    z-index: 1;
-  }
   header {
     width: 100%;
     z-index: 3;
@@ -112,7 +102,6 @@ body {
           color: var(--platinum);
         }
       }
-
       .main-nav,
       .user-nav {
         font-size: 2rem;
@@ -120,7 +109,6 @@ body {
         gap: 10rem;
         list-style: none;
         align-items: center;
-
         li {
           a {
             font-size: 2rem;
