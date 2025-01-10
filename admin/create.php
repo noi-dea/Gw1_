@@ -1,5 +1,6 @@
 <?php
 $_SERVER['admin'] = true;
+session_start();
 include_once "../includes/css_js.inc.php";
 include('../functions.inc.php');
 include('admin.validation.php');
@@ -62,7 +63,7 @@ function keepSelection($var1, $var2)
     </style>
     <script>
         function selectValue() {
-            const item = querySelector('#input');
+            const item = document.getElementById('input');
             item.innerHTML += 'label="testing"';
         }
     </script>
@@ -91,15 +92,17 @@ function keepSelection($var1, $var2)
             <!-- input fields with datalists are refered to as dropdown, non-listed values will be dealt with in validation -->
             <!-- Dropdown brand + colour-->
             <div class="form-group a">
+                <!-- ------------------------------------------------   -->
                 <label for="make" class="control-label col-sm-2">Merk:</label>
                 <div class="col-sm-5">
                     <input name="make" id="input make" class="form-control" list="make" placeholder="Merk zoeken..." <?php keepValue($_POST['make']); ?>>
                     <datalist id="make">
                         <?php foreach ($makes as $make): ?>
-                            <option value="<?= $make['id']; ?>" script="onClick.selectValue()"><?= $make['makeName']; ?></option>
+                            <option value="<?= $make['id']; ?>" script="onClick=selectValue();"><?= $make['makeName']; ?></option>
                         <?php endforeach; ?>
                     </datalist>
                 </div>
+                <!-- --------------------------------------------------------------- -->
                 <label for="colour" class="control-label col-sm-2">Kleur: </label>
                 <div class="col-sm-3">
                     <select name="colour" class="form-control" id="colour">

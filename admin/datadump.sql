@@ -4,9 +4,9 @@ VALUES
 (1, 'W.Harper', md5('AdminPass-01'), 'William', 'Harper', 'wilper@hotmail.com', 'Herentals', 'nietbestaandestraat', 2200, 5, 2, 1);
 
 INSERT INTO fotosets
-(id)
+(id, front, back, inner)
 VALUES
-(1),
+(1, 'https://cdn-storage-02.prod.gocar.be/vehicles/24/12/2637189/4482837-o9i.jpg?width=840', 'https://images.cars.com/cldstatic/wp-content/uploads/36-toyota-corolla-2020-angle--exterior--rear--red.jpg', 'https://images.carpages.ca/inventory/10784618.387580098?w=640&h=480&q=75&s=41f8827ed7a38950c4820a2fdab9754c'),
 (2),
 (3),
 (4),

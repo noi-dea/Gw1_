@@ -10,7 +10,7 @@ $_SERVER["admin"] = true;
 include_once "../includes/css_js.inc.php";
 include('../functions.inc.php');
 include('../includes/hp_header.php');
-
+include('./admin.validation.php');
 
 if (isset($_SESSION["uid"])) {
     $uid = $_SESSION["uid"];
@@ -36,12 +36,11 @@ $firstpage = 1;
 $lastpage = ceil(count($cars) / $pagelimit);
 include('../includes/pagination.validation.php');
 //-----// car indexes
-$firstIndex = 1 + (($pagenr - 1) * $pagelimit);
+$firstIndex = 0 + (($pagenr - 1) * $pagelimit);
 $lastIndex = $firstIndex + 4;
-if ($lastIndex > count($cars)) {
-    $lastIndex = count($cars);
+if ($lastIndex > count($cars)-1) {
+    $lastIndex = count($cars)-1;
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -75,7 +74,7 @@ if ($lastIndex > count($cars)) {
         <a class="btn btn-info" href="create.php" role="button">auto toevoegen</a>
 
 
-        <span class="label" style="color:black;">Getoonde resultaten: <?= $firstIndex . ' - ' . $lastIndex; ?> van <?= count($cars); ?></span>
+        <span class="label" style="color:black;">Getoonde resultaten: <?= $firstIndex+1 . ' - ' . $lastIndex+1; ?> van <?= count($cars); ?></span>
 
 
         <div class="table-responsive">
@@ -99,29 +98,25 @@ if ($lastIndex > count($cars)) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($cars as $car): ?>
-                        <?php for ($i = $firstIndex; $i < $firstIndex + 5; $i++) {
-                            if ($car['id'] == $i): ?>
+                        <?php for ($i = $firstIndex; $i <= $lastIndex; $i++):?>
                                 <tr>
-                                    <td><img src="<?= $car['fotoUrl']; ?>" alt="foto van de auto" style="height:50px;"></td>
-                                    <td><?= $car['id']; ?></td>
-                                    <td><?= $car['make']; ?></td>
-                                    <td><?= $car['model']; ?></td>
-                                    <td><?= $car['year']; ?></td>
-                                    <td><?= $car['fueltype']; ?></td>
-                                    <td><?= $car['colour']; ?></td>
-                                    <td><?= $car['doors']; ?></td>
-                                    <td><?= $car['transmission']; ?></td>
-                                    <td><?= $car['price']; ?></td>
-                                    <td><?= $car['mileage']; ?></td>
-                                    <td><?= $car['bodywork']; ?></td>
+                                    <td><img src="<?= $cars[$i]['fotoUrl']; ?>" alt="foto van de auto" style="height:50px;"></td>
+                                    <td><?= $cars[$i]['id']; ?></td>
+                                    <td><?= $cars[$i]['make']; ?></td>
+                                    <td><?= $cars[$i]['model']; ?></td>
+                                    <td><?= $cars[$i]['year']; ?></td>
+                                    <td><?= $cars[$i]['fueltype']; ?></td>
+                                    <td><?= $cars[$i]['colour']; ?></td>
+                                    <td><?= $cars[$i]['doors']; ?></td>
+                                    <td><?= $cars[$i]['transmission']; ?></td>
+                                    <td><?= $cars[$i]['price']; ?></td>
+                                    <td><?= $cars[$i]['mileage']; ?></td>
+                                    <td><?= $cars[$i]['bodywork']; ?></td>
                                     <!-- placeholders, functionality to be added -->
-                                    <td><a href="edit.php?id=<?php echo $car['id']; ?>" class="btn btn-primary">Edit</a></td>
-                                    <td><a href="delete.php?id=<?php echo $car['id']; ?>" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="edit.php?id=<?= $cars[$i]['id']; ?>" class="btn btn-primary">Edit</a></td>
+                                    <td><a href="index.php?id=<?= $cars[$i]['id']; ?>" class="btn btn-danger">Delete</a></td>
                                 </tr>
-                        <?php endif;
-                        } ?>
-                    <?php endforeach; ?>
+                        <?php endfor;?>
                 </tbody>
             </table>
         </div> <!--end tag table div-->

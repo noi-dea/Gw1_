@@ -434,3 +434,54 @@ function setLogin($uid = false)
         $_SESSION['uid'] = $uid;
     }
 }
+
+// remove car from database
+function removeCar(INT $id): void
+{
+    $db = connectToDB();
+
+    $sql = "DELETE FROM cars WHERE cars.id = :id;";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([':id' => $id]);
+}
+function updateCar($id, $fotoUrl,  $fotoUrlFront,  $fotoUrlBack, $fotoUrlInner, $prize, $mileage)
+{
+
+    $db = connectToDB();
+
+    $sqlCars = "UPDATE cars 
+                SET price = :prize, mileage = :mileage, fotoUrl = :fotoUrl 
+                WHERE id = :id";
+    $stmtCars = $db->prepare($sqlCars);
+    $stmtCars->execute([
+        ':id' => $id,
+        ':fotoUrl' => $fotoUrl,
+        ':prize' => $prize,
+        ':mileage' => $mileage
+    ]);
+
+
+    $sqlFotosets = "UPDATE fotosets 
+                    SET front = :fotoUrlFront, back = :fotoUrlBack, `inner` = :fotoUrlInner 
+                    WHERE id = :id";
+    $stmtFotosets = $db->prepare($sqlFotosets);
+    $stmtFotosets->execute([
+        ':id' => $id,
+        ':fotoUrlFront' => $fotoUrlFront,
+        ':fotoUrlBack' => $fotoUrlBack,
+        ':fotoUrlInner' => $fotoUrlInner
+    ]);
+    return $stmtCars->rowCount() > 0 || $stmtFotosets->rowCount() > 0;
+}
+
+// Get all cars from database
+function getAllCars(){
+    $db = connectToDB();
+
+    $sql = 'SELECT makeName as make, model, fotoURL FROM cars
+    LEFT JOIN makes on makes.id = makes_id;';
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

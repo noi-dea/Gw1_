@@ -6,13 +6,12 @@ error_reporting(E_ALL);
 include_once "includes/css_js.inc.php";
 
 
-session_start();
 
-if (!isset($_SESSION["uid"])) {
+// if (!isset($_SESSION["uid"])) {
 
-    header("Location: /includes/login.php");
-    exit;
-}
+//     header("Location: /includes/login.php");
+//     exit;
+// }
 
 ?>
 <!DOCTYPE html>
@@ -25,20 +24,18 @@ if (!isset($_SESSION["uid"])) {
     <title>GROEPS WEIRK</title>
     <link rel="stylesheet" href="./dist/<?= $cssPath ?>" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./icons.css" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
 </head>
 
 <body>
-    <?php include 'includes/hp_header.php'; ?>
-
-    <main>
-        <?php include 'includes/hp_banner.php'; ?>
-        <?php include 'includes/hp_searchfilter.php'; ?>
-        <!-- <?php include 'includes/hp_categorie.php'; ?> -->
-
-    </main>
-
-    <?php include 'includes/hp_footer.php'; ?>
+    <div>
+        <?php include 'includes/hp_header.php'; ?>
+        <main>
+            <?php include 'includes/hp_hero.php'; ?>
+        </main>
+        <?php include 'includes/hp_footer.php'; ?>
+    </div>
 </body>
 
 </html>

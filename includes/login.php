@@ -35,6 +35,10 @@ if (isset($_GET["login"])) {
         if ($uid) {
             print "uid geprint";
             setLogin($uid);
+            if (isAdmin($uid) == 1){
+            $_SESSION['adminbtn'] = true;
+            }
+             $_SESSION['user'] = $username;
             header("Location: ../index.php");
             exit;
         } else {
