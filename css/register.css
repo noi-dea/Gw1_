@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Styling voor de sectie van het login-formulier */
+    .section_register_form {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        margin-top: 300px;
+        .div_register_errors {
+            background-color: #ffdddd;
+            color: #d8000c;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                li {
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+    h1 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Groepen voor invoervelden */
+    form {
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    /* Invoervelden */
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    /* Focus effect voor invoervelden */
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        border-color: #007bff;
+    }
+
+    /* Submit knop */
+    input[type="submit"] {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--steel-blue);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+            color: white;
+            background-color: var(--steel-blue);
+        }
+
+        /* Responsief ontwerp */
+        @media (max-width: 600px) {
+            .section_login_form {
+                padding: 1.5rem;
+            }
+            input[type="text"],
+            input[type="password"],
+            .submit-btn {
+                font-size: 1rem;
+            }
+        }
+    }
+}
