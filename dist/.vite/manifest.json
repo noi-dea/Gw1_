@@ -1,22 +1,22 @@
 {
   "admin/fonts/icomoon.svg": {
-    "file": "assets/icomoon-C-EAromZ.svg",
+    "file": "assets/icomoon-DQfcDdS4.svg",
     "src": "admin/fonts/icomoon.svg"
   },
   "admin/js/index.js": {
-    "file": "assets/index-CewV-Z_m.js",
+    "file": "assets/index-DdThQAJa.js",
     "name": "index",
     "src": "admin/js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-Dh29FRjr.css"
+      "assets/index-CUFD2d_c.css"
     ],
     "assets": [
-      "assets/icomoon-C-EAromZ.svg",
+      "assets/icomoon-DQfcDdS4.svg",
       "assets/icomoon-L58U7sKq.eot",
       "assets/icomoon-BCLxSRt3.ttf",
       "assets/icomoon-hEi5kpcD.woff",
-      "assets/icomoon-PO8MPB8J.svg",
+      "assets/icomoon-CbwcJc33.svg",
       "assets/Merriweather-Regular-rtU9Xc2a.ttf",
       "assets/Roboto-Regular-ia0dPpEo.ttf",
       "assets/banner4-BOMv2u66.jpg"
@@ -35,7 +35,7 @@
     "src": "fonts/icomoon.eot"
   },
   "fonts/icomoon.svg": {
-    "file": "assets/icomoon-PO8MPB8J.svg",
+    "file": "assets/icomoon-CbwcJc33.svg",
     "src": "fonts/icomoon.svg"
   },
   "fonts/icomoon.ttf": {
@@ -51,18 +51,18 @@
     "src": "images/banner4.jpg"
   },
   "js/index.js": {
-    "file": "assets/index-DMoqLQs4.js",
+    "file": "assets/index-DZ447bil.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-BYpDree8.css"
+      "assets/index-DKYWoyFm.css"
     ],
     "assets": [
       "assets/icomoon-L58U7sKq.eot",
       "assets/icomoon-BCLxSRt3.ttf",
       "assets/icomoon-hEi5kpcD.woff",
-      "assets/icomoon-PO8MPB8J.svg",
+      "assets/icomoon-CbwcJc33.svg",
       "assets/Merriweather-Regular-rtU9Xc2a.ttf",
       "assets/Roboto-Regular-ia0dPpEo.ttf",
       "assets/banner4-BOMv2u66.jpg"

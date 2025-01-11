@@ -52,6 +52,7 @@ body {
         box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
         position: sticky;
         top: 0;
+        z-index: 1;
         .nav-container {
             max-width: 120rem;
             margin: 0 auto;
@@ -287,6 +288,43 @@ body {
                 }
             }
         }
+        .sectioncarlistpage {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+            .articlecarlistpage {
+                background-color: #f9f9f9;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+                text-align: center;
+                padding: 1rem;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                &:hover {
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sterker schaduweffect */
+                    transform: scale(1.05); /* Een subtiele vergroting */
+                    transition: all 0.3s ease-in-out; /* Soepel overgang */
+                }
+
+                .divcarlistpage {
+                    position: relative;
+                    aspect-ratio: 1/1;
+                    a {
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+                p {
+                    font-size: 2rem;
+                    margin: 0.5rem 0;
+                    color: var(--graphite);
+                }
+            }
+        }
     }
 
     button {
@@ -448,11 +486,17 @@ footer .container {
             gap: 2rem;
 
             a {
+                text-decoration: none;
+                color: white;
+            }
+            a:visited {
                 font-size: 2.4rem;
 
-                &:hover {
-                    color: var(--steel-blue);
-                }
+                color: white;
+            }
+
+            &:hover {
+                color: var(--steel-blue);
             }
         }
     }
