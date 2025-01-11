@@ -9,6 +9,23 @@
 }
 
 @font-face {
+  font-family: "Tinos";
+  src: url("https://fonts.gstatic.com/s/tinos/v10/8gI4xXLpZpYc_3WvG7dtn4w.woff2")
+      format("woff2"),
+    url("https://fonts.gstatic.com/s/tinos/v10/8gI4xXLpZpYc_3WvG7dt7w.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Roboto";
   src: url("../fonts/Roboto/Roboto-Regular.ttf") format("truetype");
   font-weight: normal;
@@ -61,6 +78,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  /* overflow-y: scroll; */
   header {
     width: 100%;
     z-index: 3;
@@ -194,6 +212,7 @@ body {
     }
   }
   main {
+    min-height: 100vh;
     position: relative;
     z-index: 1;
     margin: 0 auto;
@@ -211,37 +230,39 @@ body {
       align-items: center;
       justify-content: flex-start; */
       background: url("../images/banner4.jpg") no-repeat center center;
-      height: 100vh;
-      background-size: 100% 50%;
-      /* object-fit: cover; */
+      /* height: 100vh; */
       background-size: cover;
+      /* object-fit: cover; */
+      background-position: relative;
+      background-attachment: fixed;
       /* background-position: center, bottom; */
-
       width: 100%;
-      min-height: calc(100vh - 3rem);
+      /* min-height: calc(100vh - 3rem); */
       /* height: calc(100vh + 10rem); */
       height: auto;
       margin: 0;
       padding-top: 5rem;
       padding-bottom: 10rem;
       /* flex: 1; */
+      z-index: 1;
 
       .main-intro {
         /* display: flex;
         align-items: flex-start; */
         width: 100%;
-        font-family: Roboto;
+        font-family: "Tinos", sans-serif;
         font-weight: 900;
         position: fixed;
         transform: translateY(-40%);
         left: 8%;
-        top: 40%;
+        top: 50%;
+        z-index: 1;
 
         p {
-          font-family: Georgia, "Times New Roman", Times, serif;
+          font-family: "Tinos", sans-serif;
           max-width: 40%;
-          font-size: 4rem;
-          letter-spacing: 1.3px;
+          font-size: 3rem;
+          letter-spacing: 0.1rem;
           color: var(--golden-orange);
           margin-bottom: 1rem;
           font-weight: 400;
@@ -250,7 +271,7 @@ body {
         h1 {
           max-width: 40%;
           font-weight: 700;
-          font-size: 13rem;
+          font-size: 10rem;
           line-height: 13rem;
           letter-spacing: 1px;
           text-transform: uppercase;
@@ -269,28 +290,57 @@ body {
           border: 0.5px solid var(--gunmetal);
           text-decoration: none;
           padding: 1rem 2rem;
+          border-radius: 1rem;
           cursor: pointer;
         }
       }
     }
     .search-container {
-      width: 100%;
+      visibility: hidden;
+      opacity: 0;
+      position: fixed;
+      top: 50%;
+      right: 0;
+      left: 50%;
+      transform: translateX(100%) translateY(-50%);
+      width: 50rem;
+      height: 100vh;
+      transition: all 1s ease-in-out;
+      z-index: 1000;
+      overflow-y: auto;
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
-      height: 100%;
-
-      .search-form {
+      &:target {
+        visibility: visible;
+        opacity: 1;
+        right: 50%;
+        transform: translate(50%, -50%);
+      }
+      &::after {
+        content: "";
+        display: flex;
+        flex: 1;
+        height: 2px;
+        background: #333;
+        width: 100%;
+        margin-top: 10px;
         position: relative;
-        margin-right: 40rem;
-        /* width: 60%; */
-        max-width: 120rem;
+        z-index: -1;
+      }
+      .search-form {
+        font-family: "roboto", sans-serif;
+        position: relative;
+        /* z-index: 10; */
+        /* margin-right: 40rem; */
         background-color: rgba(46, 46, 46, 0.85);
         padding: 3rem;
         border-radius: 0.8rem;
         box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        min-width: 100%;
+        width: 100%;
         gap: 2rem;
         button {
           background-color: var(--graphite);
@@ -298,13 +348,13 @@ body {
           border: none;
           border-radius: 0.4rem;
           padding: 1rem 1.5rem;
-          font-size: 3rem;
+          font-size: 1rem;
           font-weight: bold;
           cursor: pointer;
           width: 100%;
           margin-top: auto;
           transition: background-color 0.3s ease, color 0.3s ease;
-          button:hover {
+          &:hover {
             background-color: var(--alpina-green);
           }
         }
@@ -570,7 +620,9 @@ footer .container {
       gap: 2rem;
       grid-template-columns: 3fr 1fr;
       min-height: 100vh;
+      overflow-y: auto;
       .search-form {
+        position: fixed;
         width: 90%;
         padding: 1.6rem;
         grid-template-columns: 1fr;
