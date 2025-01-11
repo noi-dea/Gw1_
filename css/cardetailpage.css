@@ -1,0 +1,186 @@
+/* Algemene styling voor de container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtielere schaduw */
+    border-radius: 12px; /* Iets rondere hoeken */
+}
+
+/* Grid layout voor de hoofdsectie */
+.g {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px; /* Beperk de breedte voor betere leesbaarheid */
+}
+
+/* Hoofdafbeelding stijl */
+#imgdetail {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    background-color: #f3f3f3; /* Lichte achtergrond voor een lege afbeelding */
+}
+
+#imgdetail img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Miniatuur afbeeldingen */
+#imgpreviews {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#imgpreviews img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+#imgpreviews img:hover {
+    transform: scale(1.1);
+}
+
+#imgpreviews img.shown {
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Beschrijving sectie */
+.description {
+    grid-column: 1/-1;
+    margin-top: 2rem;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.description h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.description h3 {
+    font-size: 1.8rem;
+    color: #007bff; /* Accentkleur voor de prijs */
+    margin-bottom: 1.5rem;
+}
+
+/* Tabel styling */
+/* Tabel styling */
+table {
+    width: 100%; /* Zorgt dat de tabel altijd de containerbreedte vult */
+    border-collapse: collapse; /* Voorkomt ruimte tussen cellen */
+    margin-top: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table thead th {
+    color: rgb(56, 12, 12);
+    text-align: center;
+    padding: 1rem; /* Zorgt voor ruimte in de kopcellen */
+    font-size: 1.5rem;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #ddd; /* Grens tussen rijen */
+}
+
+table tbody tr:last-child {
+    border-bottom: none; /* Verwijdert de grens onderaan */
+}
+
+table tbody td {
+    padding: 0.75rem 1rem; /* Ruimte in de tabelcellen */
+    font-size: 1rem;
+    color: #333;
+}
+
+table tbody td:first-child {
+    font-weight: bold;
+    color: #555;
+}
+
+table tbody td:last-child {
+    text-align: right;
+    color: #000;
+}
+
+/* Hover effect voor rijen */
+table tbody tr:hover {
+    background-color: #f1f9ff; /* Blauwe achtergrond bij hover */
+}
+
+/* Fix voor volledige breedte van de thead */
+table thead th:first-child {
+    border-top-left-radius: 8px; /* Ronde hoek linksboven */
+}
+
+table thead th:last-child {
+    border-top-right-radius: 8px; /* Ronde hoek rechtsboven */
+}
+
+/* Responsief ontwerp */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .g {
+        grid-template-columns: 1fr;
+    }
+
+    #imgdetail {
+        aspect-ratio: auto;
+        margin-bottom: 1rem;
+    }
+
+    #imgpreviews {
+        gap: 0.5rem;
+    }
+
+    #imgpreviews img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .description h2 {
+        font-size: 1.5rem;
+    }
+
+    .description h3 {
+        font-size: 1.25rem;
+    }
+
+    table td,
+    table th {
+        font-size: 0.9rem;
+    }
+}
