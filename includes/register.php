@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 require("../functions.inc.php");
 
 $errors = [];
-$username = "";
+$username_register = "";
 $password1 = "";
 
 $firstname = "";
@@ -31,7 +31,7 @@ if (isset($_POST["register"])) {
         $errors[] = "username is required";
     } else {
         $username_register = $_POST["inputusername"];
-        if (userExists($username)) {
+        if (userExists($username_register)) {
             $errors[] = "this user already regeister are you trying to login instead";
         }
     }
@@ -141,9 +141,9 @@ if (isset($_POST["register"])) {
     }
 
 
-    print $username;
+
     if (!count($errors)) {
-        $newId = insertNewUser($username, $password1, $firstname, $lastname, $email, $district, $street, $postal, $housenumber, $bus);
+        $newId = insertNewUser($username_register, $password1, $firstname, $lastname, $email, $district, $street, $postal, $housenumber, $bus);
         if (!$newId) {
             $errors[] = "An unknown error has occured, pleace contact us...";
         } else {
