@@ -12,11 +12,32 @@ session_start();
 // Print_r($_SESSION);
 // echo '</pre>';
 
+$pageInIncludes = true;
+include_once("./css_js.inc.php");
+
+$cars = getAllCars();
+
+//-----// pagination variables
+$pagefile = "carlistcards.php";
+$firstpage = 1;
+$pagelimit = 10;
+$lastpage = ceil(count($cars) / $pagelimit);
+include("./pagination.validation.php");
+
+//-----// car indexes
+$firstIndex = 0 + (($pagenr - 1) * $pagelimit);
+$lastIndex = $firstIndex + $pagelimit - 1;
+if ($lastIndex > count($cars) - 1) {
+    $lastIndex = count($cars) - 1;
+}
 if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
     $results = $_SESSION['results'];
 
 
     unset($_SESSION['results']);
+} else {
+    $results = [];
+    $results[0] = allCars();
 }
 
 ?>
@@ -36,49 +57,20 @@ if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
 
 <body>
     <?php include 'hp_header.php'; ?>
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    Brand
-                </th>
-                <th>model</th>
-
-
-                <th>prize</th>
-
-                <th>picture</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <?php
-            if (!empty($results)) {
-                // Door alle arrays in $results heen lopen
-                foreach ($results as $result_set) {
-                    // Als de set van auto's niet leeg is, doorloop dan de auto's
-                    if (!empty($result_set)) {
-                        foreach ($result_set as $car): ?>
-                            <tr class='car'>
-                                <td><?= getCarBrand($car["makes_id"]); ?></td>
-                                <td><?= $car["model"]; ?></td>
-
-                                <td>€<?= number_format($car["price"], 2, ',', '.'); ?> </td>
-
-                                <td><a href="cardetailpage.php?id=<?= $car["id"]; ?>"><img src="<?= $car["fotoUrl"]; ?>" alt="<?= $car["model"]; ?>" width="100" height="auto"></a></td>
-                            </tr>
-            <?php endforeach;
-                    }
-                }
-            }
-
-            // Als er geen resultaten zijn
-            if (empty($results[0]) && empty($results[1])) {
-                echo "<tr><td colspan='7'>Geen resultaten gevonden.</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
+    <main>
+        <section class="sectioncarlistpage">
+            <?php for ($i = $firstIndex; $i <= $lastIndex; $i++): ?>
+                <article class="articlecarlistpage">
+                    <div class="divcarlistpage">
+                        <a href="./cardetailpage.php?id=<?= $cars[$i]['id']; ?>">
+                            <img src="<?= $cars[$i]['fotoURL']; ?>" alt="foto van de auto">
+                        </a>
+                    </div>
+                    <p><?= $cars[$i]['year'] . " " . $cars[$i]['make'] . " " . $cars[$i]['model']; ?></p>
+                </article>
+            <?php endfor; ?>
+        </section>
+    </main>
     <?php include 'hp_footer.php'; ?>
 </body>
 
