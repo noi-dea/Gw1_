@@ -27,17 +27,15 @@ include_once "includes/css_js.inc.php";
     <link rel="stylesheet" href="./icons.css" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
 </head>
-<div class="overlay">
 
-    <body>
-        <div>
-            <?php include 'includes/hp_header.php'; ?>
-            <main>
-                <?php include 'includes/hp_hero.php'; ?>
-            </main>
-            <?php include 'includes/hp_footer.php'; ?>
-        </div>
-    </body>
-</div>
+<body>
+    <div>
+        <?php include 'includes/hp_header.php'; ?>
+        <main>
+            <?php include 'includes/hp_hero.php'; ?>
+        </main>
+        <?php include 'includes/hp_footer.php'; ?>
+    </div>
+</body>
 
 </html>
