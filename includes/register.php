@@ -30,7 +30,7 @@ if (isset($_POST["register"])) {
     if (!isset($_POST["inputusername"])) {
         $errors[] = "username is required";
     } else {
-        $username = $_POST["inputusername"];
+        $username_register = $_POST["inputusername"];
         if (userExists($username)) {
             $errors[] = "this user already regeister are you trying to login instead";
         }
@@ -189,7 +189,7 @@ if (isset($_POST["register"])) {
         <h1>Register</h1>
         <form method="post" action="register.php">
 
-            <input name="inputusername" id="inputusername" type="text" placeholder="Username" value="<?= $username ? $username : "" ?>">
+            <input name="inputusername" id="inputusername" type="text" placeholder="Username" value="<?= $username_register ? $username_register : "" ?>">
 
 
             <input name="inputpassword1" id="inputpassword1" type="password" placeholder="Password">
