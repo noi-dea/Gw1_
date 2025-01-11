@@ -46,19 +46,19 @@ session_start();
 $username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
 ?>
-
-<div class="hero-bg">
-    <section class="main-intro">
-        <div>
-            <p>Hi <?= !empty($username) ? $username : ''; ?>!</p>
-            </p>
-            <p>Looking for your dream car? We’ve got it!</p>
-            <h1>- Get Yours Today!<br></h1>
-            <a href="#">Get Started</a>
-        </div>
+<script src="index.js"></script>
+<section class="hero-bg">
+    <section class="main-intro" id="main-intro">
+        <p>Hi <?= !empty($username) ? $username : ''; ?>!</p>
+        </p>
+        <p>Looking for your dream car? We’ve got it!</p>
+        <h1>- Get Yours Today!<br></h1>
+        <div class="get-started-btn">
+            <a href="#search-container">Get Started</a>
     </section>
 
-    <section class="search-container">
+
+    <section id="search-container" class="search-container">
         <div>
             <div>
                 <form class="search-form" action="../index.php" method="GET">
@@ -124,8 +124,9 @@ $username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                 </form>
             </div>
     </section>
-</div>
+</section>
 
-<div class="category-container">
-    <?php include('hp_categorie.php'); ?>
-</div>
+<section>
+    <div class="category-container">
+        <?php include('hp_categorie.php'); ?>
+</section>
