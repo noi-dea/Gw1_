@@ -8,7 +8,10 @@ requiredLoggedOut();
 $errors = [];
 
 // Debugging
-
+if (isset($_GET["register"])) {
+    header("Location: ./register.php");
+    exit;
+}
 
 if (isset($_GET["login"])) {
     $username = trim($_GET["inputusername"]);
@@ -22,11 +25,6 @@ if (isset($_GET["login"])) {
         $errors[] = "Please fill in password";
     }
 
-    // Alleen doorgaan als er geen fouten zijn
-    echo '<pre>';
-    print_r($errors);
-    echo '</pre>';
-    print "ok";
     if (count($errors) < 1) {
         print "controle";
         $uid = isValidLogin($username, $password);
@@ -35,10 +33,10 @@ if (isset($_GET["login"])) {
         if ($uid) {
             print "uid geprint";
             setLogin($uid);
-            if (isAdmin($uid) == 1){
-            $_SESSION['adminbtn'] = true;
+            if (isAdmin($uid) == 1) {
+                $_SESSION['adminbtn'] = true;
             }
-             $_SESSION['user'] = $username;
+            $_SESSION['user'] = $username;
             header("Location: ../index.php");
             exit;
         } else {
@@ -55,30 +53,42 @@ if (isset($_GET["login"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
+    <script type="module" src="../dist/<?= $jsPath ?>"></script>
 </head>
 
 <body>
-    <?php if (count($errors) > 0): ?>
+    <?php include('hp_header.php'); ?>
+    <section class="section_login_form">
+        <?php if (count($errors) > 0): ?>
+            <div class="div_login_errors">
 
-        <ul>
-            <?php foreach ($errors as $error): ?>
-                <li><?= $error; ?></li>
-            <?php endforeach; ?>
-        </ul>
 
-    <?php endif ?>
-    <h1>login</h1>
-    <form method="get" action="login.php">
-        <div class="">
+                <ul>
+                    <?php foreach ($errors as $error): ?>
+                        <li><?= $error; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif ?>
+        <h1>Login</h1>
+        <form method="get" action="login.php">
+
             <input name="inputusername" id="inputusername" type="text" placeholder="Enter your username">
-        </div>
-        <div class="">
-            <input name="inputpassword" id="inputpassword" type="password" placeholder="Enter your password">
-        </div>
 
-        <input type="submit" value="login" name="login">
-    </form>
+            <input name="inputpassword" id="inputpassword" type="password" placeholder="Enter your password">
+
+
+            <input type="submit" value="Login" name="login">
+            <input type="submit" value="Register" name="register">
+
+        </form>
+    </section>
+    <?php include 'hp_footer.php'; ?>
 </body>
 
 </html>

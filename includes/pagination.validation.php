@@ -1,4 +1,5 @@
 <?php
+// must-declare variables before including this file: $firstpage & $lastpage 
 if(!isset($_GET['page'])){
     $pagenr=$firstpage;
 } else {
@@ -14,6 +15,4 @@ if(!isset($_GET['page'])){
     }
 }
 
-
-// include the validation after setting $firstpage and $lastpage to avoid buggs
 ?>

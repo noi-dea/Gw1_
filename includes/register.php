@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 require("../functions.inc.php");
 
 $errors = [];
-$username = "";
+$username_register = "";
 $password1 = "";
 
 $firstname = "";
@@ -22,12 +22,16 @@ $bus = "";
 $isAdmin = 0;
 
 
-if (isset($_POST["button"])) {
+if (isset($_POST["login"])) {
+    header("Location: ./login.php");
+    exit;
+}
+if (isset($_POST["register"])) {
     if (!isset($_POST["inputusername"])) {
         $errors[] = "username is required";
     } else {
-        $username = $_POST["inputusername"];
-        if (userExists($username)) {
+        $username_register = $_POST["inputusername"];
+        if (userExists($username_register)) {
             $errors[] = "this user already regeister are you trying to login instead";
         }
     }
@@ -137,9 +141,9 @@ if (isset($_POST["button"])) {
     }
 
 
-    print $username;
+
     if (!count($errors)) {
-        $newId = insertNewUser($username, $password1, $firstname, $lastname, $email, $district, $street, $postal, $housenumber, $bus);
+        $newId = insertNewUser($username_register, $password1, $firstname, $lastname, $email, $district, $street, $postal, $housenumber, $bus);
         if (!$newId) {
             $errors[] = "An unknown error has occured, pleace contact us...";
         } else {
@@ -155,53 +159,78 @@ if (isset($_POST["button"])) {
 
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 
-<?php if (count($errors)): ?>
-    <ul>
-        <?php foreach ($errors as $error): ?>
-            <li><?= $error; ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
+    <script type="module" src="../dist/<?= $jsPath ?>"></script>
 
-<form method="post" action="register.php">
-    <div>
-        <input name="inputusername" id="inputusername" type="text" placeholder="Username" value="<?= $username ? $username : "" ?>">
-    </div>
-    <div>
-        <input name="inputpassword1" id="inputpassword1" type="text" placeholder="Password">
-    </div>
-    <div>
-        <input name="inputpassword2" id="inputpassword2" type="text" placeholder="Repeat Password">
-    </div>
-    <div>
-        <input name="inputfirstname" id="inputfirstname" type="text" placeholder="Firstname" value="<?= $firstname ? $firstname : "" ?>">
-    </div>
-    <div>
-        <input name="inputlastname" id="inputlastname" type="text" placeholder="Lastname" value="<?= $lastname ? $lastname : "" ?>">
-    </div>
 
-    <div>
-        <input name="inputmail" id="inputmail" type="text" placeholder="Enter your email" value="<?= $email ? $email : "" ?>">
-    </div>
-    <div>
-        <input name="inputdistrict" id="inputdistrict" type="text" placeholder="Enter your distric" value="<?= $district ? $district : "" ?>">
-    </div>
-    <div>
-        <input name="inputstreet" id="inputstreet" type="text" placeholder="Enter your street" value="<?= $street ? $street : "" ?>">
-    </div>
-    <div>
-        <input name="inputpostal" id="inputpostal" type="" placeholder="Enter your postalcode" value="<?= $postal ? $postal : "" ?>">
-    </div>
-    <div>
-        <input name="inputhousenumber" id="inputhousenumber" type="text" placeholder="Enter your housenumber" value="<?= $housenumber ? $housenumber : "" ?>">
-    </div>
-    <div>
-        <input name="inputbus" id="inputbus" type="text" placeholder="Enter your bus" value="<?= $bus ? $bus : "" ?>">
-    </div>
+</head>
 
+<body>
+    <?php include('hp_header.php'); ?>
+    <section class="section_register_form">
+        <?php if (count($errors)): ?>
+            <div class="div_register_errors">
+                <ul>
+                    <?php foreach ($errors as $error): ?>
+                        <li><?= $error; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+        <h1>Register</h1>
+        <form method="post" action="register.php">
+
+            <input name="inputusername" id="inputusername" type="text" placeholder="Username" value="<?= $username_register ? $username_register : "" ?>">
+
+
+            <input name="inputpassword1" id="inputpassword1" type="password" placeholder="Password">
+
+
+            <input name="inputpassword2" id="inputpassword2" type="password" placeholder="Repeat Password">
+
+
+            <input name="inputfirstname" id="inputfirstname" type="text" placeholder="Firstname" value="<?= $firstname ? $firstname : "" ?>">
+
+
+            <input name="inputlastname" id="inputlastname" type="text" placeholder="Lastname" value="<?= $lastname ? $lastname : "" ?>">
 
 
 
-    <button value="test" name="button">Sign up</button>
-</form>
+            <input name="inputmail" id="inputmail" type="text" placeholder="Enter your email" value="<?= $email ? $email : "" ?>">
+
+
+            <input name="inputdistrict" id="inputdistrict" type="text" placeholder="Enter your distric" value="<?= $district ? $district : "" ?>">
+
+
+            <input name="inputstreet" id="inputstreet" type="text" placeholder="Enter your street" value="<?= $street ? $street : "" ?>">
+
+
+            <input name="inputpostal" id="inputpostal" type="text" placeholder="Enter your postalcode" value="<?= $postal ? $postal : "" ?>">
+
+
+            <input name="inputhousenumber" id="inputhousenumber" type="text" placeholder="Enter your housenumber" value="<?= $housenumber ? $housenumber : "" ?>">
+
+
+            <input name="inputbus" id="inputbus" type="text" placeholder="Enter your bus" value="<?= $bus ? $bus : "" ?>">
+
+            <input type="submit" value="Sign up" name="register">
+            <input type="submit" value="Already a member? Sign in" name="login">
+
+
+
+        </form>
+    </section>
+
+    <?php include 'hp_footer.php'; ?>
+</body>
+
+</html>
