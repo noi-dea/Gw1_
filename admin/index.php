@@ -29,6 +29,7 @@ if (isset($_GET['message'])) {
 // get car data
 $cars = getAdminCars($uid);
 // pagination variables
+$pagefile = "index.php";
 //-----// limiting cars per page to 5
 $pagelimit = 5;
 //-----// pageindexes

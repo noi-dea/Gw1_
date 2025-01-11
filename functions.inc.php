@@ -475,12 +475,22 @@ function updateCar($id, $fotoUrl,  $fotoUrlFront,  $fotoUrlBack, $fotoUrlInner, 
 }
 
 // Get all cars from database
-function getAllCars(){
+function getAllCars()
+{
     $db = connectToDB();
 
-    $sql = 'SELECT makeName as make, model, fotoURL FROM cars
+    $sql = 'SELECT cars.id as id, makeName as make, model, fotoURL, year FROM cars
     LEFT JOIN makes on makes.id = makes_id;';
 
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function allCars()
+{
+    $db = connectToDB();
+    $sql = "SELECT * FROM cars";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
