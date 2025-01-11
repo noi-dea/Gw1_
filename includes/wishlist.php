@@ -6,12 +6,6 @@ require '../functions.inc.php';
 
 $userId = 2;
 
-// ondertsaande CODE voor de detailpage? 
-// if (isset($_POST['add']) && !empty($_POST['add'])) {
-//     $carId = intval($_POST['add']);
-//     addToWishlist($carId, $userId);
-//     exit;
-// }
 
 if (isset($_POST['remove']) && !empty($_POST['remove'])) {
     $carId = intval($_POST['remove']);
