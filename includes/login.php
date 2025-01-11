@@ -35,10 +35,10 @@ if (isset($_GET["login"])) {
         if ($uid) {
             print "uid geprint";
             setLogin($uid);
-            if (isAdmin($uid) == 1){
-            $_SESSION['adminbtn'] = true;
+            if (isAdmin($uid) == 1) {
+                $_SESSION['adminbtn'] = true;
             }
-             $_SESSION['user'] = $username;
+            $_SESSION['user'] = $username;
             header("Location: ../index.php");
             exit;
         } else {
@@ -55,10 +55,14 @@ if (isset($_GET["login"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
+    <script type="module" src="../dist/<?= $jsPath ?>"></script>
 </head>
 
 <body>
+    <?php include('hp_header.php'); ?>
     <?php if (count($errors) > 0): ?>
 
         <ul>
@@ -79,6 +83,7 @@ if (isset($_GET["login"])) {
 
         <input type="submit" value="login" name="login">
     </form>
+    <?php include 'hp_footer.php'; ?>
 </body>
 
 </html>

@@ -155,53 +155,74 @@ if (isset($_POST["button"])) {
 
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 
-<?php if (count($errors)): ?>
-    <ul>
-        <?php foreach ($errors as $error): ?>
-            <li><?= $error; ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
-
-<form method="post" action="register.php">
-    <div>
-        <input name="inputusername" id="inputusername" type="text" placeholder="Username" value="<?= $username ? $username : "" ?>">
-    </div>
-    <div>
-        <input name="inputpassword1" id="inputpassword1" type="text" placeholder="Password">
-    </div>
-    <div>
-        <input name="inputpassword2" id="inputpassword2" type="text" placeholder="Repeat Password">
-    </div>
-    <div>
-        <input name="inputfirstname" id="inputfirstname" type="text" placeholder="Firstname" value="<?= $firstname ? $firstname : "" ?>">
-    </div>
-    <div>
-        <input name="inputlastname" id="inputlastname" type="text" placeholder="Lastname" value="<?= $lastname ? $lastname : "" ?>">
-    </div>
-
-    <div>
-        <input name="inputmail" id="inputmail" type="text" placeholder="Enter your email" value="<?= $email ? $email : "" ?>">
-    </div>
-    <div>
-        <input name="inputdistrict" id="inputdistrict" type="text" placeholder="Enter your distric" value="<?= $district ? $district : "" ?>">
-    </div>
-    <div>
-        <input name="inputstreet" id="inputstreet" type="text" placeholder="Enter your street" value="<?= $street ? $street : "" ?>">
-    </div>
-    <div>
-        <input name="inputpostal" id="inputpostal" type="" placeholder="Enter your postalcode" value="<?= $postal ? $postal : "" ?>">
-    </div>
-    <div>
-        <input name="inputhousenumber" id="inputhousenumber" type="text" placeholder="Enter your housenumber" value="<?= $housenumber ? $housenumber : "" ?>">
-    </div>
-    <div>
-        <input name="inputbus" id="inputbus" type="text" placeholder="Enter your bus" value="<?= $bus ? $bus : "" ?>">
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $car['year'] . " " . $car['make'] . " " . $car['model']; ?></title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
+    <script type="module" src="../dist/<?= $jsPath ?>"></script>
 
 
+</head>
+
+<body>
+    <?php include('hp_header.php'); ?>
+    <main>
+        <?php if (count($errors)): ?>
+            <ul>
+                <?php foreach ($errors as $error): ?>
+                    <li><?= $error; ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+
+        <form method="post" action="register.php">
+            <div>
+                <input name="inputusername" id="inputusername" type="text" placeholder="Username" value="<?= $username ? $username : "" ?>">
+            </div>
+            <div>
+                <input name="inputpassword1" id="inputpassword1" type="text" placeholder="Password">
+            </div>
+            <div>
+                <input name="inputpassword2" id="inputpassword2" type="text" placeholder="Repeat Password">
+            </div>
+            <div>
+                <input name="inputfirstname" id="inputfirstname" type="text" placeholder="Firstname" value="<?= $firstname ? $firstname : "" ?>">
+            </div>
+            <div>
+                <input name="inputlastname" id="inputlastname" type="text" placeholder="Lastname" value="<?= $lastname ? $lastname : "" ?>">
+            </div>
+
+            <div>
+                <input name="inputmail" id="inputmail" type="text" placeholder="Enter your email" value="<?= $email ? $email : "" ?>">
+            </div>
+            <div>
+                <input name="inputdistrict" id="inputdistrict" type="text" placeholder="Enter your distric" value="<?= $district ? $district : "" ?>">
+            </div>
+            <div>
+                <input name="inputstreet" id="inputstreet" type="text" placeholder="Enter your street" value="<?= $street ? $street : "" ?>">
+            </div>
+            <div>
+                <input name="inputpostal" id="inputpostal" type="" placeholder="Enter your postalcode" value="<?= $postal ? $postal : "" ?>">
+            </div>
+            <div>
+                <input name="inputhousenumber" id="inputhousenumber" type="text" placeholder="Enter your housenumber" value="<?= $housenumber ? $housenumber : "" ?>">
+            </div>
+            <div>
+                <input name="inputbus" id="inputbus" type="text" placeholder="Enter your bus" value="<?= $bus ? $bus : "" ?>">
+            </div>
 
 
-    <button value="test" name="button">Sign up</button>
-</form>
+
+
+            <button value="test" name="button">Sign up</button>
+        </form>
+    </main>
+    <?php include 'hp_footer.php'; ?>
+</body>
+
+</html>
