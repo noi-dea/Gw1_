@@ -102,9 +102,9 @@ function searchFilterFunction($filters)
     // Prijs
     if (!empty($filters['price_max'])) {
         if (!is_numeric($filters['price_max'])) {
-            $errors[] = "Maximum prijs moet een geldig getal zijn.";
+            $errors[] = "Price must be a valid number.";
         } elseif ($filters['price_max'] < 0 || $filters['price_max'] > 200000) {
-            $errors[] = "Maximum prijs moet tussen 0 en 200000 liggen.";
+            $errors[] = "Select a price between 0 and 200,000.";
         }
     }
     if (!empty($filters['price_max'])) {
@@ -133,9 +133,9 @@ function searchFilterFunction($filters)
     // Mileage
     if (!empty($filters['km_max'])) {
         if (!is_numeric($filters['km_max'])) {
-            $errors[] = "Maximum kilometerstand moet een geldig getal zijn.";
+            $errors[] = "Mileage must be a valid number.";
         } elseif ($filters['km_max'] < 0 || $filters['km_max'] > 500000) {
-            $errors[] = "Maximum kilometerstand moet tussen 0 en 500000 liggen.";
+            $errors[] = "Mileage must be between 0 and 500,000.";
         }
     }
     if (!empty($filters['km_max'])) {
@@ -168,6 +168,37 @@ function searchFilterFunction($filters)
 
     return [$results, $errors];
 }
+
+
+//alle modellen ophalen. 
+function getAllModels()
+{
+    $db = connectToDB();
+    $sql = "SELECT DISTINCT model FROM cars";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+// models adhv brand
+function getModelsByMake($make_id = null)
+{
+    $db = connectToDB();
+
+    if ($make_id) {
+        $sql = "SELECT model FROM cars WHERE makes_id = :make_id";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':make_id' => $make_id]);
+    } else {
+        $sql = "SELECT DISTINCT model FROM cars";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+    }
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 // Insert a new car into the database
 function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colour, INT $doors, STRING $transmission, INT $price, INT $mileage, INT $body, STRING $url, INT $fid, INT $sid)

@@ -2,7 +2,9 @@
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
-// session_start();
+session_start();
+$username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+
 require 'functions.inc.php';
 //verwijzing naar bovenstaande map weggehaald doordat deze problemen gaf op de index.php
 //de searchfilter geeft dan zelf problemen op de localhost pagina, maar deze pagina hoort toch niet
@@ -11,17 +13,24 @@ $makes = getMakes();
 $colours = getColours();
 $bodies = getBodyworks();
 
+$selectedMake = isset($_GET['makes_id']) ? $_GET['makes_id'] : '';
+$selectedModel = isset($_GET['model']) ? $_GET['model'] : '';
+$models = !empty($selectedMake) ? getModelsByMake($selectedMake) : getAllModels();
+
 $filters = [
     'price_min' => isset($_GET['price_min']) ? $_GET['price_min'] : '',
     'price_max' => isset($_GET['price_max']) ? $_GET['price_max'] : '',
-    'makes_id' => isset($_GET['makes_id']) ? $_GET['makes_id'] : '',
-    'model' => isset($_GET['model']) ? $_GET['model'] : '',
+    'makes_id' => $selectedMake,
+    'model' => $selectedModel,
     'fueltype' => isset($_GET['fueltype']) ? $_GET['fueltype'] : '',
     'transmission' => isset($_GET['transmission']) ? $_GET['transmission'] : '',
     'colour' => isset($_GET['colours_id']) ? $_GET['colours_id'] : '',
     'km_min' => isset($_GET['km_min']) ? $_GET['km_min'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];
+
+$errors = [];
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (empty(array_filter($filters))) {
         $errors[] = "Vul minstens één zoekcriterium in";
@@ -41,9 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
     }
 }
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo "<p>$error</p>";
+    }
+}
 
-session_start();
-$username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+if (isset($message)) {
+    echo "<p>$message</p>";
+}
+
 
 ?>
 <script src="index.js"></script>
@@ -72,26 +88,40 @@ $username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <select id="makes_id" name="makes_id">
                             <option value="">Select Brand</option>
                             <?php foreach ($makes as $make): ?>
-                                <option value="<?= $make['id']; ?>"> <?= $make['makeName']; ?></option>
+                                <option value="<?= $make['id']; ?>" <?= ($make['id'] == $selectedMake) ? 'selected' : ''; ?>> <?= $make['makeName']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
-
+                    <!-- <?php var_dump($models); ?> -->
+                    <!-- <?php var_dump($makes); ?> -->
+                    <!-- <?php var_dump($filters['makes_id']); ?> -->
                     <div class="filter-section">
                         <label for="model">Model:</label>
                         <select id="model" name="model">
                             <option value="">Select Model</option>
+                            <?php
+                            if (!empty($selectedMake)) {
+                                $models = getModelsByMake($selectedMake);
+                            } else {
+                                $models = getAllModels();
+                            }
+                            foreach ($models as $model): ?>
+                                <option value="<?= $model['model']; ?>" <?= ($model['model'] == $selectedModel) ? 'selected' : ''; ?>>
+                                    <?= $model['model']; ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
+
                     </div>
 
                     <div class="filter-section">
                         <label for="fueltype">Fuel Type:</label>
                         <select id="fueltype" name="fueltype">
                             <option value="">Select Fuel type</option>
-                            <option value="petrol">Petrol</option>
-                            <option value="diesel">Diesel</option>
-                            <option value="hybrid">Hybrid</option>
-                            <option value="electric">Electric</option>
+                            <option value="petrol" <?= ($filters['fueltype'] == 'petrol') ? 'selected' : ''; ?>>Petrol</option>
+                            <option value="diesel" <?= ($filters['fueltype'] == 'diesel') ? 'selected' : ''; ?>>Diesel</option>
+                            <option value="hybrid" <?= ($filters['fueltype'] == 'hybrid') ? 'selected' : ''; ?>>Hybrid</option>
+                            <option value="electric" <?= ($filters['fueltype'] == 'electric') ? 'selected' : ''; ?>>Electric</option>
                         </select>
                     </div>
 
@@ -99,9 +129,10 @@ $username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <label for="transmission">Transmission:</label>
                         <select id="transmission" name="transmission">
                             <option value="">Select Transmission</option>
-                            <option value="manual">Manual</option>
-                            <option value="automatic">Automatic</option>
-                        </select>
+                            <option value="manual" <?= ($filters['transmission'] == 'manueel') ? 'selected' : ''; ?>>Manual</option>
+                            <option value="automatic" <?= ($filters['transmission'] == 'automatisch') ? 'selected' : ''; ?>>Automatic</option>
+                            <option value="automatic" <?= ($filters['transmission'] == 'electrisch') ? 'selected' : ''; ?>>Electric</option>
+
                         </select>
                     </div>
 
@@ -110,7 +141,9 @@ $username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <select id="colours_id" name="colours_id">
                             <option value="">Select Color</option>
                             <?php foreach ($colours as $colour): ?>
-                                <option value="<?= $colour['id']; ?>"><?= $colour['colourName']; ?></option>
+                                <option value="<?= $colour['id']; ?>" <?= ($colour['id'] == $filters['colours_id']) ? 'selected' : ''; ?>>
+                                    <?= $colour['colourName']; ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
