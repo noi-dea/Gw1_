@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* Styling voor de sectie van het login-formulier */
+
     .section_register_form {
         background-color: #fff;
         padding: 2rem;
@@ -15,7 +15,7 @@ body {
         width: 100%;
         max-width: 400px;
         text-align: center;
-        margin-top: 300px;
+        margin-top: 40rem;
         .div_register_errors {
             background-color: #ffdddd;
             color: #d8000c;
@@ -39,7 +39,6 @@ body {
         margin-bottom: 1.5rem;
     }
 
-    /* Groepen voor invoervelden */
     form {
         margin-bottom: 1.5rem;
         display: flex;
@@ -48,7 +47,6 @@ body {
         gap: 2rem;
     }
 
-    /* Invoervelden */
     input[type="text"],
     input[type="password"] {
         width: 100%;
@@ -60,13 +58,11 @@ body {
         transition: border-color 0.3s ease;
     }
 
-    /* Focus effect voor invoervelden */
     input[type="text"]:focus,
     input[type="password"]:focus {
         border-color: #007bff;
     }
 
-    /* Submit knop */
     input[type="submit"] {
         width: 100%;
         padding: 1rem;
@@ -82,7 +78,6 @@ body {
             background-color: var(--steel-blue);
         }
 
-        /* Responsief ontwerp */
         @media (max-width: 600px) {
             .section_login_form {
                 padding: 1.5rem;
