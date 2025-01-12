@@ -4,12 +4,12 @@
     "src": "admin/fonts/icomoon.svg"
   },
   "admin/js/index.js": {
-    "file": "assets/index-C-iG8wvf.js",
+    "file": "assets/index-BmmLgma2.js",
     "name": "index",
     "src": "admin/js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-QB3pP6e1.css"
+      "assets/index-9Kxkvl0x.css"
     ],
     "assets": [
       "assets/icomoon-C-EAromZ.svg",
@@ -19,7 +19,7 @@
       "assets/icomoon-PO8MPB8J.svg",
       "assets/Merriweather-Regular-rtU9Xc2a.ttf",
       "assets/Roboto-Regular-ia0dPpEo.ttf",
-      "assets/banner4-BOMv2u66.jpg"
+      "assets/background9-7lAMfiCc.jpg"
     ]
   },
   "fonts/Merriweather/Merriweather-Regular.ttf": {
@@ -46,17 +46,29 @@
     "file": "assets/icomoon-hEi5kpcD.woff",
     "src": "fonts/icomoon.woff"
   },
+  "images/background7.jpg": {
+    "file": "assets/background7-lBea3OsE.jpg",
+    "src": "images/background7.jpg"
+  },
+  "images/background8.jpg": {
+    "file": "assets/background8-DChCGcIR.jpg",
+    "src": "images/background8.jpg"
+  },
+  "images/background9.jpg": {
+    "file": "assets/background9-7lAMfiCc.jpg",
+    "src": "images/background9.jpg"
+  },
   "images/banner4.jpg": {
     "file": "assets/banner4-BOMv2u66.jpg",
     "src": "images/banner4.jpg"
   },
   "js/index.js": {
-    "file": "assets/index-B-0BKFgx.js",
+    "file": "assets/index-BW4K_kLW.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-mwQOfx9h.css"
+      "assets/index-BRFGV_W_.css"
     ],
     "assets": [
       "assets/icomoon-L58U7sKq.eot",
@@ -65,7 +77,7 @@
       "assets/icomoon-PO8MPB8J.svg",
       "assets/Merriweather-Regular-rtU9Xc2a.ttf",
       "assets/Roboto-Regular-ia0dPpEo.ttf",
-      "assets/banner4-BOMv2u66.jpg"
+      "assets/background9-7lAMfiCc.jpg"
     ]
   }
 }

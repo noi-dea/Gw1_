@@ -13,6 +13,7 @@ $makes = getMakes();
 $colours = getColours();
 $bodies = getBodyworks();
 
+
 $selectedMake = isset($_GET['makes_id']) ? $_GET['makes_id'] : '';
 $selectedModel = isset($_GET['model']) ? $_GET['model'] : '';
 $models = !empty($selectedMake) ? getModelsByMake($selectedMake) : getAllModels();
@@ -28,12 +29,12 @@ $filters = [
     'km_min' => isset($_GET['km_min']) ? $_GET['km_min'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];
+// echo 'colours_id: ' . (isset($_GET['colours_id']) ? $_GET['colours_id'] : 'not set');
 
 $errors = [];
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty(array_filter($filters))) {
     if (empty(array_filter($filters))) {
-        $errors[] = "Vul minstens één zoekcriterium in";
+        $errors[] = "Please select at least one filter.";
     }
     if (empty($errors)) {
         $results = searchFilterFunction($filters);
@@ -64,13 +65,14 @@ if (isset($message)) {
 ?>
 <script src="index.js"></script>
 <section class="hero-bg">
+    <div id="trigger"></div>
     <section class="main-intro" id="main-intro">
         <p>Hi <?= !empty($username) ? $username : ''; ?>!</p>
         </p>
         <p>Looking for your dream car? We’ve got it!</p>
         <h1>- Get Yours Today!<br></h1>
         <div class="get-started-btn">
-            <a href="#search-container">Get Started</a>
+            <a href="#trigger">Get Started</a>
     </section>
 
 
@@ -93,8 +95,9 @@ if (isset($message)) {
                         </select>
                     </div>
                     <!-- <?php var_dump($models); ?> -->
-                    <!-- <?php var_dump($makes); ?> -->
+                    <!-- <?php var_dump($filters['colours_id']); ?> -->
                     <!-- <?php var_dump($filters['makes_id']); ?> -->
+
                     <div class="filter-section">
                         <label for="model">Model:</label>
                         <select id="model" name="model">
@@ -131,7 +134,7 @@ if (isset($message)) {
                             <option value="">Select Transmission</option>
                             <option value="manual" <?= ($filters['transmission'] == 'manueel') ? 'selected' : ''; ?>>Manual</option>
                             <option value="automatic" <?= ($filters['transmission'] == 'automatisch') ? 'selected' : ''; ?>>Automatic</option>
-                            <option value="automatic" <?= ($filters['transmission'] == 'electrisch') ? 'selected' : ''; ?>>Electric</option>
+                            <option value="electric" <?= ($filters['transmission'] == 'electrisch') ? 'selected' : ''; ?>>Electric</option>
 
                         </select>
                     </div>
@@ -145,6 +148,7 @@ if (isset($message)) {
                                     <?= $colour['colourName']; ?>
                                 </option>
                             <?php endforeach; ?>
+                        </select>
                         </select>
                     </div>
 

@@ -12,7 +12,7 @@
                 <i class="icon-instagram"></i>
             </a>
             <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
-                <i class="icon-facebook"></i>
+                <i class="icon-social-facebook-circular"></i>
             </a>
         </div>
     </div>
