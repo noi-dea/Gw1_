@@ -10,6 +10,8 @@ $uid = $_SESSION["uid"];
 $message = "";
 $errors = "";
 
+
+
 if (!isset($uid)) {
 
     header("Location: login.php");
@@ -38,6 +40,22 @@ if (isset($_GET["add"]) && !empty($_GET['add'])) {
 }
 
 $wishlist = getWishlist($uid);
+
+
+//todo
+// //-----// pagination variables
+// $pagefile = "wishlist.php";
+// $firstpage = 1;
+// $pagelimit = 12;
+// $lastpage = ceil(count($wishlist) / $pagelimit);
+// include("./pagination.validation.php");
+
+// //-----// car indexes
+// $firstIndex = 0 + (($pagenr - 1) * $pagelimit);
+// $lastIndex = $firstIndex + $pagelimit - 1;
+// if ($lastIndex > count($wishlist) - 1) {
+//     $lastIndex = count($wishlist) - 1;
+// }
 ?>
 
 <!DOCTYPE html>
@@ -90,6 +108,7 @@ $wishlist = getWishlist($uid);
             </form>
         </section>
     </main>
+
     <?php include 'hp_footer.php'; ?>
 </body>
 

@@ -21,7 +21,9 @@ if (isset($_GET['id'])) {
 }
 $car = getCar($id);
 
-
+// print "<pre>";
+// print_r($car);
+// print "<pre>";
 
 ?>
 
@@ -49,7 +51,7 @@ $car = getCar($id);
 
                 <div id="imgdetail">
                     <img src="<?= $car['ul'] ?>" alt="">
-                    <a href="/includes/wishlist.php?add=<?= $car['id'] ?>" id="icon-link">
+                    <a href="/includes/wishlist.php?add=<?= $_GET["id"] ?>" id="icon-link">
                         <i class="icon-heart1"></i>
                     </a>
 

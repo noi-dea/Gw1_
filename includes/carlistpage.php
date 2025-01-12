@@ -16,11 +16,13 @@ $pageInIncludes = true;
 include_once("./css_js.inc.php");
 
 $cars = getAllCars();
-
+// print "<pre>";
+// print_r($cars);
+// print "<pre>";
 //-----// pagination variables
-$pagefile = "carlistcards.php";
+$pagefile = "carlistpage.php";
 $firstpage = 1;
-$pagelimit = 10;
+$pagelimit = 12;
 $lastpage = ceil(count($cars) / $pagelimit);
 include("./pagination.validation.php");
 
@@ -71,6 +73,7 @@ if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
             <?php endfor; ?>
         </section>
     </main>
+    <?php include("./pagination.logic.php"); ?>
     <?php include 'hp_footer.php'; ?>
 </body>
 
