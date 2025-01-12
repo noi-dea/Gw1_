@@ -52,6 +52,7 @@ if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/pagination.css">
     <link rel="stylesheet" href="./dist/<?= $cssPath ?>" />
     <link rel="stylesheet" href="/css/style.css" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
