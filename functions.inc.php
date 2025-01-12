@@ -156,11 +156,18 @@ function searchFilterFunction($filters)
     }
 
     // Color
-    if (!empty($filters['colour'])) {
-        $sql = $sql . " AND colours_id = :colour";
-        $searchCriteria[':colour'] = $filters['colour'];
-    }
+    if (isset($filters['colour']) && !empty($filters['colour'])) {
+        $colourName = $filters['colour'];
 
+        $stmt = connectToDB()->prepare("SELECT id FROM colours WHERE colourName = :colourName");
+        $stmt->execute([':colourName' => $colourName]);
+        $colour = $stmt->fetch();
+
+        if ($colour) {
+            $sql .= " AND colours_id = :colour";
+            $searchCriteria[':colour'] = $colour['id'];
+        }
+    }
     $db = connectToDB();
     $stmt = $db->prepare($sql);
     $stmt->execute($searchCriteria);
@@ -168,7 +175,15 @@ function searchFilterFunction($filters)
 
     return [$results, $errors];
 }
-
+//alle kleuren ophalen: 
+function getColours()
+{
+    $db = connectToDB();
+    $sql = 'SELECT * FROM colours';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 //alle modellen ophalen. 
 function getAllModels()
@@ -226,16 +241,7 @@ function addCar(INT $make, STRING $model, INT $year, STRING $fueltype, INT $colo
 }
 
 // Get the colours currently stored in the database
-function getColours()
-{
-    $db = connectToDB();
 
-    $sql = 'SELECT * from colours';
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
-
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
 
 // Get the brands/makes currently stored in the database
 function getMakes()

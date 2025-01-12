@@ -1,7 +1,7 @@
 <?php
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 $username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
@@ -25,11 +25,11 @@ $filters = [
     'model' => $selectedModel,
     'fueltype' => isset($_GET['fueltype']) ? $_GET['fueltype'] : '',
     'transmission' => isset($_GET['transmission']) ? $_GET['transmission'] : '',
-    'colour' => isset($_GET['colours_id']) ? $_GET['colours_id'] : '',
+    'colour' => isset($_GET['colour']) ? $_GET['colour'] : '',
     'km_min' => isset($_GET['km_min']) ? $_GET['km_min'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];
-// echo 'colours_id: ' . (isset($_GET['colours_id']) ? $_GET['colours_id'] : 'not set');
+// echo 'colours_id: ' . (isset($_GET['colours_id']) ? $_GET['colours_id'] : 'probleeem');
 
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty(array_filter($filters))) {
@@ -144,11 +144,10 @@ if (isset($message)) {
                         <select id="colours_id" name="colours_id">
                             <option value="">Select Color</option>
                             <?php foreach ($colours as $colour): ?>
-                                <option value="<?= $colour['id']; ?>" <?= ($colour['id'] == $filters['colours_id']) ? 'selected' : ''; ?>>
+                                <option value="<?= $colour['id']; ?>" <?= ($colour['id'] == $filters['colour']) ? 'selected' : ''; ?>>
                                     <?= $colour['colourName']; ?>
                                 </option>
                             <?php endforeach; ?>
-                        </select>
                         </select>
                     </div>
 
