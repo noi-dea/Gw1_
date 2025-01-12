@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 require '../functions.inc.php';
 session_start();
 
+$pageInIncludes = true;
 $uid = $_SESSION["uid"];
 
 $message = "";

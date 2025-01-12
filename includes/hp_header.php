@@ -1,4 +1,5 @@
 <?php
+session_start();
 $homepath = '';
 if (isset($_SERVER['admin']) || isset($pageInIncludes)) {
     $homepath = '../';
@@ -15,9 +16,9 @@ if (isset($_SESSION['user'])) {
         <a href="/" class="site-logo">Groeps Weirk.</a>
         <i class="icon-menu1"></i>
         <ul class="main-nav">
-            <li><a href="/index.php"><i class="icon-home"></i> Home</a></li>
-            <li><a href="includes/carlistpage.php"><i class="icon-travel-car "></i> Car Stock</a></li>
-            <li><a href="includes/contact.php"> <i class="icon-mail"></i> Contact</a></li>
+            <li><a href="<?= $homepath; ?>/index.php"><i class="icon-home"></i> Home</a></li>
+            <li><a href="<?= $homepath; ?>includes/carlistpage.php"><i class="icon-travel-car "></i> Car Stock</a></li>
+            <li><a href="<?= $homepath; ?>includes/contact.php"> <i class="icon-mail"></i> Contact</a></li>
         </ul>
         <div class="dropdown">
             <button class="dropbtn"><i class="icon-user1"></i><?= " " . $username; ?></button>
