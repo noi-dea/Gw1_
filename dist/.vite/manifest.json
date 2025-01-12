@@ -4,12 +4,12 @@
     "src": "admin/fonts/icomoon.svg"
   },
   "admin/js/index.js": {
-    "file": "assets/index-CK7vY61r.js",
+    "file": "assets/index-C5WUj2wF.js",
     "name": "index",
     "src": "admin/js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-m5iS3guN.css"
+      "assets/index-Dcar3xMh.css"
     ],
     "assets": [
       "assets/icomoon-DQfcDdS4.svg",
@@ -51,12 +51,12 @@
     "src": "images/banner4.jpg"
   },
   "js/index.js": {
-    "file": "assets/index-B9BT7u2j.js",
+    "file": "assets/index-CBS3AiQO.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-CqCJf1vR.css"
+      "assets/index-BBEzOHI3.css"
     ],
     "assets": [
       "assets/icomoon-L58U7sKq.eot",

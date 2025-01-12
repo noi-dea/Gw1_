@@ -14,9 +14,9 @@ if (isset($_GET['remove']) && !empty($_GET['remove'])) {
     $removeCar = intval($_GET['remove']);
     $result = removeFromWishlist($removeCar, $uid);
     if ($result["success"]) {
-        $message = "verwijderd";
+        $message = "Item succesfully deleted from your wishlist!!!";
     } else {
-        $errors = "nier verwijderd";
+        $errors = "Something went wrong!!!";
     }
 }
 
@@ -24,9 +24,9 @@ if (isset($_GET["add"]) && !empty($_GET['add'])) {
     $addCar = intval($_GET["add"]);
     $result = addToWishlist($addCar, $uid);
     if ($result["success"]) {
-        $message = "ok";
+        $message = "Item succesfully added to your wishlist";
     } else {
-        $errors = "bestaat al";
+        $errors = "Something went wrong!!!";
     }
 }
 
@@ -50,7 +50,7 @@ $wishlist = getWishlist($uid);
 <body>
     <?php include('hp_header.php'); ?>
     <main>
-        <h1>Mijn Wishlist</h1>
+        <h1>My Wishlist</h1>
         <?php if ($message): ?>
             <div class="class_message">
                 <li><?= $message; ?></li>
@@ -78,7 +78,7 @@ $wishlist = getWishlist($uid);
                         <?php endforeach; ?>
                     </ul>
                 <?php else: ?>
-                    <p>Uw wishlist is leeg.</p>
+                    <p class_empty>Your wishlist is empty.</p>
                 <?php endif; ?>
             </form>
         </section>
