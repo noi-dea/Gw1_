@@ -27,6 +27,7 @@
     overflow: hidden;
     aspect-ratio: 1/1;
     background-color: #f3f3f3; /* Lichte achtergrond voor een lege afbeelding */
+    position: relative;
 }
 
 #imgdetail img {
@@ -36,7 +37,19 @@
     object-fit: cover;
     border-radius: 8px;
 }
-
+#imgdetail a {
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    z-index: 2;
+    text-decoration: none;
+    transform: translate(-50%, -50%);
+}
+#imgdetail a i {
+    font-size: 6rem;
+    color: rgb(255, 0, 0);
+    transition: color 0.3s ease;
+}
 /* Miniatuur afbeeldingen */
 #imgpreviews {
     display: flex;

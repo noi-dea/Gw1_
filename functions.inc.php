@@ -233,26 +233,48 @@ function getBodyworks()
 //WISHLIST Add car:
 function addToWishlist($carId, $userId)
 {
-    $db = connectToDB();
-    $sql = "INSERT INTO wishlist (cars_id, users_id) VALUES (:cars_id, :users_id)";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([
-        ':cars_id' => $carId,
-        ':users_id' => $userId
-    ]);
+    try {
+        $db = connectToDB();
+        $sql = "INSERT INTO wishlist (cars_id, users_id) VALUES (:cars_id, :users_id)";
+        $stmt = $db->prepare($sql);
+        $success = $stmt->execute([
+            ':cars_id' => $carId,
+            ':users_id' => $userId
+        ]);
+        if ($success) {
+            return ['success' => true, 'message' => 'Auto succesvol toegevoegd aan de wishlist!'];
+        } else {
+            return ['success' => false, 'message' => 'Kon niet toevoegen aan de wishlist.'];
+        }
+    } catch (PDOException $e) {
+        // Vang fouten op en retourneer een duidelijke melding
+        return ['success' => false, 'message' => 'Databasefout: ' . $e->getMessage()];
+    }
 }
 
 // WISHLIST Remove cars
 function removeFromWishlist($carId, $userId)
+
 {
-    $db = connectToDB();
-    $sql = "DELETE FROM wishlist WHERE cars_id = :cars_id AND users_id = :users_id";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([
-        ':cars_id' => $carId,
-        ':users_id' => $userId
-    ]);
+    try {
+        $db = connectToDB();
+        $sql = "DELETE FROM wishlist WHERE cars_id = :cars_id AND users_id = :users_id";
+        $stmt = $db->prepare($sql);
+        $success = $stmt->execute([
+            ':cars_id' => $carId,
+            ':users_id' => $userId
+        ]);
+        if ($success) {
+            return ['success' => true, 'message' => 'Auto succesvol toegevoegd aan de wishlist!'];
+        } else {
+            return ['success' => false, 'message' => 'Kon niet toevoegen aan de wishlist.'];
+        }
+    } catch (PDOException $e) {
+        // Vang fouten op en retourneer een duidelijke melding
+        return ['success' => false, 'message' => 'Databasefout: ' . $e->getMessage()];
+    }
 }
+
 
 // WISHLIST Get alle cars
 function getWishlist($userId)

@@ -1,0 +1,120 @@
+/* Algemene styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+    color: #333;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Titel styling */
+main h1 {
+    text-align: center;
+    color: #313131;
+    margin-bottom: 20px;
+}
+
+/* Berichten styling */
+.class_message,
+.class_errors {
+    margin: 10px auto;
+    padding: 15px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 600px;
+    font-size: 16px;
+    text-align: center;
+    list-style: none;
+}
+
+.class_message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.class_errors {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Wishlist grid */
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+    margin: 20px 0;
+}
+
+/* Wishlist item */
+.wishlist-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wishlist-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Afbeelding styling */
+.wishlist-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Item details */
+.item-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.item-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #444;
+}
+
+.item-details button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.item-details button:hover {
+    background-color: #c0392b;
+}
+
+/* Lege wishlist tekst */
+p {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+}

@@ -36,6 +36,7 @@ $car = getCar($id);
     <title><?= $car['year'] . " " . $car['make'] . " " . $car['model']; ?></title>
     <link rel="stylesheet" href="../css/cardetailpage.css">
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/icons.css" />
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
 
@@ -50,10 +51,15 @@ $car = getCar($id);
 
                 <div id="imgdetail">
                     <img src="<?= $car['ul'] ?>" alt="">
+                    <a href="/includes/wishlist.php?add=<?= $car['id'] ?>" id="icon-link">
+                        <i class="icon-heart1"></i>
+                    </a>
+
                 </div>
                 <div id="imgpreviews">
                     <!-- //TODO: after css styling revert from carDummy to car data and uncomment if statements -->
                     <img class="shown" src="<?= $car['ul']; ?>" alt="">
+
                     <!-- <// if ($car['front'] !== null): ?> -->
                     <img src="<?= isset($car['front']) ? $car['front'] : "..\logo_auto\carnotfound.jpg"; ?>" alt="">
                     <!-- <// endif; if ($car['back'] !== null) :?> -->
