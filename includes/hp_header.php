@@ -7,7 +7,7 @@ if (isset($_SERVER['admin']) || isset($pageInIncludes)) {
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user'];
 } else {
-    $username = 'Get Started';
+    $username = '';  // Remove 'Get Started' text
 }
 ?>
 
@@ -29,7 +29,7 @@ if (isset($_SESSION['user'])) {
                 <?php if (isset($_SESSION['adminbtn']) && $_SESSION['adminbtn'] == true): ?>
                     <a href="<?= $homepath; ?>/admin"><i class="icon-user"></i><span>Admin</span></a>
                 <?php endif; ?>
-                <?php if ($username !== 'Get Started') { ?>
+                <?php if ($username !== '') { ?>
                     <a href="<?= $homepath; ?>includes/wishlist.php"><i class="icon-heart2"></i><span>Wishlist</span></a>
                     <a href="<?= $homepath; ?>includes/logout.php"><i class="icon-log-out"></i><span>Log Out</span></a>
                 <?php } else { ?>

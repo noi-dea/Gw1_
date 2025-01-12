@@ -66,7 +66,7 @@ if (isset($message)) {
 <section class="hero-bg">
     <div id="trigger"></div>
     <section class="main-intro" id="main-intro">
-        <p>Hi <?= !empty($username) ? $username : ''; ?>!</p>
+        <p>Good to see you <?= !empty($username) ? $username : ''; ?>!</p>
         </p>
         <p>Looking for your dream car? We’ve got it!</p>
         <h1>- Get Yours Today!<br></h1>
