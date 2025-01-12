@@ -29,15 +29,7 @@ include_once "./css_js.inc.php";
     <?php include('hp_header.php'); ?>
     <main>
         <form class="contact-form" action="" method="GET">
-            <div class=contact-session>
-                <label for="location">Location:</label>
-                <input type="text" id="location" name="location" placeholder="Location">
-            </div>
-
-            <div class=contact-session>
-                <label for="datum">Date:</label>
-                <input type="date" id="datum" name="datum">
-            </div>
+            <img src="/images/under_construction.jpg" alt="">
 
             <button type="submit"> Send</button>
         </form>
