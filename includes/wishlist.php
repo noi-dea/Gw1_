@@ -45,18 +45,18 @@ $wishlist = getWishlist($uid);
 
 //todo
 // //-----// pagination variables
-// $pagefile = "wishlist.php";
-// $firstpage = 1;
-// $pagelimit = 12;
-// $lastpage = ceil(count($wishlist) / $pagelimit);
-// include("./pagination.validation.php");
+$pagefile = "wishlist.php";
+$firstpage = 1;
+$pagelimit = 8;
+$lastpage = ceil(count($wishlist) / $pagelimit);
+include("./pagination.validation.php");
 
 // //-----// car indexes
-// $firstIndex = 0 + (($pagenr - 1) * $pagelimit);
-// $lastIndex = $firstIndex + $pagelimit - 1;
-// if ($lastIndex > count($wishlist) - 1) {
-//     $lastIndex = count($wishlist) - 1;
-// }
+$firstIndex = 0 + (($pagenr - 1) * $pagelimit);
+$lastIndex = $firstIndex + $pagelimit - 1;
+if ($lastIndex > count($wishlist) - 1) {
+    $lastIndex = count($wishlist) - 1;
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +69,7 @@ $wishlist = getWishlist($uid);
     <link rel="stylesheet" href="../css/wishlist.css">
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/icons.css" />
+    <link rel="stylesheet" href="../css/pagination.css" />
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
 </head>
@@ -92,16 +93,16 @@ $wishlist = getWishlist($uid);
             <form method="GET" action="wishlist.php">
                 <?php if (count($wishlist) > 0): ?>
                     <ul class="wishlist-grid">
-                        <?php foreach ($wishlist as $item): ?>
+                        <?php for ($i = $firstIndex; $i <= $lastIndex; $i++): ?>
                             <li class="wishlist-item">
-                                <img src="<?= $item['fotoUrl'] ?>" alt="Auto afbeelding">
+                                <img src="<?= $wishlist[$i]['fotoUrl'] ?>" alt="Auto afbeelding">
                                 <div class="item-details">
-                                    <p><?= $item['makeName'] . ' ' . $item['model'] ?></p>
-                                    <p>&euro; <?= number_format($item['price'], 2) ?></p>
-                                    <button type="submit" name="remove" value="<?= $item['id'] ?>">Verwijderen</button>
+                                    <p><?= $wishlist[$i]['makeName'] . ' ' . $wishlist[$i]['model'] ?></p>
+                                    <p>&euro; <?= number_format($wishlist[$i]['price'], 2) ?></p>
+                                    <button type="submit" name="remove" value="<?= $wishlist[$i]['id'] ?>">Verwijderen</button>
                                 </div>
                             </li>
-                        <?php endforeach; ?>
+                        <?php endfor; ?>
                     </ul>
                 <?php else: ?>
                     <p class_empty>Your wishlist is empty.</p>
@@ -110,7 +111,10 @@ $wishlist = getWishlist($uid);
         </section>
     </main>
 
-    <?php include 'hp_footer.php'; ?>
+    <?php
+    include('pagination.logic.php'); 
+    include 'hp_footer.php'; 
+    ?>
 </body>
 
 </html>
