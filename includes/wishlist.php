@@ -48,7 +48,10 @@ $wishlist = getWishlist($uid);
 $pagefile = "wishlist.php";
 $firstpage = 1;
 $pagelimit = 8;
+$lastpage = 1;
+if (count($wishlist)>0){
 $lastpage = ceil(count($wishlist) / $pagelimit);
+}
 include("./pagination.validation.php");
 
 // //-----// car indexes
