@@ -21,7 +21,9 @@ if (isset($_GET['id'])) {
 }
 $car = getCar($id);
 
-
+// print "<pre>";
+// print_r($car);
+// print "<pre>";
 
 ?>
 
@@ -35,6 +37,7 @@ $car = getCar($id);
     <link rel="stylesheet" href="../css/cardetailpage.css">
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/icons.css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
 
@@ -49,7 +52,7 @@ $car = getCar($id);
 
                 <div id="imgdetail">
                     <img src="<?= $car['ul'] ?>" alt="">
-                    <a href="/includes/wishlist.php?add=<?= $car['id'] ?>" id="icon-link">
+                    <a href="/includes/wishlist.php?add=<?= $_GET["id"] ?>" id="icon-link">
                         <i class="icon-heart1"></i>
                     </a>
 

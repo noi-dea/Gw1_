@@ -49,7 +49,8 @@ if (isset($_GET["uid"])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title Page</title>
+    <title>Update car details</title>
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">

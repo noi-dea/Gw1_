@@ -9,6 +9,9 @@ $prev = $pagenr-1;
 $next = $pagenr+1;
 ?>
  <?= $div; ?>
+            <?php if ($firstpage == $lastpage){ ?>
+                <!-- Empty result to not make the pagination display when there's only 1 page -->
+            <?php } else { ?>
             <ul class="pagination">
                 <?php if ($pagenr == $firstpage){ ?>
                     <li class="active"><a href="<?= $pagefile; ?>?page=<?= $firstpage; ?>"><?= $firstpage; ?></a></li>
@@ -50,6 +53,7 @@ $next = $pagenr+1;
                     <li><a href="<?= $pagefile; ?>?page=<?= $next; ?>">NEXT</a></li>
                 <?php } ?>
                 </ul> 
+            <?php } ?>
         </div>
 
 <!-- include at bottom of the body right above the footer-->
