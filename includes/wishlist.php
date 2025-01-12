@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 require '../functions.inc.php';
 session_start();
 
@@ -48,7 +48,10 @@ $wishlist = getWishlist($uid);
 $pagefile = "wishlist.php";
 $firstpage = 1;
 $pagelimit = 8;
+$lastpage = 1;
+if (count($wishlist)>0){
 $lastpage = ceil(count($wishlist) / $pagelimit);
+}
 include("./pagination.validation.php");
 
 // //-----// car indexes
