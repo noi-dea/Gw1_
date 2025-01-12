@@ -3,6 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+$pageInIncludes = true;
+
 require("../functions.inc.php");
 requiredLoggedOut();
 $errors = [];
@@ -56,6 +58,7 @@ if (isset($_GET["login"])) {
 
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
 </head>

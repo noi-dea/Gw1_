@@ -37,6 +37,7 @@ $car = getCar($id);
     <link rel="stylesheet" href="../css/cardetailpage.css">
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/icons.css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
 
