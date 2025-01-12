@@ -1,8 +1,8 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-session_start();
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+// session_start();
 $username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
 require 'functions.inc.php';
@@ -29,7 +29,6 @@ $filters = [
     'km_min' => isset($_GET['km_min']) ? $_GET['km_min'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];
-// echo 'colours_id: ' . (isset($_GET['colours_id']) ? $_GET['colours_id'] : 'probleeem');
 
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty(array_filter($filters))) {
@@ -72,7 +71,7 @@ if (isset($message)) {
         <p>Looking for your dream car? We’ve got it!</p>
         <h1>- Get Yours Today!<br></h1>
         <div class="get-started-btn">
-            <a href="#trigger">Get Started</a>
+            <a href="#trigger">Search Now</a>
     </section>
 
 
@@ -94,9 +93,7 @@ if (isset($message)) {
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <!-- <?php var_dump($models); ?> -->
-                    <!-- <?php var_dump($filters['colours_id']); ?> -->
-                    <!-- <?php var_dump($filters['makes_id']); ?> -->
+
 
                     <div class="filter-section">
                         <label for="model">Model:</label>
@@ -163,6 +160,13 @@ if (isset($message)) {
 </section>
 
 <section>
+    <div class="features-container">
+        <?php include('features.php'); ?>
+    </div>
+</section>
+
+<section>
     <div class="category-container">
         <?php include('hp_categorie.php'); ?>
+    </div>
 </section>
