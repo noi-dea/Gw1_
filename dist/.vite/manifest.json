@@ -4,19 +4,19 @@
     "src": "admin/fonts/icomoon.svg"
   },
   "admin/js/index.js": {
-    "file": "assets/index-BuoOpDFR.js",
+    "file": "assets/index-CEmcgjUi.js",
     "name": "index",
     "src": "admin/js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-M9TLD_27.css"
+      "assets/index-PBjblGlx.css"
     ],
     "assets": [
-      "assets/icomoon-DQfcDdS4.svg",
+      "assets/icomoon-CbwcJc33.svg",
       "assets/icomoon-L58U7sKq.eot",
       "assets/icomoon-BCLxSRt3.ttf",
       "assets/icomoon-hEi5kpcD.woff",
-      "assets/icomoon-CbwcJc33.svg",
+      "assets/icomoon-DQfcDdS4.svg",
       "assets/Merriweather-Regular-rtU9Xc2a.ttf",
       "assets/Roboto-Regular-ia0dPpEo.ttf",
       "assets/banner4-BOMv2u66.jpg"
