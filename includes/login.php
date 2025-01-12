@@ -7,7 +7,7 @@ require("../functions.inc.php");
 requiredLoggedOut();
 $errors = [];
 
-// Debugging
+
 if (isset($_GET["register"])) {
     header("Location: ./register.php");
     exit;
@@ -17,7 +17,6 @@ if (isset($_GET["login"])) {
     $username = trim($_GET["inputusername"]);
     $password = trim($_GET["inputpassword"]);
 
-    // Controleer of gebruikersnaam en wachtwoord ingevuld zijn
     if (!strlen($username)) {
         $errors[] = "Please fill in username";
     }

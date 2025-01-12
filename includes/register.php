@@ -1,7 +1,5 @@
 <?php
 
-
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -10,7 +8,6 @@ require("../functions.inc.php");
 $errors = [];
 $username_register = "";
 $password1 = "";
-
 $firstname = "";
 $lastname = "";
 $email = "";
@@ -36,7 +33,7 @@ if (isset($_POST["register"])) {
         }
     }
 
-    //password
+
     if (!isset($_POST["inputpassword1"])) {
         $errors[] = "password1 is required";
     }
@@ -53,8 +50,7 @@ if (isset($_POST["register"])) {
         }
     }
 
-    //firstname
-    // Validatie voor first name
+
     if (!isset($_POST['inputfirstname'])) {
         $errors[] = "Firstname is required.";
     } else {
@@ -69,7 +65,7 @@ if (isset($_POST["register"])) {
         }
     }
 
-    // Validatie voor last name
+
     if (!isset($_POST['inputlastname'])) {
         $errors[] = "Lastname is required.";
     } else {
@@ -84,16 +80,16 @@ if (isset($_POST["register"])) {
         }
     }
 
-    // Validatie voor e-mail
+
     if (!isset($_POST['inputmail'])) {
         $errors[] = "E-mail address is invalid.";
     } else {
         $email = $_POST['inputmail'];
-        //is het email adres syntax-gewijs valid
+
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "E-mail address is invalid.";
         } else {
-            //syntax is valid maar is deze email uniek
+
             if (mailExists($email)) {
                 $errors[] = "this email already regeister are you trying to login instead";
             }

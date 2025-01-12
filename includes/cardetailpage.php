@@ -1,5 +1,5 @@
 <?php
-// debugg lines
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -9,7 +9,7 @@ include_once "./css_js.inc.php";
 
 require('../functions.inc.php');
 $lastId = getIdLastCar();
-$id = 1; //by declaring it and only changing it when there's a get value we save 1 else{} in the code
+$id = 1;
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     if ($id < 1 || preg_match('/[\D]/', $id)) {
@@ -20,9 +20,7 @@ if (isset($_GET['id'])) {
     }
 }
 $car = getCar($id);
-// echo '<pre>';
-// Print_r($car);
-// echo '</pre>';
+
 
 
 ?>
@@ -57,16 +55,15 @@ $car = getCar($id);
 
                 </div>
                 <div id="imgpreviews">
-                    <!-- //TODO: after css styling revert from carDummy to car data and uncomment if statements -->
+
                     <img class="shown" src="<?= $car['ul']; ?>" alt="">
 
-                    <!-- <// if ($car['front'] !== null): ?> -->
                     <img src="<?= isset($car['front']) ? $car['front'] : "..\logo_auto\carnotfound.jpg"; ?>" alt="">
-                    <!-- <// endif; if ($car['back'] !== null) :?> -->
+
                     <img src="<?= isset($car['back']) ? $car["back"] : "..\logo_auto\carnotfound.jpg"; ?>" alt="">
-                    <!-- <// endif; if ($car['inner'] !== null): ?> -->
+
                     <img src="<?= isset($car['inner']) ? $car["inner"] : "..\logo_auto\carnotfound.jpg"; ?>" alt="">
-                    <!-- <// endif; ?> -->
+
                 </div>
                 <div class="description">
 

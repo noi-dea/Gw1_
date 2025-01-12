@@ -10,6 +10,13 @@ $uid = $_SESSION["uid"];
 $message = "";
 $errors = "";
 
+if (!isset($uid)) {
+
+    header("Location: login.php");
+    exit();
+}
+
+
 if (isset($_GET['remove']) && !empty($_GET['remove'])) {
     $removeCar = intval($_GET['remove']);
     $result = removeFromWishlist($removeCar, $uid);
