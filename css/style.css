@@ -865,6 +865,7 @@ footer {
         .dropbtn {
           width: 100%;
           justify-content: center;
+          display: none;
         }
 
         .dropdown-content {
@@ -977,6 +978,38 @@ footer {
   }
 }
 
+.mobile-menu{
+  position: relative;
+  .mobile-button{
+    display: none;
+    position: absolute;
+    top: -8rem;
+    right: 5rem;
+    height: 5rem;
+    aspect-ratio: 1 / 1;
+    background-color: transparant;
+    border: none;
+    background-image: url(/images/1855701.png);
+  }
+  .mobile-content{
+    background-color: var(--cool-silver);
+    position:absolute;
+    top:-3rem;
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    transition: all 500ms;
+    &.hidden{
+      top: -40rem;
+    }
+    a{
+      color: black;
+      text-decoration: none;
+      padding: .8rem;
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   header {
     padding: 1.5rem;
@@ -1052,4 +1085,9 @@ footer {
       }
     }
   }
+  .mobile-menu .mobile-button{
+    display: block;
+  }
 }
+
+
