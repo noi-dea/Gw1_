@@ -25,7 +25,7 @@ $filters = [
     'model' => $selectedModel,
     'fueltype' => isset($_GET['fueltype']) ? $_GET['fueltype'] : '',
     'transmission' => isset($_GET['transmission']) ? $_GET['transmission'] : '',
-    'colour' => isset($_GET['colour']) ? $_GET['colour'] : '',
+    'colour' => isset($_GET['colours_id']) ? $_GET['colours_id'] : '',
     'km_min' => isset($_GET['km_min']) ? $_GET['km_min'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];

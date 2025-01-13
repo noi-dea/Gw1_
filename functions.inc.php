@@ -157,10 +157,10 @@ function searchFilterFunction($filters)
 
     // Color
     if (isset($filters['colour']) && !empty($filters['colour'])) {
-        $colourName = $filters['colour'];
+        $colourId = $filters['colour'];
 
-        $stmt = connectToDB()->prepare("SELECT id FROM colours WHERE colourName = :colourName");
-        $stmt->execute([':colourName' => $colourName]);
+        $stmt = connectToDB()->prepare("SELECT id FROM colours WHERE id = :colourId");
+        $stmt->execute([':colourId' => $colourId]);
         $colour = $stmt->fetch();
 
         if ($colour) {
