@@ -4,12 +4,12 @@
     "src": "admin/fonts/icomoon.svg"
   },
   "admin/js/index.js": {
-    "file": "assets/index-CLTMKhy0.js",
+    "file": "assets/index-B5gIVvDI.js",
     "name": "index",
     "src": "admin/js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-C9ZKyjy7.css"
+      "assets/index-B-AnhMVo.css"
     ],
     "assets": [
       "assets/icomoon-C-EAromZ.svg",
@@ -47,10 +47,6 @@
     "file": "assets/icomoon-hEi5kpcD.woff",
     "src": "fonts/icomoon.woff"
   },
-  "images/background10.jpg": {
-    "file": "assets/background10-BVTzTUjm.jpg",
-    "src": "images/background10.jpg"
-  },
   "images/background9.jpg": {
     "file": "assets/background9-7lAMfiCc.jpg",
     "src": "images/background9.jpg"
@@ -60,12 +56,12 @@
     "src": "images/svgbackground.png"
   },
   "js/index.js": {
-    "file": "assets/index-b6HAed5-.js",
+    "file": "assets/index-K6US4KHd.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-fiN2KAGI.css"
+      "assets/index-DoXESZM2.css"
     ],
     "assets": [
       "assets/icomoon-L58U7sKq.eot",
