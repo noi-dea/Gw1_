@@ -8,17 +8,15 @@ require("../functions.inc.php");
 
 session_start();
 
-// echo '<pre>';
-// Print_r($_SESSION);
-// echo '</pre>';
+echo '<pre>';
+Print_r($_SESSION);
+echo '</pre>';
 
 $pageInIncludes = true;
 include_once("./css_js.inc.php");
 
 $cars = getAllCars();
-// print "<pre>";
-// print_r($cars);
-// print "<pre>";
+
 //-----// pagination variables
 $pagefile = "carlistpage.php";
 $firstpage = 1;
@@ -34,12 +32,13 @@ if ($lastIndex > count($cars) - 1) {
 }
 if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
     $results = $_SESSION['results'];
-
-
+    $lastpage = ceil(count($results) / $pagelimit);
+    $firstIndex = 0 + (($pagenr - 1) * $pagelimit);
+    $lastIndex = $firstIndex + $pagelimit - 1;
+    if ($lastIndex > count($results) - 1) {
+        $lastIndex = count($results) - 1;
+    }
     unset($_SESSION['results']);
-} else {
-    $results = [];
-    $results[0] = allCars();
 }
 
 ?>
@@ -62,18 +61,41 @@ if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
 <body>
     <?php include 'hp_header.php'; ?>
     <main>
-        <section class="sectioncarlistpage">
-            <?php for ($i = $firstIndex; $i <= $lastIndex; $i++): ?>
-                <article class="articlecarlistpage">
-                    <div class="divcarlistpage">
-                        <a href="./cardetailpage.php?id=<?= $cars[$i]['id']; ?>">
-                            <img src="<?= $cars[$i]['fotoURL']; ?>" alt="foto van de auto">
-                        </a>
-                    </div>
-                    <p><?= $cars[$i]['year'] . " " . $cars[$i]['make'] . " " . $cars[$i]['model']; ?></p>
-                </article>
-            <?php endfor; ?>
-        </section>
+        <?php if (!isset($results)) { ?>
+            <section class="sectioncarlistpage">
+                <?php for ($i = $firstIndex; $i <= $lastIndex; $i++): ?>
+                    <article class="articlecarlistpage">
+                        <div class="divcarlistpage">
+                            <a href="./cardetailpage.php?id=<?= $cars[$i]['id']; ?>">
+                                <img src="<?= $cars[$i]['fotoURL']; ?>" alt="foto van de auto">
+                            </a>
+                        </div>
+                        <p><?= $cars[$i]['year'] . " " . $cars[$i]['make'] . " " . $cars[$i]['model']; ?></p>
+                    </article>
+                <?php endfor; ?>
+            </section>
+        <?php } else { ?>
+            <section class="sectioncarlistpage">
+                <?php if (!empty($results)) {
+                    // Door alle arrays in $results heen lopen
+                    foreach ($results as $result_set) {
+                        // Als de set van auto's niet leeg is, doorloop dan de auto's
+                        if (!empty($result_set)) {
+                            foreach ($result_set as $car): ?>
+                                <article class="articlecarlistpage">
+                                    <div class="divcarlistpage">
+                                        <a href="./cardetailpage.php?id=<?= $car['id']; ?>">
+                                            <img src="<?= $car['fotoUrl']; ?>" alt="foto van de auto">
+                                        </a>
+                                    </div>
+                                    <p><?= $car['year'] . " " . $car['make'] . " " . $car['model']; ?></p>
+                                </article>
+                <?php endforeach;
+                        }
+                    }
+                } ?>
+            </section>
+        <?php } ?>
     </main>
     <?php include("./pagination.logic.php"); ?>
     <?php include 'hp_footer.php'; ?>
