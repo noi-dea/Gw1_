@@ -4,12 +4,12 @@
     "src": "admin/fonts/icomoon.svg"
   },
   "admin/js/index.js": {
-    "file": "assets/index-DeRIBomC.js",
+    "file": "assets/index-CJrNT_xA.js",
     "name": "index",
     "src": "admin/js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-Dh5byrRt.css"
+      "assets/index-DKkY_7xT.css"
     ],
     "assets": [
       "assets/icomoon-C-EAromZ.svg",
@@ -56,12 +56,12 @@
     "src": "images/svgbackground.png"
   },
   "js/index.js": {
-    "file": "assets/index-Cj2Dlp33.js",
+    "file": "assets/index-qkbeLhY5.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-Cko4xwzk.css"
+      "assets/index-BNrXzNR6.css"
     ],
     "assets": [
       "assets/icomoon-L58U7sKq.eot",

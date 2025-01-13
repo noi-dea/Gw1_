@@ -94,18 +94,22 @@ function searchFilterFunction($filters)
     $errors = [];
 
     // Prijs
-    if (!empty($filters['price_max'])) {
-        if (!is_numeric($filters['price_max'])) {
-            $errors[] = "Price must be a valid number.";
-        } elseif ($filters['price_max'] < 0 || $filters['price_max'] > 200000) {
-            $errors[] = "Select a price between 0 and 200,000.";
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty(array_filter($filters))) {
+        if (!empty($filters['price_max']) && (!is_numeric($filters['price_max']) || $filters['price_max'] > 200000 || $filters['price_max'] < 0)) {
+            $errors[] = "The maximum price must be a number between 0 and 200,000.";
+        }
+
+        if (empty($errors)) {
+            $results = searchFilterFunction($filters);
+            if (count($results) > 0) {
+                $_SESSION["results"] = $results;
+                header("Location: includes/carlistpage.php");
+                exit;
+            } else {
+                $message = "No cars found for the selected filters.";
+            }
         }
     }
-    if (!empty($filters['price_max'])) {
-        $sql = $sql . " AND price <= :price_max";
-        $searchCriteria[':price_max'] = $filters['price_max'];
-    }
-
     // Brand
     if (!empty($filters['makes_id'])) {
         $sql = $sql . " AND makes_id = :makes_id";

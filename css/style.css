@@ -516,10 +516,9 @@ main {
     }
   }
 
-  /* ERRORS OOK STYLEN? */
   .error {
     color: var(--jet-black);
-    background-color: #f8d7da;
+    background-color: var(--soft-pink);
     padding: 1rem;
     border-radius: 0.4rem;
     margin-bottom: 1rem;
@@ -527,7 +526,7 @@ main {
 
   .message {
     color: var(--jet-black);
-    background-color: #d4edda;
+    background-color: var(--mint-green);
     padding: 1rem;
     border-radius: 0.4rem;
     margin-bottom: 1rem;

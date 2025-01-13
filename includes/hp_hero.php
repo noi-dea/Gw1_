@@ -9,46 +9,42 @@ $makes = getMakes();
 $colours = getColours();
 $bodies = getBodyworks();
 
-
+echo "<pre>";
+print_r($_GET); // Toon alle inkomende GET-data
+echo "</pre>";
 $selectedMake = isset($_GET['makes_id']) ? $_GET['makes_id'] : '';
 $selectedModel = isset($_GET['model']) ? $_GET['model'] : '';
 $models = !empty($selectedMake) ? getModelsByMake($selectedMake) : getAllModels();
 
 $filters = [
-    'price_min' => isset($_GET['price_min']) ? $_GET['price_min'] : '',
     'price_max' => isset($_GET['price_max']) ? $_GET['price_max'] : '',
     'makes_id' => $selectedMake,
     'model' => $selectedModel,
     'fueltype' => isset($_GET['fueltype']) ? $_GET['fueltype'] : '',
     'transmission' => isset($_GET['transmission']) ? $_GET['transmission'] : '',
     'colour' => isset($_GET['colour']) ? $_GET['colour'] : '',
-    'km_min' => isset($_GET['km_min']) ? $_GET['km_min'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];
 
 $errors = [];
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty(array_filter($filters))) {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (empty(array_filter($filters))) {
-        $errors[] = "Please select at least one filter.";
+        $errors[] = "<p class='error'>Please select at least one filter.";
     }
-    if (empty($errors)) {
+
+    if (!empty($errors)) {
+        foreach ($errors as $error) {
+            echo "<p class='error'>$error</p>";
+        }
+    } else {
         $results = searchFilterFunction($filters);
         if (count($results) > 0) {
             $_SESSION["results"] = $results;
-            echo '<pre>';
-            Print_r($results);
-            echo '</pre>';
             header("Location: includes/carlistpage.php");
-            // ../ vervangen door includes/ doordat er vanuit de index geredirect wordt
             exit;
         } else {
-            $message = "Géén auto's gevonden die aan je criteria voldoen";
+            echo "<p class='message'>No cars found for the selected filters.</p>";
         }
-    }
-}
-if (!empty($errors)) {
-    foreach ($errors as $error) {
-        echo "<p>$error</p>";
     }
 }
 
