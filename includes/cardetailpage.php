@@ -13,7 +13,7 @@ $firstId = getIdFirstCar();
 $id;
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    if ($id < 1 || preg_match('/[\D]/', $id)) {
+    if ($id < $firstId || preg_match('/[\D]/', $id)) {
         $id = $firstId;
     }
     if ($id > $lastId) {
