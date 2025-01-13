@@ -1,11 +1,13 @@
 <?php
 $_SERVER['admin'] = true;
+
 session_start();
 include_once "../includes/css_js.inc.php";
 include('../functions.inc.php');
 include('admin.validation.php');
 include('../includes/hp_header.php');
 
+$uid = $_SESSION['uid'];
 
 function keepValue($var)
 {

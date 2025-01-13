@@ -1,13 +1,7 @@
 
 <?php
 include('env.inc.php');
-// echo '<pre>';
-// Print_r($_ENV);
-// echo '</pre>';
-// exit;
-error_reporting(E_ALL);
-error_reporting(-1);
-ini_set('error_reporting', E_ALL);
+
 
 function connectToDB()
 {
@@ -445,6 +439,18 @@ function getIdLastCar()
     $db = connectToDB();
 
     $sql = 'SELECT cars.id FROM cars ORDER BY id DESC;';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_NUM)[0]; //only want the value, not the single value array fetch creates
+}
+
+function getIdFirstCar()
+{
+
+    $db = connectToDB();
+
+    $sql = 'SELECT cars.id FROM cars ORDER BY id ASC;';
     $stmt = $db->prepare($sql);
     $stmt->execute();
 

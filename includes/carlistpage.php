@@ -1,8 +1,5 @@
 <?php
 
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
 
 require("../functions.inc.php");
 
@@ -45,6 +42,15 @@ if (isset($_SESSION['results']) && is_array($_SESSION['results'])) {
 <html lang="en">
 
 <head>
+    <!-- OG tags start -->
+    <?php 
+    $ogPath = "cars";
+    $ogImg = "../images/banner4.jpg";
+    $ogDesc = "Browse cars to your hearts content and find your future ride";
+    include('./ogTags.php');
+    ?>
+    <!-- OG tags end -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cars</title>

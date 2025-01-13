@@ -1,19 +1,16 @@
 <?php
-
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
 session_start();
 $pageInIncludes = true;
 include_once "./css_js.inc.php";
 
 require('../functions.inc.php');
 $lastId = getIdLastCar();
-$id = 1;
+$firstId = getIdFirstCar();
+$id;
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    if ($id < 1 || preg_match('/[\D]/', $id)) {
-        $id = 1;
+    if ($id < $firstId || preg_match('/[\D]/', $id)) {
+        $id = $firstId;
     }
 
     if ($id > $lastId) {
@@ -39,6 +36,14 @@ $car = getCar($id);
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
+      <!-- OG tags start -->
+    <?php 
+    $ogPath = "car/$id";
+    $ogImg = "../images/banner4.jpg";
+    $ogDesc = "View the specifics of the " . $car['make'] . " " . $car['model'];
+    include('./ogTags.php');
+    ?>
+    <!-- OG tags end -->
 
 
 </head>
