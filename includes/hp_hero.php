@@ -138,7 +138,7 @@ if (isset($message)) {
 
                     <div class="filter-section">
                         <label for="colours_id">Color:</label>
-                        <select id="colours_id" name="colours_id">
+                        <select id="colours" name="colour">
                             <option value="">Select Color</option>
                             <?php foreach ($colours as $colour): ?>
                                 <option value="<?= $colour['id']; ?>" <?= ($colour['id'] == $filters['colour']) ? 'selected' : ''; ?>>
