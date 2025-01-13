@@ -1,12 +1,6 @@
 <?php
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
 $errors = [];
 
-// echo '<pre>';
-// Print_r($_POST);
-// echo '</pre>';
 // data-variables
 $makes = getMakes();
 $colours = getColours();
@@ -161,7 +155,7 @@ if (isset($_POST['submit'])) {
     // If all fields are correctly filled
     if (count($errors) == 0) {
         $set = newSet();
-        $user = 1; //hardcoded for now until loginsystem and session are in place to track actual user
+        $user = $uid;
 
 
         $newCar = addCar($make, $model, $year, $fuel, $colour, $doors, $transmission, $price, $mileage, $body, $url, $set, $user);

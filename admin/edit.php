@@ -1,7 +1,5 @@
 <?php
-error_reporting(E_ALL);
-error_reporting(-1);
-ini_set('error_reporting', E_ALL);
+
 $_SERVER['admin'] = true;
 session_start();
 include_once "../includes/css_js.inc.php";
@@ -24,9 +22,7 @@ if (isset($_GET["uid"])) {
     $fotoUrlInner = $_GET["fotoUrlInner"];
     $prize = (float) $_GET["prize"];
     $mileage = (int)$_GET["mileage"];
-    print "<pre>";
-    print_r($_GET);
-    print "</pre>";
+
     $updatedCar = updateCar($updateId, $fotoUrl, $fotoUrlFront, $fotoUrlBack, $fotoUrlInner, $prize, $mileage);
 
     if ($updatedCar) {
