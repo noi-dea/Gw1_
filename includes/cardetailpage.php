@@ -21,9 +21,7 @@ if (isset($_GET['id'])) {
 }
 $car = getCar($id);
 
-// print "<pre>";
-// print_r($car);
-// print "<pre>";
+
 
 ?>
 

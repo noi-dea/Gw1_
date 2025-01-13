@@ -25,7 +25,7 @@ $filters = [
     'model' => $selectedModel,
     'fueltype' => isset($_GET['fueltype']) ? $_GET['fueltype'] : '',
     'transmission' => isset($_GET['transmission']) ? $_GET['transmission'] : '',
-    'colour' => isset($_GET['colour']) ? $_GET['colour'] : '',
+    'colour' => isset($_GET['colours_id']) ? $_GET['colours_id'] : '',
     'km_min' => isset($_GET['km_min']) ? $_GET['km_min'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];
@@ -138,7 +138,7 @@ if (isset($message)) {
 
                     <div class="filter-section">
                         <label for="colours_id">Color:</label>
-                        <select id="colours_id" name="colours_id">
+                        <select id="colours" name="colour">
                             <option value="">Select Color</option>
                             <?php foreach ($colours as $colour): ?>
                                 <option value="<?= $colour['id']; ?>" <?= ($colour['id'] == $filters['colour']) ? 'selected' : ''; ?>>
