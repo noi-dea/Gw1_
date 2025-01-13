@@ -1,8 +1,4 @@
 <?php
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
-// session_start();
 $username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
 require 'functions.inc.php';
@@ -118,10 +114,10 @@ if (isset($message)) {
                         <label for="fueltype">Fuel Type:</label>
                         <select id="fueltype" name="fueltype">
                             <option value="">Select Fuel type</option>
-                            <option value="petrol" <?= ($filters['fueltype'] == 'petrol') ? 'selected' : ''; ?>>Petrol</option>
+                            <option value="benzine" <?= ($filters['fueltype'] == 'petrol') ? 'selected' : ''; ?>>Petrol</option>
                             <option value="diesel" <?= ($filters['fueltype'] == 'diesel') ? 'selected' : ''; ?>>Diesel</option>
-                            <option value="hybrid" <?= ($filters['fueltype'] == 'hybrid') ? 'selected' : ''; ?>>Hybrid</option>
-                            <option value="electric" <?= ($filters['fueltype'] == 'electric') ? 'selected' : ''; ?>>Electric</option>
+                            <option value="hybride" <?= ($filters['fueltype'] == 'hybrid') ? 'selected' : ''; ?>>Hybrid</option>
+                            <option value="elektrisch" <?= ($filters['fueltype'] == 'electric') ? 'selected' : ''; ?>>Electric</option>
                         </select>
                     </div>
 
@@ -129,8 +125,8 @@ if (isset($message)) {
                         <label for="transmission">Transmission:</label>
                         <select id="transmission" name="transmission">
                             <option value="">Select Transmission</option>
-                            <option value="manual" <?= ($filters['transmission'] == 'manueel') ? 'selected' : ''; ?>>Manual</option>
-                            <option value="automatic" <?= ($filters['transmission'] == 'automatisch') ? 'selected' : ''; ?>>Automatic</option>
+                            <option value="handmatig" <?= ($filters['transmission'] == 'manueel') ? 'selected' : ''; ?>>Manual</option>
+                            <option value="automatisch" <?= ($filters['transmission'] == 'automatisch') ? 'selected' : ''; ?>>Automatic</option>
                             <option value="electric" <?= ($filters['transmission'] == 'electrisch') ? 'selected' : ''; ?>>Electric</option>
 
                         </select>
