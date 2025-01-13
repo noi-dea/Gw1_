@@ -36,6 +36,14 @@ $car = getCar($id);
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
+      <!-- OG tags start -->
+    <?php 
+    $ogPath = "car/$id";
+    $ogImg = "../images/banner4.jpg";
+    $ogDesc = "View the specifics of the " . $car['make'] . " " . $car['model'];
+    include('./ogTags.php');
+    ?>
+    <!-- OG tags end -->
 
 
 </head>
