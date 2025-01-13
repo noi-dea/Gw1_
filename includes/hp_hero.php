@@ -2,16 +2,10 @@
 $username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
 require 'functions.inc.php';
-//verwijzing naar bovenstaande map weggehaald doordat deze problemen gaf op de index.php
-//de searchfilter geeft dan zelf problemen op de localhost pagina, maar deze pagina hoort toch niet
-//beschikt te worden
+
 $makes = getMakes();
 $colours = getColours();
 $bodies = getBodyworks();
-
-echo "<pre>";
-print_r($_GET); // Toon alle inkomende GET-data
-echo "</pre>";
 $selectedMake = isset($_GET['makes_id']) ? $_GET['makes_id'] : '';
 $selectedModel = isset($_GET['model']) ? $_GET['model'] : '';
 $models = !empty($selectedMake) ? getModelsByMake($selectedMake) : getAllModels();
@@ -27,14 +21,18 @@ $filters = [
 ];
 
 $errors = [];
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (empty(array_filter($filters))) {
-        $errors[] = "<p class='error'>Please select at least one filter.";
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty($filters['price_max']) || !empty($filters['km_max'])) {
+    if (!empty($filters['price_max']) && ($filters['price_max'] < 0 || $filters['price_max'] > 200000)) {
+        $errors[] = "<p class='error'>Price must be between 0 and 200,000.</p>";
+    }
+
+    if (!empty($filters['km_max']) && ($filters['km_max'] < 0 || $filters['km_max'] > 100000)) {
+        $errors[] = "<p class='error'>Mileage must be between 0 and 500,000 km.</p>";
     }
 
     if (!empty($errors)) {
         foreach ($errors as $error) {
-            echo "<p class='error'>$error</p>";
+            echo $error;
         }
     } else {
         $results = searchFilterFunction($filters);
