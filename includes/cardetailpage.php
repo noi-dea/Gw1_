@@ -9,11 +9,12 @@ include_once "./css_js.inc.php";
 
 require('../functions.inc.php');
 $lastId = getIdLastCar();
-$id = 1;
+$firstId = getIdFirstCar();
+$id;
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    if ($id < 1 || preg_match('/[\D]/', $id)) {
-        $id = 1;
+    if ($id < $firstId || preg_match('/[\D]/', $id)) {
+        $id = $firstId;
     }
 
     if ($id > $lastId) {

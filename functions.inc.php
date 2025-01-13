@@ -451,6 +451,18 @@ function getIdLastCar()
     return $stmt->fetch(PDO::FETCH_NUM)[0]; //only want the value, not the single value array fetch creates
 }
 
+function getIdFirstCar()
+{
+
+    $db = connectToDB();
+
+    $sql = 'SELECT cars.id FROM cars ORDER BY id ASC;';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_NUM)[0]; //only want the value, not the single value array fetch creates
+}
+
 
 //SESSIONS LOGIN
 function requiredLoggedIn()
