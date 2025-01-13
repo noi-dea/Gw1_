@@ -4,12 +4,20 @@
     "src": "admin/fonts/icomoon.svg"
   },
   "admin/js/index.js": {
+<<<<<<< HEAD
     "file": "assets/index-DIuVL1mw.js",
+=======
+    "file": "assets/index-B5gIVvDI.js",
+>>>>>>> 2b6eff0e1d917fc84103ed0d17a5fdb710f646c2
     "name": "index",
     "src": "admin/js/index.js",
     "isEntry": true,
     "css": [
+<<<<<<< HEAD
       "assets/index-DbCRpEjQ.css"
+=======
+      "assets/index-B-AnhMVo.css"
+>>>>>>> 2b6eff0e1d917fc84103ed0d17a5fdb710f646c2
     ],
     "assets": [
       "assets/icomoon-DQfcDdS4.svg",
@@ -56,12 +64,20 @@
     "src": "images/svgbackground.png"
   },
   "js/index.js": {
+<<<<<<< HEAD
     "file": "assets/index-Bvtq7XaI.js",
+=======
+    "file": "assets/index-K6US4KHd.js",
+>>>>>>> 2b6eff0e1d917fc84103ed0d17a5fdb710f646c2
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
+<<<<<<< HEAD
       "assets/index-DUVk5qDL.css"
+=======
+      "assets/index-DoXESZM2.css"
+>>>>>>> 2b6eff0e1d917fc84103ed0d17a5fdb710f646c2
     ],
     "assets": [
       "assets/icomoon-L58U7sKq.eot",

@@ -4,14 +4,18 @@ VALUES
 (1, 'W.Harper', md5('AdminPass-01'), 'William', 'Harper', 'wilper@hotmail.com', 'Herentals', 'nietbestaandestraat', 2200, 5, 2, 1);
 
 INSERT INTO fotosets
-(id, front, back, inner)
+(id, front, back, `inner`)
 VALUES
 (1, 'https://cdn-storage-02.prod.gocar.be/vehicles/24/12/2637189/4482837-o9i.jpg?width=840', 'https://images.cars.com/cldstatic/wp-content/uploads/36-toyota-corolla-2020-angle--exterior--rear--red.jpg', 'https://images.carpages.ca/inventory/10784618.387580098?w=640&h=480&q=75&s=41f8827ed7a38950c4820a2fdab9754c'),
-(2),
-(3),
-(4),
-(5),
-(6),
+(2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaPg3KIjeYYujbTBRe5T-baeoBwK6Poa2UcQ&s', 'https://vicimus-glovebox7.s3.us-east-2.amazonaws.com/photos/ClarHon9q4/2HGFC2F79MH006223/52d98861b50e8a7a406fed4794b44abe.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlKLqkPtWzAXSBc8KCy77lj2gp3-gzi3mBpw&s'),
+(3, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdiwNov5BC9loV_xfF-DrcjB_oRWLfZI0Ltw&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf_9CqPIXIHOBSNzuo1KF2YVDBITfk8Jk7Lg&s', 'https://www.saxton4x4.co.uk/uploads/images/vehicles/large/HH_WBSKT620400C95776241015162302_SEATF.jpg'),
+(4, 'https://assets.autoweek.nl/m/h3syc3lbr5bj.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl28R9foQouRMqwADag8f58EgeJADJrW5Vng&s', 'https://www.vmcdn.ca/f/files/guelphtoday/spotlight-photos/millburns-auto/fc-2019-ford-mustang/ford-mustang-2019-7.jpg;w=960'),
+(5, 'https://www.nardocar.se/images/produkter/maxton/9-1-18219_5-p.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxufhiMpNwUvufQqjtYyy94DVWVriyy5Ua-w&s', 'https://images.carexpert.com.au/resize/3000/-/app/uploads/2021/10/2022-Audi-A4-45-TFSI-quattro-S-line-review-36.jpeg'),
+(6, 'https://inv.assets.sincrod.com/6/8/1/33282044186.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkfYrl3BhO48W9P8j1GVfrDhozhnRzTpZFWw&s', 'https://hips.hearstapps.com/hmg-prod/images/2020-chevrolet-traverse-mmp-3-1571681068.png?crop=0.818xw:1.00xh;0.0221xw,0&resize=980:*');
+
+INSERT INTO fotosets
+(id)
+VALUES
 (7),
 (8),
 (9),
