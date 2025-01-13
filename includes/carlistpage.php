@@ -8,9 +8,6 @@ require("../functions.inc.php");
 
 session_start();
 
-echo '<pre>';
-Print_r($_SESSION);
-echo '</pre>';
 
 $pageInIncludes = true;
 include_once("./css_js.inc.php");
