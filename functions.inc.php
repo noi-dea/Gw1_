@@ -1,13 +1,7 @@
 
 <?php
 include('env.inc.php');
-// echo '<pre>';
-// Print_r($_ENV);
-// echo '</pre>';
-// exit;
-error_reporting(E_ALL);
-error_reporting(-1);
-ini_set('error_reporting', E_ALL);
+
 
 function connectToDB()
 {
