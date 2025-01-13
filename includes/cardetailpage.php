@@ -15,6 +15,7 @@ if (isset($_GET['id'])) {
     if ($id < 1 || preg_match('/[\D]/', $id)) {
         $id = 1;
     }
+
     if ($id > $lastId) {
         $id = $lastId;
     }
