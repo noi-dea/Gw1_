@@ -19,30 +19,32 @@ $filters = [
     'colour' => isset($_GET['colour']) ? $_GET['colour'] : '',
     'km_max' => isset($_GET['km_max']) ? $_GET['km_max'] : ''
 ];
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 $errors = [];
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty($filters['price_max']) || !empty($filters['km_max'])) {
-    if (!empty($filters['price_max']) && ($filters['price_max'] < 0 || $filters['price_max'] > 200000)) {
-        $errors[] = "<p class='error'>Price must be between 0 and 200,000.</p>";
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty(array_filter($filters))) {
+    if (empty(array_filter($filters))) {
+        $errors[] = "Please select at least one filter.";
     }
-
-    if (!empty($filters['km_max']) && ($filters['km_max'] < 0 || $filters['km_max'] > 100000)) {
-        $errors[] = "<p class='error'>Mileage must be between 0 and 500,000 km.</p>";
-    }
-
-    if (!empty($errors)) {
-        foreach ($errors as $error) {
-            echo $error;
-        }
-    } else {
+    if (empty($errors)) {
         $results = searchFilterFunction($filters);
         if (count($results) > 0) {
             $_SESSION["results"] = $results;
+            echo '<pre>';
+            Print_r($results);
+            echo '</pre>';
             header("Location: includes/carlistpage.php");
             exit;
         } else {
-            echo "<p class='message'>No cars found for the selected filters.</p>";
+            $message = "Géén auto's gevonden die aan je criteria voldoen";
         }
+    }
+}
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo "<p>$error</p>";
     }
 }
 
